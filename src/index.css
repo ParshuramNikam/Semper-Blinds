@@ -1,96 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.mid-text{
+  transform: translate(-50%,-50%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.wave {
+  width: 200%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
 }
 
+.wave1{
+  background-image:url(/public/images/header/wave-1.svg);
+  -webkit-background-size:50% 80px ;
+  background-size: 50% 80px;
+}
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.wave2{
+  background-image:url(/public/images/header/wave-2.svg);
+  -webkit-background-size:50% 100px ;
+  background-size: 50% 100px;
+  animation: animate 12s linear infinite;
 }
-header {
-  height: 100vh;
-  /* background-color: #577eff; */
-  position: relative;
-  overflow: hidden;
+
+.wave3{
+  background-image:url(/public/images/header/wave-3.svg);
+  -webkit-background-size:50% 80px ;
+  background-size: 50% 80px;
+  animation: animate 18s linear infinite;
 }
-#shape {
-  position: absolute;
-  left: 0;
-  bottom: -2vw;
-}
-img:not(#shape) {
-  position: absolute;
-  left: 0;
-}
-header img:nth-child(1) {
-  opacity: 0.4;
-  bottom: -0.1vw;
-  animation: move-1 5s infinite;
-}
-@keyframes move-1 {
-  50% {
-    transform: translateY(15px);
+
+@keyframes animate{
+  0%{
+      transform: translateX(0) translateZ(0) scaleY(1);
   }
-}
-header img:nth-child(2) {
-  opacity: 0.3;
-  bottom: 0.5vw;
-  animation: move-2 4s infinite;
-}
-@keyframes move-2 {
-  50% {
-    transform: translateY(35px);
+  50%{
+      transform: translateX(-25%) translateZ(0) scaleY(0.5);
   }
-}
-header img:nth-child(3) {
-  bottom: 0.3vw;
-  opacity: 0.2;
-  animation: move-3 3.5s infinite;
-}
-@keyframes move-3 {
-  50% {
-    transform: translateY(25px);
+  100%{
+      transform: translateX(-50%) translateZ(0) scaleY(1);
   }
-}
-header img:nth-child(4) {
-  bottom: 0.1vw;
-  opacity: 0.3;
-  animation: move-4 3s infinite;
-}
-@keyframes move-4 {
-  50% {
-    transform: translateY(20px);
-  }
-}
-header h1 {
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  font-size: 8vmin;
-  text-align: center;
-  color: #ffffff;
-}
-section p {
-  font-family: "Poppins", sans-serif;
-  padding: 30px 35px;
-  margin-top: 50px;
-  text-align: justify;
-  line-height: 2em;
-  letter-spacing: 0.5px;
 }
 
 
