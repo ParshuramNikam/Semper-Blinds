@@ -1,18 +1,70 @@
 .mid-text{
   transform: translate(-50%,-50%);
 }
+section{
+  overflow: hidden;
+}
 
 .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 200%;
-  background-repeat: repeat no-repeat;
-  background-position: 0 bottom;
-  transform-origin: center bottom;
+  height: 100px;
+  background: url(/public/images/header/wave.png);
+  background-size: 1000px 100px;
+  overflow: hidden;
 }
 
 .wave1{
-  background-image:url(/public/images/header/wave-1.svg);
-  -webkit-background-size:50% 80px ;
-  background-size: 50% 80px;
+  animation: animate 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.wave2{
+  animation: animate2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+.wave3{
+  animation: animate1 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+.wave4{
+  animation: animate2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes animate1 {
+  0%{
+    background-position-x: 0;
+  }
+  100%{
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes animate2 {
+  0%{
+    background-position-x: 0;
+  }
+  100%{
+    background-position-x: -1000px;
+  }
 }
 
 .wave2{
@@ -40,9 +92,14 @@
       transform: translateX(-50%) translateZ(0) scaleY(1);
   }
 }
+
+/* .headerHeight{
+  min-height: 90vh;
+}
+
 header {
-  min-height: 100vh;
-  /* background-color: #577eff; */
+  min-height: 90vh;
+  background-color: #577eff;
   position: relative;
   overflow: hidden;
 }
@@ -94,7 +151,8 @@ header .header_wave:nth-child(4) {
   50% {
     transform: translateY(20px);
   }
-}
+} */
+
 header h1 {
   width: 100%;
   font-family: "Poppins", sans-serif;
