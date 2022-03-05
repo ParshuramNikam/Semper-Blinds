@@ -10,7 +10,7 @@
 }
 /* just for codepen purpose  */
 body {
-  background-color: green;
+  background-color: #34d399;
   padding: 0;
   margin: 0;
 }
@@ -82,7 +82,7 @@ p {
 
 .header {
   position:relative;
-  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  /* background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%); */
   color:white;
 }
 .logo {
@@ -188,6 +188,34 @@ section p {
   line-height: 2em;
   letter-spacing: 0.5px;
 }
+
+
+/* navbar-items-hover-effect   */
+.navitem{
+  position: relative;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.navitem:after{
+  content: "";
+  position: absolute;
+  background-color: #1e3a8a;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: 0px;
+  transition: 0.5s;
+}
+/* 
+.navitem:hover{
+  color:white;
+} */
+
+.navitem:hover:after{
+  width: 100%;
+}
+
 
 
 /* ========================================= */
