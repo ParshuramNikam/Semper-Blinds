@@ -1,9 +1,12 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { MailIcon } from "@heroicons/react/outline";
+
+
 const Header = () => {
   return (
     <>
-      <div className="  bg-emerald-400">
+      <div className="  bg-white">
         <div className="header">
           <Navbar></Navbar>
 
@@ -11,10 +14,10 @@ const Header = () => {
             <div className="xl:w-11/12 p-2 sm:p-4">
               <div className=" md:flex w-full h-full justify-center items-center gap-5">
                 <div className="md:w-1/2">
-                  <div className="text-2xl md:text-5xl mb-5 text-left font-semibold text-blue">
-                    Why choose Semper Blinds?
+                  <div className="text-2xl md:text-5xl mb-8 text-left font-semibold text-white">
+                    Why choose <span className="text-green-500">Semper Blinds ?</span>
                   </div>
-                  <p className="text-2xl text-semibold m-0 p-0 text-white">
+                  <p className="text-xl text-semibold m-0 p-0 text-gray-300">
                     We're a family run company with over 35years experience who
                     specialise in all blinds that are pleated or cellular. Based
                     in North East Manchester, we supply all across the UK
@@ -22,14 +25,15 @@ const Header = () => {
                     roof blinds, shaped blinds and the "new kid on the block"
                     lantern blinds.
                   </p>
-                  <div className=" flex items-center pr-2 mt-5 ">
-                    <button
-                      type="button"
-                      className="text-white bg-blue  hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-lg px-3 py-1.5  text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                      Contact Us
-                    </button>
-                  </div>
+                  <div className="mt-3">
+                <button
+                  type="button"
+                  class="flex text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-3 py-1.5 font-semibold  text-center  "
+                >
+                  <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
+                  Contact Us
+                </button>
+              </div>
                 </div>
 
                 <div className="mx-auto w-1/2">
