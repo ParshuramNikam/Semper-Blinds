@@ -1,19 +1,24 @@
 import React from "react";
+import Navbar from "./Navbar";
+import { MailIcon } from "@heroicons/react/outline";
+
 
 const Header = () => {
   return (
     <>
-      <div className="bg-sky-500 "> {/* gradient-bg */}
-        <div className="header">
+      <div className="  bg-white">
+        <div className="bg-gradient">
 
-          <div className="inner-header flex justify-center pt-3">
+          {/* <Navbar></Navbar> */}
+
+          <div className="inner-header flex justify-center py-5">
             <div className="xl:w-11/12 p-2 sm:p-4">
               <div className=" md:flex w-full h-full justify-center items-center gap-5">
                 <div className="md:w-1/2">
-                  <div className="text-2xl md:text-5xl mb-5 text-left font-semibold text-blue">
-                    Why choose Semper Blinds?
+                  <div className="text-2xl md:text-5xl mb-8 text-left font-semibold text-white">
+                    Why choose <span className="text-green-500">Semper Blinds ?</span>
                   </div>
-                  <p className="text-lg md:text-2xl text-semibold m-0 p-0 text-white">
+                  <p className="text-xl text-semibold m-0 p-0 text-gray-300">
                     We're a family run company with over 35years experience who
                     specialise in all blinds that are pleated or cellular. Based
                     in North East Manchester, we supply all across the UK
@@ -21,11 +26,12 @@ const Header = () => {
                     roof blinds, shaped blinds and the "new kid on the block"
                     lantern blinds.
                   </p>
-                  <div className=" flex items-center pr-2 my-5 ">
+                  <div className="mt-3">
                     <button
                       type="button"
-                      className="text-white bg-blue  hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-lg px-3 py-1.5  text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      class="flex mb-5 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
                     >
+                      <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
                       Contact Us
                     </button>
                   </div>
@@ -43,7 +49,7 @@ const Header = () => {
           </div>
 
           {/* <!--Waves Container--> */}
-          <div className="mt-2">
+          <div>
             <svg
               className="waves"
               xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +90,14 @@ const Header = () => {
           {/* <!--Waves end--> */}
         </div>
         {/* <!--Header ends--> */}
+
+        {/* <!--Content starts-->
+      <div className="content flex">
+        <p>By.Goodkatz | Free to use </p>
       </div>
+      <!--Content ends--> */}
+      </div>
+
     </>
   );
 };

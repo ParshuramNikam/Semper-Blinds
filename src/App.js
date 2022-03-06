@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <BrowserRouter>
+      <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <HomePage />
@@ -16,7 +16,7 @@ function App() {
           <h1>ajahahh</h1>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter> 
   );
 }
 

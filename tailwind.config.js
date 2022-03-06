@@ -6,15 +6,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        ...colors,
-        'lightGreen': '#ebf1db',
-        'lightBlue': '#dfebf8',
-        'green': '#aac238',
-        'blue': '#163760',
-        'darkGreen': '#7e993c',
-        'darkBlue': '#122a50',
-      },
+      // colors: {
+      //   ...colors,
+      //   'lightGreen': '#ebf1db',
+      //   'lightBlue': '#dfebf8',
+      //   'green': '#aac238',
+      //   'blue': '#163760',
+      //   'darkGreen': '#7e993c',
+      //   'darkBlue': '#122a50',
+      // },
+      fontFamily:{
+        roboto:"'Roboto', sans-serif",
+      }
     },
   },
   plugins: [],
