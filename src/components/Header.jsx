@@ -7,10 +7,11 @@ const Header = () => {
   return (
     <>
       <div className="  bg-white">
-        <div className="header">
-          <Navbar></Navbar>
+        <div className="bg-gradient">
 
-          <div className="inner-header flex justify-center pt-5">
+          {/* <Navbar></Navbar> */}
+
+          <div className="inner-header flex justify-center py-5">
             <div className="xl:w-11/12 p-2 sm:p-4">
               <div className=" md:flex w-full h-full justify-center items-center gap-5">
                 <div className="md:w-1/2">
@@ -26,17 +27,17 @@ const Header = () => {
                     lantern blinds.
                   </p>
                   <div className="mt-3">
-                <button
-                  type="button"
-                  class="flex text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-3 py-1.5 font-semibold  text-center  "
-                >
-                  <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
-                  Contact Us
-                </button>
-              </div>
+                    <button
+                      type="button"
+                      class="flex mb-5 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
+                    >
+                      <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
+                      Contact Us
+                    </button>
+                  </div>
                 </div>
 
-                <div className="mx-auto w-1/2">
+                <div className="mx-auto md:w-1/2">
                   <img
                     src="https://media.istockphoto.com/photos/industrial-style-bathroom-picture-id1134249590?b=1&k=20&m=1134249590&s=170667a&w=0&h=Kc80AWEI0s8875Qb0Z3rWK1V8OfWXOPvmQkmcLnlv50="
                     className="w-full h-auto rounded-xl"
@@ -97,63 +98,6 @@ const Header = () => {
       <!--Content ends--> */}
       </div>
 
-      <div className="mt-10">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum placeat,
-        fugiat fuga eos laudantium sint ab. Soluta eveniet ut blanditiis maxime
-        nostrum consectetur a alias eum illum molestiae vel eius molestias
-        delectus quaerat dolorem quisquam nesciunt ad dolore aperiam,
-        voluptatibus id. Tenetur deserunt recusandae non laudantium odio
-        reprehenderit dolor debitis et unde natus, laborum ad adipisci numquam
-        mollitia rerum voluptatibus! Eveniet deserunt quaerat inventore, autem
-        aut ipsa minus repellendus quos nobis voluptatibus ratione omnis
-        reprehenderit ipsam quod blanditiis molestiae veniam quis quam et
-        cupiditate. Quaerat temporibus delectus laborum similique provident,
-        earum ducimus perspiciatis officia quam ipsa nesciunt quo pariatur ad
-        dolor voluptatem rem officiis voluptatum enim, inventore mollitia
-        excepturi soluta nisi. Pariatur, praesentium eligendi! Eos laudantium,
-        nostrum deserunt perferendis a quaerat praesentium sint nobis iusto
-        assumenda corporis dignissimos veniam nam itaque incidunt, facilis nulla
-        sequi nisi, voluptate quibusdam minus necessitatibus soluta enim?
-        Recusandae, cumque! Hic earum tenetur unde cupiditate cum id ullam
-        inventore quaerat nostrum itaque recusandae vel, minima necessitatibus
-        fugit veniam eveniet commodi dolor officiis, iure nisi aut beatae quos
-        perspiciatis. Sapiente neque accusamus consequuntur fugit sunt hic eaque
-        soluta libero architecto in dicta provident aperiam eum enim amet,
-        laboriosam earum? Ipsa obcaecati iste soluta quia numquam, at possimus
-        minus nobis ipsum ullam quasi animi ut dignissimos fugiat id. Nihil quo
-        doloremque vel, perspiciatis mollitia asperiores in, maxime voluptatum
-        id cupiditate commodi facere eveniet esse sunt sapiente rem deleniti
-        atque saepe dicta nesciunt, dolor corrupti. Praesentium, labore! Nam
-        expedita minus aperiam delectus amet animi assumenda accusantium
-        repellat tempora alias est, cumque maxime eligendi rem magni? Corrupti
-        corporis repudiandae ipsum quo reprehenderit ut, dicta magnam eos
-        tempore adipisci harum porro quod iusto sequi quas cum suscipit officia
-        tenetur aliquam fuga. Amet dignissimos vero necessitatibus quis autem
-        fugit minus quam ipsam consequuntur sed. Libero debitis dolorum suscipit
-        odit distinctio velit quasi rerum aut consectetur! Dolor tempora saepe
-        quisquam perspiciatis quia exercitationem dicta quae? Nemo repellat
-        adipisci nihil eligendi quas fuga repellendus maxime harum nostrum
-        molestiae quam architecto delectus reiciendis eos ipsum minus suscipit,
-        non quidem laudantium saepe perspiciatis deleniti voluptatem
-        exercitationem! Rerum quibusdam iusto quo rem laboriosam dolore, sint a
-        atque tenetur qui exercitationem repellat sunt cumque officiis explicabo
-        tempore voluptate velit. Voluptate, at? Totam aliquam quae, accusantium
-        nostrum nulla tempore modi repudiandae et accusamus impedit delectus
-        harum corporis minima cumque numquam, aspernatur ducimus. Dolore
-        voluptates, a itaque dicta unde iste fugiat nulla in commodi facilis cum
-        ea laudantium delectus harum ex sunt vel voluptatum atque, quam id
-        molestias. Enim voluptatibus pariatur autem officiis perferendis
-        recusandae cupiditate vel mollitia praesentium assumenda? Porro
-        voluptate dolore deleniti accusamus, culpa dolor exercitationem magnam
-        ipsam asperiores amet eveniet laboriosam quisquam placeat nobis itaque
-        velit, voluptatem similique atque perspiciatis nemo doloribus quidem
-        nostrum doloremque. Laboriosam, natus laborum illum rem nemo quibusdam
-        cupiditate? Deserunt commodi, nisi fugit placeat asperiores neque, ipsum
-        assumenda quidem consequatur velit vel, officia laudantium odio. Vitae
-        pariatur magnam at accusantium repellat quaerat voluptates vel molestias
-        eos! Sunt sed deleniti distinctio blanditiis cumque illo aliquid in
-        ipsum? Laborum dolorum odio itaque, necessitatibus incidunt omnis.
-      </div>
     </>
   );
 };

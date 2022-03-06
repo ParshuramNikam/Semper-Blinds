@@ -9,7 +9,6 @@
 }
 /* just for codepen purpose  */
 body {
-  background-color: #34d399;
   padding: 0;
   margin: 0;
 }
@@ -78,12 +77,13 @@ p {
   color: #333333;
 }
 
-.header {
+.bg-gradient {
   position: relative;
   background: rgb(1,0,27);
 background: linear-gradient(90deg, rgba(1,0,27,1) 0%, rgba(3,0,55,1) 24%, rgba(66,66,99,1) 57%, rgba(142,146,200,1) 79%, rgba(189,189,190,1) 100%);
   color: white;
 }
+
 .logo {
   width: 50px;
   fill: white;
