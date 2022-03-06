@@ -17,8 +17,8 @@ export default function Navbar() {
     const [navBg, setNavBg] = useState('bg-gradient');
 
     useEffect(() => {
-        window.addEventListener('scroll', (e) => {
-            console.log(window.scrollY);
+        window.addEventListener('scroll', () => {
+            // console.log(window.scrollY);
             if(window.scrollY > 60){
                 setNavBg('') /* set no color to navbar id > 60 */
             }else{
@@ -32,7 +32,7 @@ export default function Navbar() {
     return (
         <Disclosure
             as="nav"
-            className={`${navBg} z-50 bg-opacity-60 backdrop-filter backdrop-blur-lg sticky top-0 ease-in-out duration-500 transition-all`}
+            className={`${navBg} z-50 sticky bg-gray-400 top-0 backdrop-filter backdrop-blur-lg bg-opacity-75  transition ease-in-out duration-500 `}
         >
             {({ open }) => (
                 <>
@@ -56,7 +56,7 @@ export default function Navbar() {
                                                 className={classNames(
                                                     currentMenu === item.name
                                                         ? "navitem text-green-500 font-semibold  hover:text-green"
-                                                        : "navitem mx-9  text-white hover:text-green-500 ",
+                                                        : "navitem text-white hover:text-green-500 ",
                                                     "lg:px-1  pt-2 rounded-md text-base font-medium"
                                                 )}
                                                 aria-current={item.current ? "page" : undefined}
