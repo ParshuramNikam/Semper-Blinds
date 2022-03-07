@@ -7,6 +7,7 @@ import Features from "../components/guideMe/Features";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import { Testimonials } from "../components/testimonials/Testimonials";
+import Gallery from "../components/Gallery";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
           <Header />
           <Category />
           <Features />
+          <Gallery />
           <Faq />
           <Testimonials />
           <ContactUs />
