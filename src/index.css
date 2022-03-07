@@ -12,7 +12,12 @@
 body {
   padding: 0;
   margin: 0;
-  
+}
+
+*,
+*:after,
+*:before {
+  scroll-behavior: smooth;
 }
 
 @media all and (max-width: 800px) {
@@ -82,8 +87,31 @@ p {
 .bg-gradient {
   position: relative;
   background: rgb(1,0,27);
-background: linear-gradient(90deg, rgba(1,0,27,1) 0%, rgba(3,0,55,1) 24%, rgba(66,66,99,1) 57%, rgba(142,146,200,1) 79%, rgba(189,189,190,1) 100%);
-  color: white;
+  background: linear-gradient(90deg, rgba(1,0,27,1) 0%, rgba(3,0,55,1) 24%, rgba(66,66,99,1) 57%, rgba(142,146,200,1) 79%, rgba(189,189,190,1) 100%);
+
+  /* background: #1D976C;  
+background: -webkit-linear-gradient(to left, #93F9B9, #1D976C);
+background: linear-gradient(to left, #93F9B9, #1D976C);  */
+
+/* background: #403B4A;
+background: -webkit-linear-gradient(to left, #E7E9BB, #403B4A);  
+background: linear-gradient(to left, #E7E9BB, #403B4A);  */
+
+/* background: #E55D87;  
+background: -webkit-linear-gradient(to left, #5FC3E4, #E55D87);  
+background: linear-gradient(to left, #5FC3E4, #E55D87); */
+
+/* background: #003973;  
+background: -webkit-linear-gradient(to left, #E5E5BE, #003973); 
+background: linear-gradient(to left, #E5E5BE, #003973); */
+
+/* background: #BBD2C5;  
+background: -webkit-linear-gradient(to right, #292E49, #536976, #BBD2C5);  
+background: linear-gradient(to right, #292E49, #536976, #BBD2C5);  */
+
+
+
+color: white;
 }
 
 .logo {
@@ -181,7 +209,7 @@ header h1 {
   text-align: center;
   color: #ffffff;
 }
-section p {
+.inner-header p {
   font-family: "Poppins", sans-serif;
   padding: 30px 35px;
   margin-top: 50px;
@@ -194,7 +222,7 @@ section p {
 .navitem {
   position: relative;
   text-decoration: none;
-  padding: 0;
+  padding: 0 0 3px 0;
 }
 
 .navitem:after {
@@ -216,10 +244,6 @@ section p {
   left: 0;
   width: 100%;
 }
-
-
-/* Testimonials Section */
-
 
 /* ========================================= */
 

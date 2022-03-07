@@ -4,8 +4,9 @@ import SectionHeading from "../common/SectionHeading";
 
 export const Testimonials = () => {
   return (
+    <div>
     <section id="testimonials" className="scroll-mt-20 mt-5">
-      <SectionHeading className="" heading={"WHAT THEY'VE SAID"} />
+      <SectionHeading className="" heading={"What They've Said"} />
       <section class="text-green-500 body-font py-4 bg-emerald-400">
         <div class="container px-5  mx-auto">
           <div class="flex flex-wrap m-4">
@@ -75,5 +76,6 @@ export const Testimonials = () => {
         </div>
       </section>
     </section>
+    </div>
   );
 };

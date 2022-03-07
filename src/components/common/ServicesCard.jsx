@@ -6,4 +6,4 @@ const ServicesCard = () => {
   )
 }
 
-export default ServicesCard 
+export default ServicesCard

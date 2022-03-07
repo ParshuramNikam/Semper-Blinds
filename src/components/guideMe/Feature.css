@@ -1,0 +1,26 @@
+.feature {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.feature-icon {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.inner-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.feature-text h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  /* color: var(--light-blue);   */
+}

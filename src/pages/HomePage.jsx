@@ -1,7 +1,11 @@
 import React from "react";
+import Category from "../components/Category";
+import ContactUs from "../components/ContactUs";
+import Faq from "../components/Faq";
+import Footer from "../components/Footer";
+import Features from "../components/guideMe/Features";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
-import Services from "../components/Services";
 import { Testimonials } from "../components/testimonials/Testimonials";
 
 const HomePage = () => {
@@ -11,8 +15,12 @@ const HomePage = () => {
         <section>
           <Navbar />
           <Header />
-          <Services />
+          <Category />
+          <Features />
+          <Faq />
           <Testimonials />
+          <ContactUs />
+          <Footer />
         </section>
       </div>
     </section>
