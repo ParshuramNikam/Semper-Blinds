@@ -134,7 +134,7 @@ function ContactUs() {
                     </div>
                     <div className="flex justify-between w-full px-3">
                       <button
-                        className="shadow bg-green-500 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-semibold py-2 px-6 rounded"
+                        className="button-box-shadow shadow bg-green-500 hover:bg-green-600 focus:shadow-outline focus:outline-none text-white font-semibold py-2 px-6 rounded"
                         type="submit"
                       >
                         Send Message

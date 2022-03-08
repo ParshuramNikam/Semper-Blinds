@@ -14,9 +14,9 @@ const Features = () => {
     });
   }, []);
   return (
-    <section id="features">
+    <section id="features" className="scroll-mt-20" >
       <SectionHeading className="" heading={"Ordering with Semper Blinds"} />
-      <div className="container features">
+      <div className="container overflow-hidden features">
         <div className="title" data-aos="fade-up">
           {/* <BsFillBookmarkStarFill color="orangered" size={30} /> */}
           <p className="u-text-small w-full lg:w-3/4 p-0 m-0">

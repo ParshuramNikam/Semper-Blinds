@@ -67,7 +67,7 @@ function Footer() {
             <h5 class="text-lg text-white font-medium mb-4">
               Explore our site
             </h5>
-            <button class="bg-green-500 text-white font-semibold hover:bg-green-600 rounded py-2 px-6 md:px-12 transition-colors duration-300">
+            <button class="button-box-shadow bg-green-500 text-white font-semibold hover:bg-green-600 rounded py-2 px-6 md:px-12 transition-colors duration-300">
               Explore
             </button>
           </div>

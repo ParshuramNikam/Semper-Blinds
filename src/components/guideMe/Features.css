@@ -27,13 +27,15 @@
 
 .features-left {
   flex: 1;
+  position: relative;
   text-align: center;
+  align-items: center;
 }
 .features-left img {
   width: 65%;
 }
 .features-right {
-  flex: 1;
+  flex: 1.5;
 }
 
 @media screen and (max-width: 600px) {

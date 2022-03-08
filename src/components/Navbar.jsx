@@ -22,7 +22,7 @@ export default function Navbar() {
             if(window.scrollY > 60){
                 setNavBg('') /* set no color to navbar id > 60 */
             }else{
-                setNavBg('bg-gradient') /* set grdient color to navbar id < 60 */
+                setNavBg('') /* set grdient color to navbar id < 60 */
             }
         })
     
@@ -32,7 +32,7 @@ export default function Navbar() {
     return (
         <Disclosure
             as="nav"
-            className={`${navBg} z-50 sticky bg-gray-400 top-0 backdrop-filter backdrop-blur-lg bg-opacity-75  transition ease-in-out duration-500 `}
+            className={`${navBg} bg-gradient  z-50 sticky  top-0 backdrop-filter backdrop-blur-lg bg-opacity-75  transition ease-in-out duration-500 `}
         >
             {({ open }) => (
                 <>
@@ -56,8 +56,8 @@ export default function Navbar() {
                                                 className={classNames(
                                                     currentMenu === item.name
                                                         ? "navitem text-green-500 font-semibold  hover:text-green"
-                                                        : "navitem text-white hover:text-green-500 ",
-                                                    "lg:px-2  pt-2 rounded-md text-base font-medium"
+                                                        : "navitem text-black hover:text-green-500 ",
+                                                    "lg:px-2  pt-2 rounded-md text-base font-semibold"
                                                 )}
                                                 aria-current={item.current ? "page" : undefined}
                                                 onClick={() => {
@@ -75,7 +75,7 @@ export default function Navbar() {
                             <div className="absolute right-10 md:right-3 flex items-center sm:ml-6 sm:pr-0">
                                 <button
                                     type="button"
-                                    class="flex text-white bg-green-500 hover:bg-green-600  focus:ring-4 focus:ring-blue-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "
+                                    class="button-box-shadow flex text-white bg-green-400 hover:bg-green-500  focus:ring-4 focus:ring-blue-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "
                                 >
                                     <CalculatorIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
                                     Get Quotation
