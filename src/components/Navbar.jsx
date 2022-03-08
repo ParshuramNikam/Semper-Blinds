@@ -57,7 +57,7 @@ export default function Navbar() {
                                                     currentMenu === item.name
                                                         ? "navitem text-green-500 font-semibold  hover:text-green"
                                                         : "navitem text-white hover:text-green-500 ",
-                                                    "lg:px-1  pt-2 rounded-md text-base font-medium"
+                                                    "lg:px-2  pt-2 rounded-md text-base font-medium"
                                                 )}
                                                 aria-current={item.current ? "page" : undefined}
                                                 onClick={() => {
