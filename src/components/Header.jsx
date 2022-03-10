@@ -11,11 +11,11 @@ const Header = () => {
 
           {/* <Navbar ></Navbar> */}
 
-          <div className="inner-header flex justify-center py-5">
-            <div className="p-2 sm:p-4">
-              <div className=" w-full h-full justify-center items-center gap-5 ">
+          <div className="inner-header flex justify-center pt-3">
+            <div className="px-2 pt-2 ">
+              <div className=" w-full h-full justify-center items-center gap-4 ">
                 <div className="">
-                  <div className="text-2xl md:text-5xl mb-8 text-center font-semibold text-white">
+                  <div className="text-2xl md:text-5xl my-4 text-center font-semibold text-white">
                     Why choose <span className="text-green-500">Semper Blinds?</span>
                   </div>
                   <p className="text-xl lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
@@ -26,10 +26,10 @@ const Header = () => {
                     roof blinds, shaped blinds and the "new kid on the block"
                     lantern blinds.
                   </p>
-                  <div className="mt-3 ">
+                  <div className="mt-7 ">
                     <button
                       type="button"
-                      class="button-box-shadow flex mx-auto mb-5 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
+                      class="button-box-shadow flex mx-auto mb-0 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
                     >
                       <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
                       Contact Us

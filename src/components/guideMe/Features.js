@@ -27,10 +27,10 @@ const Features = () => {
           </p>
         </div>
         <div className="features-content">
-          <div className="features-left" data-aos="fade-right">
+          {/* <div className="features-left" data-aos="fade-right">
             <img src={"/images/phone-features.png"} alt="phone" />
-          </div>
-          <div className="features-right" data-aos="fade-left">
+          </div> */}
+          <div className="" >
             {FeatureList.map((feature) => (
               <Feature
                 key={feature.id}
