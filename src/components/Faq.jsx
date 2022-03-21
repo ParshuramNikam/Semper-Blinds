@@ -1,17 +1,16 @@
 import React from 'react'
 import { faqQuestions } from '../constants/faqQuestions'
 import OneFAQ from './common/OneFAQ'
+import SectionHeading from './common/SectionHeading'
 
 const Faq = () => {
     return (
         <div>
-            <section class="text-gray-700">
-                <div class="container px-5 py-24 mx-auto">
-                    <div class="text-center mb-20">
-                        <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
-                            Frequently Asked Question
-                        </h1>
-                        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+            <section id='faq' class="text-gray-700 scroll-mt-10">
+                <div class="container px-5 py-5 mx-auto">
+                    <div class="text-center mb-5">
+                    <SectionHeading className="" heading={"Frequently Asked Question"} />
+                        <p class="text-base p-0 mt-5 text-center xl:w-2/4 lg:w-3/4 mx-auto">
                             The most common questions about how our business works and what
                             can do for you.
                         </p>
