@@ -1,30 +1,30 @@
 export const faqQuestions = [
     [
         {
-            question: "How Long is this site live?",
-            answer: "Laboris qui labore cillum culpa in sunt quis sint veniam. Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis minim velit nostrud pariatur culpa magna in aute"
+            question: "What blinds do you offer at Semper Blinds?",
+            answer: "Simple put if it's a pleated or cellular blind we make them all in house, but we can offer any blind to help you fulfil your project"
         },
         {
-            question: "Can I change the domain you give me?",
-            answer: "Laboris qui labore cillum culpa in sunt quis sint veniam. Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis minim velit nostrud pariatur culpa magna in aute"
+            question: "Will your conservatory roof blinds need to be screwed in my roof and damage it?",
+            answer: "We offer a framed system that uses brackets that click into the windows, and this means no need for drilling into your conservatory roofs!"
         },
         {
-            question: "Can I install/upload anything I want on there?",
-            answer: "Laboris qui labore cillum culpa in sunt quis sint veniam. Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis minim velit nostrud pariatur culpa magna in aute"
+            question: "Do you offer motorised blinds?",
+            answer: "We specialise in motorised blinds, using Somfy motors we look to offer any motorised solution to any blind that we make inhouse"
         },
     ],
     [
         {
-            question: "How many sites I can create at once?",
-            answer: "Laboris qui labore cillum culpa in sunt quis sint veniam. Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis minim velit nostrud pariatur culpa magna in aute"
+            question: "I have a shaped window, can you help me?",
+            answer: "Using our knowledge of conservatory roof blinds, we can offer making shaped blinds for virtually any project."
         },
         {
-            question: "How can I migrate to another site?",
-            answer: "Laboris qui labore cillum culpa in sunt quis sint veniam. Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis minim velit nostrud pariatur culpa magna in aute"
+            question: "What's the best way to contact Semper Blinds?",
+            answer: "We can be contacted via email, mobile or mail. Whichever way you choose we aim to be as quick to reply as possible"
         },
         {
-            question: "How can I communicate with you?",
-            answer: "Laboris qui labore cillum culpa in sunt quis sint veniam. Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis minim velit nostrud pariatur culpa magna in aute"
+            question: "What is a perfect fit blind?",
+            answer: "The perfect fit blind is a simple aluminium frame that clips onto your window via a bracket, and allows the blind to be installed without drilling any holes and is also child safe. They come in a wide range of fabrics and venetian colours, while also offering the ever so popular blackout option to make your bedroom nice and dark."
         },
     ]
 ]

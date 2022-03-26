@@ -326,71 +326,109 @@ function Gallery() {
                 </div>
               </section>
             </div>
-            {/* <div className="flex">
+            <div className="flex">
               <section class="pb-0 px-1">
-                <div class="flex -mx-1 md:w-1/2">
-                  <div class="vertical-image image">
+                <div class="flex flex-wrap -mx-1">
+                  <div class="vertical-image image hidden  min-h-full md:block md:w-1/2 ">
                     <img
-                      src="/images/gallery-images/Intu 2.png"
+                      src="/images/gallery-images/Lantern.png"
                       alt=""
-                      class="image__img  rounded-sm "
+                      class="image__img w-full h-full rounded-sm "
                     ></img>
                     <div className="image__overlay image__overlay--primary">
-                      <div className="image__title-verti-wide">Intu 2</div>
+                      <div className="image__title-verti-wide">Lantern</div>
                     </div>
                   </div>
-                  <div class="image m-1 mb-1 mt-0">
-                    <img
-                      class="image__img rounded-sm shadow-md"
-                      src="/images/gallery-images/Roof 3.png"
-                      alt=""
-                    />
-                    <div className="image__overlay2 image__overlay--primary2">
-                      <div className="image__title-horiz-wide">Roof 3</div>
+                  <div class="md:w-1/2 h-auto">
+                    <div class="image m-1 mb-1 mt-0">
+                      <img
+                        class="image__img rounded-sm shadow-md"
+                        src="/images/gallery-images/Semper Splits 2.png"
+                        alt=""
+                      />
+                      <div className="image__overlay2 image__overlay--primary2">
+                        <div className="image__title-horiz-wide">Semper Splits 2</div>
+                      </div>
+                    </div>
+                    <div class="image mx-1 mb-1">
+                      <img
+                        class="image__img rounded-sm shadow-md"
+                        src="/images/gallery-images/Skylight.png"
+                        alt=""
+                      />
+                      <div className="image__overlay image__overlay--primary">
+                        <div className="image__title-horiz-wide">Roof 6</div>
+                      </div>
+                    </div>
+                    <div class="image m-1 mb-1 mt-0">
+                      <img
+                        class="image__img rounded-sm shadow-md"
+                        src="/images/gallery-images/Roof 5.png"
+                        alt=""
+                      />
+                      <div className="image__overlay2 image__overlay--primary2">
+                        <div className="image__title-horiz-wide">Perfect Fits 4</div>
+                      </div>
                     </div>
                   </div>
-                  <div class="image mx-1 mb-1">
-                    <img
-                      class="image__img rounded-sm shadow-md"
-                      src="/images/gallery-images/Roof 4.png"
-                      alt=""
-                    />
-                    <div className="image__overlay image__overlay--primary">
-                      <div className="image__title-horiz-wide">Roof 4</div>
-                    </div>
-                  </div>
-                  
                 </div>
               </section>
               <section class="pb-0 px-1">
                 <div class="flex flex-wrap -mx-1">
-                  <div class="vertical-image image hidden  min-h-full md:block md:w-1/3 ">
+                  <div class="vertical-image image hidden  min-h-full md:block md:w-1/2 ">
                     <img
-                      src="/images/gallery-images/Intu Multizone.png"
+                      src="/images/gallery-images/Perfect Fit Rollers.png"
                       alt=""
                       class="image__img w-full h-full rounded-sm "
                     ></img>
                     <div className="image__overlay image__overlay--primary">
                       <div className="image__title-verti-wide">
-                        Intu Multizone
+                      Perfect Fit Rollers
                       </div>
                     </div>
                   </div>
-                  <div class="vertical-image image hidden  min-h-full md:block md:w-1/2 ">
-                    <img
-                      src="/images/gallery-images/Intu Multizone.png"
-                      alt=""
-                      class="image__img w-full h-full rounded-sm "
-                    ></img>
-                    <div className="image__overlay image__overlay--primary">
-                      <div className="image__title-verti-wide">
-                        Intu Multizone
+                  <div class="md:w-1/2 h-auto">
+                    <div class="image m-1 mb-1 mt-0">
+                      <img
+                        class="image__img rounded-sm shadow-md"
+                        src="/images/gallery-images/Roller.png"
+                        alt=""
+                      />
+                      <div className="image__overlay2 image__overlay--primary2">
+                        <div className="image__title-horiz-wide">
+                        Roller
+                        </div>
+                      </div>
+                    </div>
+                    <div class="image mx-1 mb-1">
+                      <img
+                        class="image__img rounded-sm shadow-md"
+                        src="/images/gallery-images/Roof 6.png"
+                        alt=""
+                      />
+                      <div className="image__overlay image__overlay--primary">
+                        <div className="image__title-horiz-wide">
+                        Roof 6
+                        </div>
+                      </div>
+                    </div>
+                    <div class="image m-1 mb-1 mt-0">
+                      <img
+                        class="image__img rounded-sm shadow-md"
+                        src="/images/gallery-images/Semper Shapes 4.png"
+                        alt=""
+                      />
+                      <div className="image__overlay2 image__overlay--primary2">
+                        <div className="image__title-horiz-wide">
+                        Semper Shapes 4
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </section>
-            </div> */}
+            </div>
+            
           </div>
         </div>
       </section>
