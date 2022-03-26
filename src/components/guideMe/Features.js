@@ -14,12 +14,12 @@ const Features = () => {
     });
   }, []);
   return (
-    <section id="features" className="scroll-mt-20" >
+    <section id="" className="scroll-mt-20" >
       <SectionHeading className="" heading={"Ordering with Semper Blinds"} />
-      <div className="container overflow-hidden features">
-        <div className="title" data-aos="fade-up">
+      <div className=" overflow-hidden">
+        <div className=" w-full mb-10" data-aos="fade-up">
           {/* <BsFillBookmarkStarFill color="orangered" size={30} /> */}
-          <p className="u-text-small w-full lg:w-3/4 p-0 m-0">
+          <p className="overflow-hidden u-text-small w-full mx-auto w-max-full lg:w-3/4 px-12 sm:px-2 m-0">
             Getting an order to Semper Blinds couldn't be any easier, once you
             have your measurements you simply use the online form on our website
             or email direct to semperorders@gmail.com and we can then get on

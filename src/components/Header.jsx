@@ -18,13 +18,15 @@ const Header = () => {
                   <div className="text-2xl md:text-5xl my-4 text-center font-semibold text-white">
                     Why choose <span className="text-green-500">Semper Blinds?</span>
                   </div>
-                  <p className="text-xl lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
-                    We're a family run company with over 35years experience who
-                    specialise in all blinds that are pleated or cellular. Based
-                    in North East Manchester, we supply all across the UK
-                    including a full survey and fit service for conservatory
-                    roof blinds, shaped blinds and the "new kid on the block"
-                    lantern blinds.
+                  <p className="text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
+                    <div className="text-center">
+                      We're a family run company with over 35years experience who
+                      specialise in all blinds that are pleated or cellular. Based
+                      in North East Manchester, we supply all across the UK
+                      including a full survey and fit service for conservatory
+                      roof blinds, shaped blinds and the "new kid on the block"
+                      lantern blinds.
+                    </div>
                   </p>
                   <div className="mt-7 ">
                     <button

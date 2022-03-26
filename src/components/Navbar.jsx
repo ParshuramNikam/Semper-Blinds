@@ -36,7 +36,7 @@ export default function Navbar() {
         >
             {({ open }) => (
                 <>
-                    <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+                    <div className="max-w-7xl mx-auto px-16 sm:px-2 lg:px-8">
                         <div className="relative flex items-center justify-between h-16">
                             <div className="navbar md:flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex-shrink-0 flex items-center">
@@ -48,7 +48,7 @@ export default function Navbar() {
                                     />
                                 </div>
                                 <div className="hidden md:block sm:ml-5 text-black">
-                                    <div className="flex space-x-2 lg:space-x-4 origin-top  duration-300 ">
+                                    <div className="flex items-center space-x-2 lg:space-x-4 origin-top  duration-300 ">
                                         {navigation.map((item) => (
                                             <a
                                                 key={item.name}
@@ -57,7 +57,7 @@ export default function Navbar() {
                                                     currentMenu === item.name
                                                         ? "navitem text-green-500 font-semibold  hover:text-green"
                                                         : "navitem text-black hover:text-green-500 ",
-                                                    "lg:px-2  pt-2 rounded-md text-base font-semibold"
+                                                    "pt-2 rounded-md text-base font-semibold"
                                                 )}
                                                 aria-current={item.current ? "page" : undefined}
                                                 onClick={() => {
