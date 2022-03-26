@@ -5,12 +5,12 @@ export const faqQuestions = [
             answer: "Simple put if it's a pleated or cellular blind we make them all in house, but we can offer any blind to help you fulfil your project"
         },
         {
-            question: "Will your conservatory roof blinds need to be screwed in my roof and damage it?",
-            answer: "We offer a framed system that uses brackets that click into the windows, and this means no need for drilling into your conservatory roofs!"
-        },
-        {
             question: "Do you offer motorised blinds?",
             answer: "We specialise in motorised blinds, using Somfy motors we look to offer any motorised solution to any blind that we make inhouse"
+        },
+        {
+            question: "Will your conservatory roof blinds need to be screwed in my roof and damage it?",
+            answer: "We offer a framed system that uses brackets that click into the windows, and this means no need for drilling into your conservatory roofs!"
         },
     ],
     [

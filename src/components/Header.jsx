@@ -19,7 +19,7 @@ const Header = () => {
                     Why choose <span className="text-green-500">Semper Blinds?</span>
                   </div>
                   <p className="text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
-                    <div className="text-center">
+                    <div className="text-center px-1">
                       We're a family run company with over 35years experience who
                       specialise in all blinds that are pleated or cellular. Based
                       in North East Manchester, we supply all across the UK

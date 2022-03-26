@@ -36,7 +36,7 @@ export default function Navbar() {
         >
             {({ open }) => (
                 <>
-                    <div className="max-w-7xl mx-auto px-16 sm:px-2 lg:px-8">
+                    <div className="max-w-7xl mx-auto px-3 lg:px-8">
                         <div className="relative flex items-center justify-between h-16">
                             <div className="navbar md:flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex-shrink-0 flex items-center">
