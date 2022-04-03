@@ -59,7 +59,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay2 image__overlay--primary2">
-                        <div className="image__title-horiz-wide">Intu 1</div>
+                        <div className="image__title-horiz-wide">Intu</div>
                       </div>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ function Gallery() {
                       />
                       <div className="image__overlay image__overlay--primary">
                         <div className="image__title-horiz-wide">
-                          Perfect Fits 2
+                          Perfect Fits
                         </div>
                       </div>
                     </div>
@@ -164,7 +164,7 @@ function Gallery() {
                       />
                       <div className="image__overlay2 image__overlay--primary2">
                         <div className="image__title-horiz-wide">
-                          Perfect Fits 1
+                          Perfect Fits
                         </div>
                       </div>
                     </div>
@@ -181,7 +181,7 @@ function Gallery() {
                     ></img>
                     <div className="image__overlay image__overlay--primary">
                       <div className="image__title-verti-wide">
-                        Perfect Fits 3
+                        Perfect Fits
                       </div>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ function Gallery() {
                       />
                       <div className="image__overlay2 image__overlay--primary2">
                         <div className="image__title-horiz-wide">
-                          Perfect Fits 3
+                          Perfect Fits
                         </div>
                       </div>
                     </div>
@@ -217,7 +217,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay2 image__overlay--primary2">
-                        <div className="image__title-horiz-wide">Roof 1</div>
+                        <div className="image__title-horiz-wide">Roof</div>
                       </div>
                     </div>
                   </div>
@@ -234,7 +234,7 @@ function Gallery() {
                       class="image__img w-full h-full rounded-sm "
                     ></img>
                     <div className="image__overlay image__overlay--primary">
-                      <div className="image__title-verti-wide">Intu 2</div>
+                      <div className="image__title-verti-wide">Intu</div>
                     </div>
                   </div>
                   <div class="md:w-1/2 h-auto">
@@ -245,7 +245,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay2 image__overlay--primary2">
-                        <div className="image__title-horiz-wide">Roof 3</div>
+                        <div className="image__title-horiz-wide">Roof</div>
                       </div>
                     </div>
                     <div class="image mx-1 mb-1">
@@ -255,7 +255,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay image__overlay--primary">
-                        <div className="image__title-horiz-wide">Roof 4</div>
+                        <div className="image__title-horiz-wide">Roof</div>
                       </div>
                     </div>
                     <div class="image m-1 mb-1 mt-0">
@@ -265,7 +265,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay2 image__overlay--primary2">
-                        <div className="image__title-horiz-wide">Roof 5</div>
+                        <div className="image__title-horiz-wide">Roof</div>
                       </div>
                     </div>
                   </div>
@@ -294,7 +294,7 @@ function Gallery() {
                       />
                       <div className="image__overlay2 image__overlay--primary2">
                         <div className="image__title-horiz-wide">
-                          Semper Shapes 2
+                          Semper Shapes
                         </div>
                       </div>
                     </div>
@@ -306,7 +306,7 @@ function Gallery() {
                       />
                       <div className="image__overlay image__overlay--primary">
                         <div className="image__title-horiz-wide">
-                          Semper Shapes 3
+                          Semper Shapes
                         </div>
                       </div>
                     </div>
@@ -318,7 +318,7 @@ function Gallery() {
                       />
                       <div className="image__overlay2 image__overlay--primary2">
                         <div className="image__title-horiz-wide">
-                          Semper Splits 1
+                          Semper Splits
                         </div>
                       </div>
                     </div>
@@ -347,7 +347,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay2 image__overlay--primary2">
-                        <div className="image__title-horiz-wide">Semper Splits 2</div>
+                        <div className="image__title-horiz-wide">Semper Splits</div>
                       </div>
                     </div>
                     <div class="image mx-1 mb-1">
@@ -357,7 +357,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay image__overlay--primary">
-                        <div className="image__title-horiz-wide">Roof 6</div>
+                        <div className="image__title-horiz-wide">Roof</div>
                       </div>
                     </div>
                     <div class="image m-1 mb-1 mt-0">
@@ -367,7 +367,7 @@ function Gallery() {
                         alt=""
                       />
                       <div className="image__overlay2 image__overlay--primary2">
-                        <div className="image__title-horiz-wide">Perfect Fits 4</div>
+                        <div className="image__title-horiz-wide">Perfect Fits</div>
                       </div>
                     </div>
                   </div>
@@ -408,7 +408,7 @@ function Gallery() {
                       />
                       <div className="image__overlay image__overlay--primary">
                         <div className="image__title-horiz-wide">
-                        Roof 6
+                        Roof
                         </div>
                       </div>
                     </div>
@@ -420,7 +420,7 @@ function Gallery() {
                       />
                       <div className="image__overlay2 image__overlay--primary2">
                         <div className="image__title-horiz-wide">
-                        Semper Shapes 4
+                        Semper Shapes
                         </div>
                       </div>
                     </div>

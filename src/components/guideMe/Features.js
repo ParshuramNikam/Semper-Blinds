@@ -14,7 +14,7 @@ const Features = () => {
     });
   }, []);
   return (
-    <section id="" className="scroll-mt-20" >
+    <section id="features" className="scroll-mt-20" >
       <SectionHeading className="" heading={"Ordering with Semper Blinds"} />
       <div className=" overflow-hidden">
         <div className=" w-full mb-10" data-aos="fade-up">

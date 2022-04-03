@@ -20,7 +20,7 @@ const Header = () => {
                   </div>
                   <p className="text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
                     <div className="text-center">
-                      We're a family run company with over 35years experience who
+                      We're a family run company with over 35 years experience who
                       specialise in all blinds that are pleated or cellular. Based
                       in North East Manchester, we supply all across the UK
                       including a full survey and fit service for conservatory
