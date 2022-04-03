@@ -12,7 +12,7 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route exact path="/jsjsj">
+        <Route exact path="*">
           <h1>ajahahh</h1>
         </Route>
       </Switch>
