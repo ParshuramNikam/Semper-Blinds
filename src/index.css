@@ -227,15 +227,15 @@ header h1 {
 }
 
 /* image gallery */
-.image {
+/* .image {
   position: relative;
   /* width: 400px; */
-}
+/* }
 
 .image__img {
   display: block;
   width: 100%;
-}
+} */ 
 
 .image__overlay {
   position: absolute;
@@ -243,7 +243,7 @@ header h1 {
   left: 0;
   width: 100%;
   height: 18%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(90, 65, 65, 0.6);
   color: #ffffff;
   font-family: "Quicksand", sans-serif;
   display: flex;
