@@ -15,7 +15,7 @@ function ContactUs() {
 
   return (
     <>
-      <div id="contact" className=" max-w-screen-lg mx-auto scroll-mt-10">
+      <div id="contact" className=" max-w-screen-lg mx-auto scroll-mt-20">
         <div>
           <div className="text-center mb-10">
             <SectionHeading className="" heading={"Get In Touch"} />

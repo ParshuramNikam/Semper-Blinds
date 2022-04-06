@@ -1,14 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { MailIcon } from "@heroicons/react/outline";
-
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
       <div className="bg-image bg-black">
         <div className=" ">
-
           {/* <Navbar ></Navbar> */}
 
           <div className="inner-header flex justify-center pt-3">
@@ -16,26 +15,27 @@ const Header = () => {
               <div className=" w-full h-full justify-center items-center gap-4 ">
                 <div className="">
                   <div className="text-2xl md:text-5xl my-4 text-center font-semibold text-white">
-                    Why choose <span className="text-green-500">Semper Blinds?</span>
+                    Why choose{" "}
+                    <span className="text-green-500">Semper Blinds?</span>
                   </div>
                   <p className="text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
                     <div className="text-center">
-                      We're a family run company with over 35 years experience who
-                      specialise in all blinds that are pleated or cellular. Based
-                      in North East Manchester, we supply all across the UK
-                      including a full survey and fit service for conservatory
-                      roof blinds, shaped blinds and the "new kid on the block"
-                      lantern blinds.
+                      We're a family run company with over 35 years experience
+                      who specialise in all blinds that are pleated or cellular.
+                      Based in North East Manchester, we supply all across the
+                      UK including a full survey and fit service for
+                      conservatory roof blinds, shaped blinds and the "new kid
+                      on the block" lantern blinds.
                     </div>
                   </p>
                   <div className="mt-7 ">
-                    <button
-                      type="button"
-                      class="button-box-shadow flex mx-auto mb-0 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
+                    <a
+                      href="/#contact"
+                      class="w-max button-box-shadow flex mx-auto mb-0 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
                     >
                       <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
                       Contact Us
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -91,7 +91,6 @@ const Header = () => {
       </div>
       <!--Content ends--> */}
       </div>
-
     </>
   );
 };

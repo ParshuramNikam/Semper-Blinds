@@ -229,13 +229,13 @@ header h1 {
 /* image gallery */
 /* .image {
   position: relative;
-  /* width: 400px; */
-/* }
+  width: 400px;
+}
 
 .image__img {
   display: block;
   width: 100%;
-} */ 
+} 
 
 .image__overlay {
   position: absolute;
@@ -276,7 +276,7 @@ header h1 {
   transform: translateY(0);
 }
 
-/* for upper image */
+for upper image
 
 .image__overlay2 {
   position: absolute;
@@ -317,14 +317,14 @@ header h1 {
   transform: translateY(0);
 }
 
-/* for imgaes vertically wide */
+for imgaes vertically wide
 .image__title-verti-wide {
   color: #22c55e;
   font-size: 1.2em;
   font-weight: 500;
 }
 
-/* for imgaes vertically wide */
+for imgaes vertically wide
 .image__title-horiz-wide {
   color: #22c55e;
   font-size: 1em;
@@ -333,6 +333,22 @@ header h1 {
 
 .vertical-image{
   height: 24.7em;
+} */
+
+.gallery-sm-image{
+  height: 40rem;
+}
+
+@media only screen and (max-width: 770px) {
+  .gallery-sm-image {
+    height: 40rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .gallery-sm-image {
+    height: 25rem;
+  }
 }
 
 

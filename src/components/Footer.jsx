@@ -81,7 +81,7 @@ function Footer() {
               class="flex pb-0 px-1 m-auto pt-0 text-white text-sm flex-col
       max-w-screen-lg items-center"
             >
-              <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
+              {/* <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
                 <a href="/" class="w-6 mx-1">
                   <img
                     className="fill-current cursor-pointer text-gray-500 hover:text-indigo-600"
@@ -103,15 +103,15 @@ function Footer() {
                     alt=""
                   ></img>
                 </a>
-                {/* <a href="/#" class="w-6 mx-1">
+                <a href="/#" class="w-6 mx-1">
                   <img
                     className="fill-current cursor-pointer text-gray-500 hover:text-indigo-600"
                     src="/images/socialMedia/linkedin.svg"
                     alt=""
                   ></img>
-                </a> */}
-              </div>
-              <div class="my-5">© Copyright 2022. All Rights Reserved.</div>
+                </a>
+              </div> */}
+              <div class="my-5 ">© Copyright 2022. All Rights Reserved.</div>
             </div>
           </div>
 
