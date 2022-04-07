@@ -62,19 +62,19 @@ function ContactUs() {
                     />
                     Stuart Wilson (Owner)
                   </button>
-                  <a target="_blank" href="https://www.google.com/maps?ll=53.594021,-2.172725&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=7832728211740545772">
+                  {/* <a target="_blank" href="https://www.google.com/maps?ll=53.594021,-2.172725&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=7832728211740545772">
                     <button
                       type="button"
-                      className="text-left mb-5 flex gap-1 p-1 rounded-full text-gray-800"
+                      className="text-left mb-5 flex flex-nowrap items-start gap-1 p-1 rounded-full text-gray-800"
                     >
                       <span className="sr-only">Location</span>
                       <LocationMarkerIcon
-                        className="relative  top-1 w-5 h-5 hover:stroke-emerald-600"
+                        className="relative  top-1 location_icon hover:stroke-emerald-600"
                         aria-hidden="true"
                       />
                       Semper Blinds Unit 7, Harp Industrial Estate,Queensway, Rochdale, OL11 2QQ
                     </button>
-                  </a>
+                  </a> */}
                 </div>
                 <div>
                   <iframe

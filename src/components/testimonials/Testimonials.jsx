@@ -11,7 +11,7 @@ export const Testimonials = () => {
           <div class="max-w-7xl px-2 mx-auto">
             <div class="flex flex-wrap m-0">
               <div class="p-2 md:w-1/2 w-full">
-                <div class="h-full relative bg-gray-100 p-5 rounded">
+                <div class="h-full md:relative bg-gray-100 p-5 rounded">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -22,14 +22,14 @@ export const Testimonials = () => {
                   </svg>
                   <div className="flex flex-col gap-18 justify-between ">
                     <div>
-                      <p class="leading-relaxed text-base mb-6">
+                      <p class="leading-relaxed text-base mb-6 ">
                         Really impressed with the service and roof blinds Semper
                         Blinds provided, from start to finish the communication
                         was superb and have to say that we always go with Semper
                         Blinds in the future for any blinds needs.
                       </p>
                     </div>
-                    <div className="absolute bottom-4">
+                    <div className="md:absolute bottom-4">
                       <a class="inline-flex items-center">
                         <img
                           alt="testimonial"
@@ -84,7 +84,7 @@ export const Testimonials = () => {
             </div>
             <div class="flex flex-wrap m-0">
               <div class="p-2 md:w-1/2 w-full">
-                <div class="h-full relative bg-gray-100 p-5 rounded">
+                <div class="h-full md:relative bg-gray-100 p-5 rounded">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -103,7 +103,7 @@ export const Testimonials = () => {
                         friends and family.
                       </p>
                     </div>
-                    <div className="absolute bottom-4">
+                    <div className="md:absolute bottom-4">
                       <a class="inline-flex items-center">
                          <img
                       alt="testimonial"
