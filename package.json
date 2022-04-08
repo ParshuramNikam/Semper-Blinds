@@ -1,5 +1,6 @@
 {
   "name": "semper-blinds-2",
+  "homepage": "https://semperblinds.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
