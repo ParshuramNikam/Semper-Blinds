@@ -17,7 +17,7 @@ function Gallery() {
                   alt=""
                   style={{
                     backgroundImage:
-                      "url('/images/gallery-images/Arena-ElectricAqua.png')",
+                      "url('/images/gallery-images/Aren Mercury.png')",
                   }}
                 />
                 <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
