@@ -16,11 +16,6 @@ function Gallery() {
                 <div class=" h-full w-full bg-cover rounded shadow-md" style={{ backgroundImage: "url('https://source.unsplash.com/random/1280x720')" }}></div>
 
               </div>
-              <div className="image__overlay image__overlay--primary">
-                <div className="image__title-verti-wide">
-                  Arena-ElectricAqua
-                </div>
-              </div>
               <div class=" md:w-1/2 h-auto px-4">
                 <div class="mb-8 relative">
                   <img class="rounded shadow-md" src="https://source.unsplash.com/random/1280x720" alt="" />
@@ -38,10 +33,7 @@ function Gallery() {
           <section class="py-8 px-4">
             <div class="flex flex-wrap -mx-4">
               <div class="md:w-1/2 px-4 mb-8 md:mb-0"><img class="rounded shadow-md" src="https://source.unsplash.com/random/1280x720" alt="" />
-                <div class="absolute top-10 z-20 left-0 px-6 py-4">
-                  <h4 class="mb-3 text-xl font-semibold tracking-tight text-white">This is the title</h4>
-                  <p class="leading-normal text-gray-100">Lorem ipsum dolor, sit amet cons ectetur adipis icing elit. Praesen tium, quibusdam facere quo laborum maiores sequi nam tenetur laud.</p>
-                </div>
+                
               </div>
               <div class="md:w-1/2 px-4 mb-8 md:mb-0"><img class="rounded shadow-md" src="https://source.unsplash.com/random/1280x720" alt="" /></div>
             </div>
