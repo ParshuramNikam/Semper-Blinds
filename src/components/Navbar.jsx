@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className={`${navBg} bg-gradient  z-50 sticky  top-0 backdrop-filter backdrop-blur-lg bg-opacity-75  transition ease-in-out duration-500 `}
+      className={`bg-white z-50 sticky  top-0 `}
     >
       {({ open }) => (
         <>

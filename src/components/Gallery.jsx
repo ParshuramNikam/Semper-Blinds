@@ -17,7 +17,7 @@ function Gallery() {
                   alt=""
                   style={{
                     backgroundImage:
-                      "url('/images/gallery-images/Aren Mercury.png')",
+                      "url('/images/gallery-images/Arena-ElectricAqua.png')",
                   }}
                 />
                 <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
@@ -504,11 +504,11 @@ function Gallery() {
                   class=" h-full w-full bg-cover rounded shadow-md"
                   alt=""
                   style={{
-                    backgroundImage: "url('/images/gallery-images/Intu 2.png')",
+                    backgroundImage: "url('/images/gallery-images/splits.png')",
                   }}
                 />
                 <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
-                Intu
+                Splits
                 </div>
               </div>
               <div class=" md:w-1/2 h-auto px-0">
@@ -525,11 +525,11 @@ function Gallery() {
                 <div class="md:hidden gallery-sm-image mb-1 relative">
                   <img
                     class="rounded shadow-md gallery-sm-image w-full"
-                    src="images/gallery-images/Intu 2.png"
+                    src="images/gallery-images/splits.png"
                     alt=""
                   />
                   <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
-                  Intu
+                  Splits
                   </div>
                 </div>
                 <div className="relative">
