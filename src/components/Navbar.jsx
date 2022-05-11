@@ -74,7 +74,7 @@ export default function Navbar() {
               </div>
 
               <div className="absolute right-10 md:right-3 flex items-center sm:ml-6 sm:pr-0">
-                <Link to={"/ComingSoon"}>
+                <Link to={"/QuotationTool"}>
                   <button
                     type="button"
                     class="button-box-shadow flex text-white bg-green-400 hover:bg-green-500  focus:ring-4 focus:ring-blue-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "

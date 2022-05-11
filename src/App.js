@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import ComingSoon from './components/ComingSoon';
+import QuotationTool from './components/QuotationTool';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route exact path="/ComingSoon">
-          <ComingSoon />
+        <Route exact path="/QuotationTool">
+          <QuotationTool />
         </Route>
         <Route exact path="*">
           <h1>ajahahh</h1>

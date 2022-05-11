@@ -2,9 +2,8 @@ import { ArrowCircleLeftIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ComingSoon() {
+function QuotationTool() {
   return (
-    <>
       <div class="relative h-screen w-full flex items-center justify-center bg-cover bg-center text-center bg-gradient-to-r from-green-100 to-green-400">
         <div class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
 
@@ -23,8 +22,7 @@ function ComingSoon() {
           </Link>
         </div>
       </div>
-    </>
   );
 }
 
-export default ComingSoon;
+export default QuotationTool;
