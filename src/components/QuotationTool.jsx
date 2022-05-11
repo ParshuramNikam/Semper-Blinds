@@ -1,27 +1,108 @@
-import { ArrowCircleLeftIcon } from "@heroicons/react/outline";
+import { HomeIcon, PlusIcon, RefreshIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function QuotationTool() {
   return (
-      <div class="relative h-screen w-full flex items-center justify-center bg-cover bg-center text-center bg-gradient-to-r from-green-100 to-green-400">
-        <div class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
+    <div className=" h-screen w-full bg-gray-100">
+      <nav className="flex flex-wrap items-center justify-start gap-5 w-full py-4 md:py-0 px-4 text-lg bg-gray-100">
+        <div className="flex-shrink-0 flex items-center">
+          <img
+            className="  h-12 w-12 rounded-full"
+            src="/images/logo.jpeg"
+            alt="semper-blinds"
+          />
+        </div>
+        <div className="flex items-center gap-2 justify-between">
+          <p className="text-xl font-bold text-blue-900">SEMPER</p>
+          <p className="text-2xl font-bold text-lime-400">BLINDS</p>
+        </div>
+      </nav>
 
-        <div class="z-50 flex flex-col justify-center items-center text-white w-full h-screen">
-          <h1 class="text-5xl">
-            We are <b>Almost</b> there!
-          </h1>
-          <h2>Stay tuned for something amazing!!!</h2>
-          <br></br>
-          <h1 class="text-3xl">Coming Soon...</h1>
-          <Link to={'/'} >
-            <button className="w-max button-box-shadow flex mx-auto mt-4  text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center">
-            <ArrowCircleLeftIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
+      <div className="bg-gray-100 min-h-screen">
+        <div className="flex justify-center mb-5 ">
+          <div className=" max-w-xl  mb-4 mx-2">
+            <div className="flex items-center justify-center bg-white py-2">
+              <Link to={"/"}>
+                <button className="px-6 w-max flex mx-auto  text-gray-500 rounded-lg text-base  font-semibold  text-center">
+                  <HomeIcon className=" text-gray-600 h-6 w-6 " />
+                </button>
+              </Link>
+              <div className="flex items-center justify-center ">
+                <button className="px-4 w-max flex mx-auto  text-gray-600 rounded-lg text-base  font-semibold  text-center">
+                  BLIND 1
+                </button>
+                <button className="px-4 w-max flex mx-auto  text-gray-600 rounded-lg text-base  font-semibold  text-center">
+                  BLIND 2
+                </button>
+              </div>
+            </div>
+            <div className="mt-2 flex items-center justify-center bg-lime-100 ">
+              <Link to={"/asdf"}>
+                <button className=" w-max flex mx-auto  text-gray-500 bg-white px-3 py-2 rounded-3xl text-base  font-semibold  text-center">
+                  <RefreshIcon className=" text-gray-600 h-6 w-6" />
+                  &nbsp;&nbsp; Refresh
+                </button>
+              </Link>
+            </div>
+            <input
+              type="text"
+              name="blind_type"
+              id="blind_type"
+              placeholder="---Select Blind Type---"
+              className="placeholder-black mt-2 w-full border-2 rounded-3xl p-1 pl-4 outline-none   border-gray-400"
+            />
+            <textarea
+              type="text"
+              name="blank"
+              id="blank"
+              className="mt-2 w-full border-2  rounded-3xl p-1 pl-4 outline-none border-gray-400 placeholder-black"
+            ></textarea>
 
+            <input
+              type="number"
+              name="width"
+              id="width"
+              placeholder="WIDTH"
+              className="mt-1 w-full border-2 rounded-3xl placeholder-black p-1 pl-4 outline-none border-gray-400"
+            />
+
+            <input
+              type="number"
+              name="drop"
+              id="drop"
+              placeholder="DROP"
+              className="mt-2 w-full border-2 rounded-3xl placeholder-black p-1 pl-4 outline-none border-gray-400"
+            />
+
+            <div className=" flex items-center justify-center bg-lime-100 py-2">
+              <button className=" w-max flex mx-auto   text-gray-500 bg-white px-3 py-2 rounded-3xl text-base  font-semibold  text-center">
+                <PlusIcon className=" text-gray-600 h-6 w-6" />
+                &nbsp;&nbsp; Add Motorisation
+              </button>
+            </div>
+            <button className="w-full bg-black text-white rounded-full text-lg font-semibold">
+              C A L C U L A T E
             </button>
-          </Link>
+            <div className="flex flex-col justify-center mt-2 text-center bg-white">
+              <h1 className="p-2 font-semibold text-lg border-b-2  border-black">
+                BLINDS
+              </h1>
+              <div className="flex px-2 justify-between text-center">
+                <h1 className="p-2 font-semibold text-base">TOTAL</h1>
+                <h1>£ 0.00</h1>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center mt-2 text-center bg-white">
+              <div className="flex px-2 justify-between text-center">
+                <h1 className="p-2 font-semibold text-base">GRAND TOTAL</h1>
+                <h1 className="py-2 pr-2  text-base">(Excluding VAT) £ 0.00</h1>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   );
 }
 
