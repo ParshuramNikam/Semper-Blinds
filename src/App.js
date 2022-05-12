@@ -4,8 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import ComingSoon from './components/ComingSoon';
-import PageNotFound from './pages/404Page';
+import QuotationTool from './components/QuotationTool';
 
 function App() {
   return (
@@ -14,11 +13,11 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route exact path="/ComingSoon">
-          <ComingSoon />
+        <Route exact path="/QuotationTool">
+          <QuotationTool />
         </Route>
         <Route exact path="*">
-          <PageNotFound />
+          <h1>404 Page</h1>
         </Route>
       </Switch>
     </BrowserRouter>

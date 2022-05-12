@@ -17,7 +17,7 @@ function Gallery() {
                   alt=""
                   style={{
                     backgroundImage:
-                      "url('/images/gallery-images/Aren Mercury.png')",
+                      "url('/images/gallery-images/Arena-ElectricAqua.png')",
                   }}
                 />
                 <div className="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
@@ -532,11 +532,11 @@ function Gallery() {
                   className=" h-full w-full bg-cover rounded shadow-md"
                   alt=""
                   style={{
-                    backgroundImage: "url('/images/gallery-images/Intu 2.png')",
+                    backgroundImage: "url('/images/gallery-images/splits.png')",
                   }}
                 />
-                <div className="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
-                  Intu
+                <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
+                Splits
                 </div>
               </div>
               <div className=" md:w-1/2 h-auto px-0">
@@ -551,15 +551,14 @@ function Gallery() {
                     Semper Shapes
                   </div>
                 </div>
-                <div className="md:hidden gallery-sm-image mb-1 relative">
-                  <LazyLoadImage
-                    effect="blur"
-                    className="rounded shadow-md gallery-sm-image w-full"
-                    src="images/gallery-images/Intu 2.png"
+                <div class="md:hidden gallery-sm-image mb-1 relative">
+                  <img
+                    class="rounded shadow-md gallery-sm-image w-full"
+                    src="images/gallery-images/splits.png"
                     alt=""
                   />
-                  <div className="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
-                    Intu
+                  <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
+                  Splits
                   </div>
                 </div>
                 <div className="relative">

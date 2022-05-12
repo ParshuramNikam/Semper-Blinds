@@ -12,14 +12,14 @@ const Header = () => {
 
           <div className="inner-header flex items-center justify-center py-3">
             <div className="px-2 pt-2 ">
-              <div className=" w-full h-full justify-center items-center gap-4 ">
+              <div className=" w-full h-full flex justify-center items-center gap-4 ">
                 <div className="">
-                  <div className="text-2xl md:text-5xl my-4 text-center font-semibold text-white">
+                  <div className=" text-2xl md:text-5xl my-4 text-center font-semibold text-white">
                     Why choose{" "}
                     <span className="text-green-500">Semper Blinds?</span>
                   </div>
-                  <div className="text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
-                    <div className="text-center">
+                  <p className=" text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
+                    <div className="text-center  	">
                       We're a family run company with over 35 years experience
                       who specialise in all blinds that are pleated or cellular.
                       Based in North East Manchester, we supply all across the
@@ -27,7 +27,7 @@ const Header = () => {
                       conservatory roof blinds, shaped blinds and the "new kid
                       on the block" lantern blinds.
                     </div>
-                  </div>
+                  </p>
                   <div className="mt-7 ">
                     <a
                       href="/#contact"
@@ -91,6 +91,7 @@ const Header = () => {
       </div>
       <!--Content ends--> */}
       </div>
+
     </>
   );
 };

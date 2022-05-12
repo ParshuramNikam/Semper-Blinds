@@ -1,3 +1,7 @@
+/* Add these two lines in index.css */
+/* Custom styles import */
+/* @import url("./customStyles/styles.css"); */
+
 .App {
   text-align: center;
 }

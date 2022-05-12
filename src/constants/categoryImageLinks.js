@@ -10,7 +10,7 @@ export const categoryImageLinks = [
         desc: "Coming in a framed system built onto a ledge, the lantern blinds are built to span a large opening. Helping to control heat and light glare in the room, these can come in motorised and manual options and either pleated or cellular fabrics.",
     },
     {
-        name: "Perfect Fit Pleated and Cellular",
+        name: "Perfect Fit Pleated and Cellular", 
         imageUrl: "/images/ProductCategories/perfect fit pleated and cellular.png",
         desc: "Perfect fit fabric blinds come in a range of colours and use the screwless Louvolite framed system allowing a no-drill option for your windows. These are ideal for an UPVC window or door and can also come with magnetic tape fitting options. ",
     },
