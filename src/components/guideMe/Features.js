@@ -18,7 +18,6 @@ const Features = () => {
       <SectionHeading className="" heading={"Ordering with Semper Blinds"} />
       <div className=" overflow-hidden">
         <div className=" w-full mb-10" data-aos="fade-up">
-          {/* <BsFillBookmarkStarFill color="orangered" size={30} /> */}
           <p className="overflow-hidden u-text-small w-full mx-auto w-max-full lg:w-3/4 px-12 sm:px-2 m-0">
             Getting an order to Semper Blinds couldn't be any easier, once you
             have your measurements you simply use the online form on our website
@@ -27,12 +26,10 @@ const Features = () => {
           </p>
         </div>
         <div className="features-content">
-          {/* <div className="features-left" data-aos="fade-right">
-            <img src={"/images/phone-features.png"} alt="phone" />
-          </div> */}
           <div className="" >
             {FeatureList.map((feature) => (
               <Feature
+                index={feature.id}
                 key={feature.id}
                 // icon={feature.icon}
                 heading={feature.heading}

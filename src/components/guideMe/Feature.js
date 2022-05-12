@@ -1,9 +1,9 @@
 import React from "react";
 import "./Feature.css";
 
-const Feature = ({ key, heading, text }) => {
+const Feature = ({ index, heading, text }) => {
   return (
-    <div  key={key} data-aos={key%2===0 ? "fade-right" : "fade-left"}
+    <div  key={index} data-aos={index%2===0 ? "fade-right" : "fade-left"}
     >
       <div className="px-12 sm:px-2">
         <div className="">

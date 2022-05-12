@@ -1,9 +1,9 @@
 import React from 'react'
 
-const OneFAQ = ({ question, answer, key }) => {
+const OneFAQ = ({ question, answer, index }) => {
     return (
-        <details key={key} class="mb-5">
-            <summary class="cursor-pointer font-semibold  bg-green-100 rounded-md py-2 px-4 my-2">
+        <details key={index} className="mb-5">
+            <summary className="cursor-pointer font-semibold  bg-green-100 rounded-md py-2 px-4 my-2">
                 {question}
             </summary>
 

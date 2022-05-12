@@ -15,7 +15,7 @@ function ContactUs() {
 
   return (
     <>
-      <div id="contact" className=" max-w-screen-lg mx-auto scroll-mt-10">
+      <div id="contact" className=" max-w-screen-lg mx-auto scroll-mt-20">
         <div>
           <div className="text-center mb-10">
             <SectionHeading className="" heading={"Get In Touch"} />
@@ -62,26 +62,26 @@ function ContactUs() {
                     />
                     Stuart Wilson (Owner)
                   </button>
-                  <a target="_blank" href="https://www.google.com/maps?ll=53.594021,-2.172725&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=7832728211740545772">
+                  {/* <a target="_blank" href="https://www.google.com/maps?ll=53.594021,-2.172725&z=16&t=m&hl=en&gl=IN&mapclient=embed&cid=7832728211740545772">
                     <button
                       type="button"
-                      className="text-left mb-5 flex gap-1 p-1 rounded-full text-gray-800"
+                      className="text-left mb-5 flex flex-nowrap items-start gap-1 p-1 rounded-full text-gray-800"
                     >
                       <span className="sr-only">Location</span>
                       <LocationMarkerIcon
-                        className="relative  top-1 w-5 h-5 hover:stroke-emerald-600"
+                        className="relative  top-1 location_icon hover:stroke-emerald-600"
                         aria-hidden="true"
                       />
                       Semper Blinds Unit 7, Harp Industrial Estate,Queensway, Rochdale, OL11 2QQ
                     </button>
-                  </a>
+                  </a> */}
                 </div>
                 <div>
                   <iframe
                     title="address"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2367.96866274217!2d-2.1749138841521947!3d53.594020780031656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bbbd68c48f4a3%3A0x6cb370cf1af9d2ec!2sSemper%20Blinds!5e0!3m2!1sen!2sin!4v1646973923611!5m2!1sen!2sin"
                     className="w-full md:w-80 lg:w-96 h-72"
-                    allowfullscreen=""
+                    allowFullScreen=""
                     loading="lazy"
                   ></iframe>
                 </div>
