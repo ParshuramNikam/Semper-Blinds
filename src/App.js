@@ -5,6 +5,7 @@ import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import QuotationTool from './components/QuotationTool';
+import { Tool } from './components/quotation-tool/Tool';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </Route>
         <Route exact path="/QuotationTool">
           <QuotationTool />
+          {/* <Tool></Tool> */}
         </Route>
         <Route exact path="*">
           <h1>404 Page</h1>
