@@ -53,7 +53,7 @@ function QuotationTool() {
                     <HomeIcon className=" text-gray-500 h-6 w-6 " />
                   </button>
                 </Link>
-                <div className="w-full grow grid grid-cols-5 items-center justify-center">
+                <div className="w-full grow grid grid-cols-3 sm:grid-cols-5 items-center justify-center">
                   <button className={`${blindNumber === 1 && "border-b-2 border-b-indigo-900 text-indigo-900 "} px-4 py-2 w-full justify-center flex mx-auto h-full text-xs sm:text-base text-gray-500 font-semibold  text-center`}
                     onClick={() => { setBlindNumber(1) }}
                   >
@@ -67,11 +67,11 @@ function QuotationTool() {
                     onClick={() => { setBlindNumber(3) }}
                   >BLIND 3
                   </button>
-                  <button className={`${blindNumber === 4 && "border-b-2 border-b-indigo-900 text-indigo-900 "} px-4 py-2 w-full justify-center flex mx-auto h-full text-xs sm:text-base text-gray-500 font-semibold  text-center`}
+                  <button className={`${blindNumber === 4 && " border-b-2 border-b-indigo-900 text-indigo-900 "} hidden sm:flex px-4 py-2 w-full justify-center  mx-auto h-full text-xs sm:text-base text-gray-500 font-semibold  text-center`}
                     onClick={() => { setBlindNumber(4) }}
                   >BLIND 4
                   </button>
-                  <button className={`${blindNumber === 5 && "border-b-2 border-b-indigo-900 text-indigo-900 "} px-4 py-2 w-full justify-center flex mx-auto h-full text-xs sm:text-base text-gray-500 font-semibold  text-center`}
+                  <button className={`${blindNumber === 5 && "border-b-2 border-b-indigo-900 text-indigo-900 "} hidden sm:flex px-4 py-2 w-full justify-center  mx-auto h-full text-xs sm:text-base text-gray-500 font-semibold  text-center`}
                     onClick={() => { setBlindNumber(5) }}
                   >BLIND 5
                   </button>
