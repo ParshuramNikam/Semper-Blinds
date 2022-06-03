@@ -54,56 +54,57 @@ const QuotationForm = ({ blindNumber }) => {
 
   // blind values are always static so no need to create a array of blind types becuase they are stored in array
   const [currentBlindType, setCurrentBlindType] = useState(
-    sessionStorage.getItem("blind-type-" + blindNumber)
-      ? sessionStorage.getItem("blind-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("blind-type-" + blindNumber)
+    //   ? sessionStorage.getItem("blind-type-" + blindNumber)
+      ""
   );
 
   const [currentFabricType, setcurrentFabricType] = useState(
-    sessionStorage.getItem("fabric-type-" + blindNumber)
-      ? sessionStorage.getItem("fabric-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("fabric-type-" + blindNumber)
+    //   ? sessionStorage.getItem("fabric-type-" + blindNumber)
+       ""
   );
   const [currentFabricTypes, setCurrentFabricTypes] = useState([]);
 
   const [blindTypeWidths, setBlindTypeWidths] = useState([]); // for WIDTH array
   const [currentBlindWidth, setcurrentBlindWidth] = useState(
-    sessionStorage.getItem("width-" + blindNumber)
-      ? sessionStorage.getItem("width-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("width-" + blindNumber)
+    //   ? sessionStorage.getItem("width-" + blindNumber)
+      ""
   ); // for selet WIDTH onchange value
 
   const [blindTypeDepths, setBlindTypeDepths] = useState([]); // for DEPTH array
   const [currentBlindDepth, setcurrentBlindDepth] = useState(
-    sessionStorage.getItem("depth-" + blindNumber)
-      ? sessionStorage.getItem("depth-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("depth-" + blindNumber)
+    //   ? sessionStorage.getItem("depth-" + blindNumber)
+      ""
   ); // for selet DEPTH onchange value
 
   const [currentMotorType, setCurrentMotorType] = useState(
-    sessionStorage.getItem("motor-type-" + blindNumber)
-      ? sessionStorage.getItem("motor-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("motor-type-" + blindNumber) !== undefined
+      // ? sessionStorage.getItem("motor-type-" + blindNumber)
+      // : ""
+      ""
   );
   const [currentPowerType, setCurrentPowerType] = useState(
-    sessionStorage.getItem("power-type-" + blindNumber)
-      ? sessionStorage.getItem("power-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("power-type-" + blindNumber)
+    //   ? sessionStorage.getItem("power-type-" + blindNumber)
+       ""
   );
   const [currentReceiverType, setCurrentReceiverType] = useState(
-    sessionStorage.getItem("receiver-type-" + blindNumber)
-      ? sessionStorage.getItem("receiver-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("receiver-type-" + blindNumber)
+    //   ? sessionStorage.getItem("receiver-type-" + blindNumber)
+      ""
   );
   const [currentRemoteType, setCurrentRemoteType] = useState(
-    sessionStorage.getItem("remote-type-" + blindNumber)
-      ? sessionStorage.getItem("remote-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("remote-type-" + blindNumber)
+    //   ? sessionStorage.getItem("remote-type-" + blindNumber)
+      ""
   );
   const [currentOtherType, setCurrentOtherType] = useState(
-    sessionStorage.getItem("other-type-" + blindNumber)
-      ? sessionStorage.getItem("other-type-" + blindNumber)
-      : ""
+    // sessionStorage.getItem("other-type-" + blindNumber)
+    //   ? sessionStorage.getItem("other-type-" + blindNumber)
+      ""
   );
   const [excelData, setExcelData] = useState([]);
 
@@ -112,8 +113,22 @@ const QuotationForm = ({ blindNumber }) => {
   const [widthxDepthRowIndex, setWidthxDepthRowIndex] = useState(null);
 
   const [withoutMotorisationTotal, setWithoutMotorisationTotal] = useState(0);
+  const [withMoterisationTotal, setWithMoterisationTotal] = useState(0);
 
-  const [isCalculating, setIsCalculating] = useState(false)
+  const [isCalculating, setIsCalculating] = useState(false);
+
+  const [selectedMotorTypeExcelValue, setSelectedMotorTypeExcelValue] =
+    useState(0);
+  const [selectedPowerTypeExcelValue, setSelectedPowerTypeExcelValue] =
+    useState(0);
+  const [selectedReceiverTypeExcelValue, setSelectedReceiverTypeExcelValue] =
+    useState(0);
+  const [selectedRemoteTypeExcelValue, setSelectedRemoteTypeExcelValue] =
+    useState(0);
+  const [selectedOtherTypeExcelValue, setSelectedOtherTypeExcelValue] =
+    useState(0);
+
+    const [calculationRecall, setCalculationRecall] = useState(0);
 
   const setInitialValuesToFormData = async () => {
     // set the values in session storage
@@ -155,6 +170,20 @@ const QuotationForm = ({ blindNumber }) => {
 
   useEffect(() => {
     setInitialValuesToFormData();
+
+    if(excelData.length>0){
+      console.log("conslo log running");
+       fetch(
+        "https://script.googleusercontent.com/macros/echo?user_content_key=1hrZNGclS_h1HLAbhNxg0fZTWOtfjTgA2Qz1ttNw561gMJ6dG_ZGTd3ii_MPtjMq-NBYznnIb865N04sMocX99HSDl6BUtkzOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa-ThZIH8CGShpnEURYAZTLqzB5GqKund-AF5Xjvv8fF4DpKKE10sxN1e3_6uwxHHQ94qDw0P2YtuZdA9hqRHDLJ7WgsB0X29pwXIuFltvcj9tVcuvx4Me2XwuuAgclIqbg&lib=MFutGGpLdYi_IxT2czSizu8UfCpfIk1XD"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setExcelData(data.items);
+          console.log(data.items);
+        }).catch((err)=>{
+          console.log(err);
+        })
+    }
 
     //  for FABRIC TYPE TOGGLE
     if (currentBlindType === "" || currentBlindType === null) {
@@ -224,8 +253,13 @@ const QuotationForm = ({ blindNumber }) => {
   }
 
   async function handleReceiverTypeChangeInput(e) {
+    if(e.target.value==="NA"){
+      sessionStorage.removeItem("receiver-type-" + blindNumber);
+    }else{
+      sessionStorage.setItem("receiver-type-" + blindNumber, e.target.value);
+    }
+
     setCurrentReceiverType(e.target.value);
-    sessionStorage.setItem("receiver-type-" + blindNumber, e.target.value);
   }
 
   async function handleRemoteTypeChangeInput(e) {
@@ -241,18 +275,24 @@ const QuotationForm = ({ blindNumber }) => {
   function clearMotorisationValues() {
     setCurrentMotorType("");
     sessionStorage.removeItem("motor-type-" + blindNumber);
+    setSelectedMotorTypeExcelValue(0);
 
     setCurrentPowerType("");
     sessionStorage.removeItem("power-type-" + blindNumber);
+    setSelectedPowerTypeExcelValue(0);
 
     setCurrentReceiverType("");
     sessionStorage.removeItem("receiver-type-" + blindNumber);
+    setSelectedReceiverTypeExcelValue(0);
 
     setCurrentRemoteType("");
     sessionStorage.removeItem("remote-type-" + blindNumber);
+    setSelectedRemoteTypeExcelValue(0);
 
     setCurrentOtherType("");
     sessionStorage.removeItem("other-type-" + blindNumber);
+    setSelectedOtherTypeExcelValue(0);
+    setWithMoterisationTotal(0);
   }
 
   function motorisationAddRemoveHandler() {
@@ -320,45 +360,78 @@ const QuotationForm = ({ blindNumber }) => {
     fabricArr
   ) {
     if (blindType === "Freehang") {
-      setWidthxDepthRowIndex(freeHangWidthxDepthColumnData.indexOf(width + "x" + depth));
+      setWidthxDepthRowIndex(
+        freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Motorized Freehang") {
-      setWidthxDepthRowIndex(motorizedFreeHangWidthxDepthColumnData.indexOf(
-        width + "x" + depth
-      ));
+      setWidthxDepthRowIndex(
+        motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Three Bars") {
-       setWidthxDepthRowIndex(threeBarWidthxDepthColumnData.indexOf(width + "x" + depth));
+      setWidthxDepthRowIndex(
+        threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Motorized Three Bars") {
-       setWidthxDepthRowIndex(motorizedThreeBarsWidthxDepthColumnData.indexOf(
-        width + "x" + depth
-      ));
+      setWidthxDepthRowIndex(
+        motorizedThreeBarsWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Perfect Fit") {
-      setWidthxDepthRowIndex(perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth));
+      setWidthxDepthRowIndex(
+        perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Perfect Fit Venetian") {
-       setWidthxDepthRowIndex(perfectFitVenetianWidthxDepthColumnData.indexOf(
-        width + "x" + depth
-      ));
+      setWidthxDepthRowIndex(
+        perfectFitVenetianWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Lantern") {
-      setWidthxDepthRowIndex(lanternWidthxDepthColumnData.indexOf(width + "x" + depth));
+      setWidthxDepthRowIndex(
+        lanternWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     } else if (blindType === "Conservatory Roofs") {
-      setWidthxDepthRowIndex(conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth));
+      setWidthxDepthRowIndex(
+        conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth)
+      );
     }
   }
 
   async function calculate() {
     setIsCalculating(true);
+    if(!currentBlindType ||
+      !currentFabricType ||
+      !currentBlindWidth ||
+      !currentBlindDepth
+      )
+      {
+        setIsCalculating(false)
+        alert("all values requrired")
+        return ;
+      }
+    
+    if(calculationRecall === 2){
+      setCalculationRecall(0);
+    }  
     await fetch(
       "https://script.googleusercontent.com/macros/echo?user_content_key=1hrZNGclS_h1HLAbhNxg0fZTWOtfjTgA2Qz1ttNw561gMJ6dG_ZGTd3ii_MPtjMq-NBYznnIb865N04sMocX99HSDl6BUtkzOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa-ThZIH8CGShpnEURYAZTLqzB5GqKund-AF5Xjvv8fF4DpKKE10sxN1e3_6uwxHHQ94qDw0P2YtuZdA9hqRHDLJ7WgsB0X29pwXIuFltvcj9tVcuvx4Me2XwuuAgclIqbg&lib=MFutGGpLdYi_IxT2czSizu8UfCpfIk1XD"
     )
       .then((response) => response.json())
       .then((data) => {
-        setExcelData(data.items);
+        // setExcelData(data.items);
         console.log(data.items);
       })
-      .then(() => {
+      .then(async () => {
         console.log(currentBlindType);
         console.log(currentFabricType);
         console.log(currentFabricTypes.indexOf(currentFabricType));
-        blindBandChooser(
+       await  blindBandChooser(
+          currentBlindType,
+          currentFabricType,
+          currentBlindWidth,
+          currentBlindDepth,
+          currentFabricTypes
+        );
+      })
+      .then(async() => {
+      await  widthxDepthRowNumber(
           currentBlindType,
           currentFabricType,
           currentBlindWidth,
@@ -367,23 +440,127 @@ const QuotationForm = ({ blindNumber }) => {
         );
       })
       .then(() => {
-        widthxDepthRowNumber(
-          currentBlindType,
-          currentFabricType,
-          currentBlindWidth,
-          currentBlindDepth,
-          currentFabricTypes
-        );
-      }).then(()=>{
         setIsCalculating(false);
-        // console.log("lasdkf"+widthxDepthRowIndex);
-        console.log(excelData[widthxDepthRowIndex][bandType]);
-        setWithoutMotorisationTotal(excelData[widthxDepthRowIndex][bandType]);
+        if(widthxDepthRowIndex){
+          console.log("lasdkf"+widthxDepthRowIndex);
+          console.log(
+            "withoutMotorisation" + excelData[widthxDepthRowIndex][bandType]
+          );
+          setWithoutMotorisationTotal(
+            parseFloat(excelData[widthxDepthRowIndex][bandType]).toFixed(2)
+          );
+        }
+      })
+      .then(() => {
+        console.log(motorTypes.indexOf(currentMotorType));
+        console.log(excelData[motorTypes.indexOf(currentMotorType)]);
+        if(motorTypes.indexOf(currentMotorType) !== -1  ){
+          if (
+            currentMotorType !== null || currentMotorType !== undefined || currentMotorType !== "NA" ||
+            currentMotorType !== "" 
+          ) {
+            console.log(excelData[motorTypes.indexOf(currentMotorType)].Motor);
+            setSelectedMotorTypeExcelValue(
+              excelData[motorTypes.indexOf(currentMotorType)].Motor
+            );
+          }
+        }
+      })
+      .then(() => {
+        if(powerOptions.indexOf(currentPowerType) !== -1){
+          if (
+            currentPowerType ||
+            currentPowerType !== "NA" ||
+            currentPowerType !== "" || currentPowerType !== null ||  currentPowerType !== undefined 
+          ) {
+            setSelectedPowerTypeExcelValue(
+              excelData[powerOptions.indexOf(currentPowerType)].Power
+            );
+            console.log(excelData[powerOptions.indexOf(currentPowerType)].Power);
+          }
+        }
+      })
+      .then(() => {
+        if(receiverOptions.indexOf(currentReceiverType) !== -1){
+          if (
+            currentReceiverType ||
+            currentReceiverType !== "NA" ||
+            currentReceiverType !== "" || currentReceiverType !== null || currentReceiverType !== undefined 
+          ) {
+            setSelectedReceiverTypeExcelValue(
+              excelData[receiverOptions.indexOf(currentReceiverType)].Receiver
+            );
+            console.log(
+              excelData[receiverOptions.indexOf(currentReceiverType)].Receiver
+            );
+          }
+        }
+      })
+      .then(() => {
+
+        if(remoteOptions.indexOf(currentRemoteType) !== -1){
+          if (
+            currentRemoteType ||
+            currentRemoteType !== "NA" ||
+            currentRemoteType !== "" || currentRemoteType !== null || currentRemoteType !== undefined 
+          ) {
+            setSelectedRemoteTypeExcelValue(
+              excelData[remoteOptions.indexOf(currentRemoteType)].Remote
+            );
+            console.log(
+              excelData[remoteOptions.indexOf(currentRemoteType)].Remote
+            );
+          }
+        }
+        
+      })
+      .then(() => {
+        if(otherOptions.indexOf(currentOtherType) !== -1 ){
+          if (
+            currentOtherType ||
+            currentOtherType !== "NA" ||
+            currentOtherType !== "" || currentOtherType !== null || currentOtherType !== undefined 
+          ) {
+            setSelectedOtherTypeExcelValue(
+              excelData[otherOptions.indexOf(currentOtherType)].Other
+            );
+            console.log(excelData[otherOptions.indexOf(currentOtherType)].Other);
+          }
+        }
+      })
+      .then(() => {
+        console.log(selectedMotorTypeExcelValue ,
+          selectedPowerTypeExcelValue ,
+          selectedReceiverTypeExcelValue ,
+          selectedRemoteTypeExcelValue ,
+          selectedOtherTypeExcelValue);
+        setWithMoterisationTotal(
+          parseFloat(
+            selectedMotorTypeExcelValue +
+              selectedPowerTypeExcelValue +
+              selectedReceiverTypeExcelValue +
+              selectedRemoteTypeExcelValue +
+              selectedOtherTypeExcelValue
+          ).toFixed(2)
+        );
       })
 
-      .catch((err) =>{ console.log(err);
+      .catch((err) => {
+        console.log(err);
         setIsCalculating(false);
+        setWithMoterisationTotal(
+          parseFloat(
+            selectedMotorTypeExcelValue +
+              selectedPowerTypeExcelValue +
+              selectedReceiverTypeExcelValue +
+              selectedRemoteTypeExcelValue +
+              selectedOtherTypeExcelValue
+          ).toFixed(2)
+        );
+        return; 
       });
+      setCalculationRecall(calculationRecall+1);
+      calculate();
   }
 
   return (
@@ -391,6 +568,7 @@ const QuotationForm = ({ blindNumber }) => {
       {/* <h1>Blind no : {blindNumber}</h1> */}
       <button
         onClick={() => {
+        
           refreshBtnListner();
         }}
         className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-200 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
@@ -554,21 +732,30 @@ const QuotationForm = ({ blindNumber }) => {
         </div>
       )}
 
-
       <button
         onClick={calculate}
         className="w-full my-2 text-xl py-2  bg-indigo-900 text-white rounded-lg  font-normal"
       >
         <div className="flex justify-center items-center  gap-4">
-       {
-         isCalculating &&  <svg role="status" class="w-6 h-6  text-gray-200 animate-spin dark:text-white fill-indigo-900" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-         <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-             </svg> 
-       }
-        {
-          isCalculating ? "C A L C U L A T I N G" : "C A L C U L A T E"
-        }
+          {isCalculating && (
+            <svg
+              role="status"
+              class="w-6 h-6  text-gray-200 animate-spin dark:text-white fill-indigo-900"
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                fill="currentColor"
+              />
+              <path
+                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                fill="currentFill"
+              />
+            </svg>
+          )}
+          {isCalculating ? "C A L C U L A T I N G" : "C A L C U L A T E"}
         </div>
       </button>
       <div className="flex flex-col justify-center rounded-sm mt-2 text-center bg-indigo-100">
@@ -580,7 +767,7 @@ const QuotationForm = ({ blindNumber }) => {
             TOTAL
           </h1>
           <h1 className="p-2 font-semibold text-base sm:text-lg text-indigo-900">
-            £ {withoutMotorisationTotal}
+            £ {withoutMotorisationTotal ? withoutMotorisationTotal : "0"}
           </h1>
         </div>
       </div>
@@ -590,7 +777,19 @@ const QuotationForm = ({ blindNumber }) => {
             GRAND TOTAL
           </h1>
           <h1 className="p-2 font-semibold text-base sm:text-lg text-lime-700">
-            (Excluding VAT) £ 0.00
+            (Excluding VAT) £{" "}
+            {parseFloat(withMoterisationTotal) +
+            parseFloat(withoutMotorisationTotal)
+              ?  parseFloat(
+                parseFloat(withoutMotorisationTotal)
+                + parseFloat(withMoterisationTotal)
+                // selectedMotorTypeExcelValue +
+                  // selectedPowerTypeExcelValue +
+                  // selectedReceiverTypeExcelValue +
+                  // selectedRemoteTypeExcelValue +
+                  // selectedOtherTypeExcelValue
+              ).toFixed(2)
+              : "0"}
           </h1>
         </div>
       </div>
