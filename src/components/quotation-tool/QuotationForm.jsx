@@ -128,8 +128,6 @@ const QuotationForm = ({ blindNumber }) => {
   const [selectedOtherTypeExcelValue, setSelectedOtherTypeExcelValue] =
     useState(0);
 
-    const [calculationRecall, setCalculationRecall] = useState(0);
-
   const setInitialValuesToFormData = async () => {
     // set the values in session storage
     if (!sessionStorage.getItem("blind-type-" + blindNumber))
@@ -329,12 +327,15 @@ const QuotationForm = ({ blindNumber }) => {
 
     if (blindType === "Freehang") {
       setBandType(freehangBandChooser(fabricArr.indexOf(fabricType) + 1));
+      return fabricArr.indexOf(fabricType) + 1;
     } else if (blindType === "Motorized Freehang") {
       setBandType(
         motorizedFreehangBandChooser(fabricArr.indexOf(fabricType) + 1)
       );
+      return fabricArr.indexOf(fabricType) + 1;
     } else if (blindType === "Three Bars") {
       setBandType(threeBarsBandChooser(fabricArr.indexOf(fabricType) + 1));
+      return fabricArr.indexOf(fabricType) + 1;
     } else if (blindType === "Motorized Three Bars") {
       setBandType(
         motorizedThreeBarsBandChooser(fabricArr.indexOf(fabricType) + 1)
@@ -363,10 +364,12 @@ const QuotationForm = ({ blindNumber }) => {
       setWidthxDepthRowIndex(
         freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
       );
+      return freeHangWidthxDepthColumnData.indexOf(width + "x" + depth);
     } else if (blindType === "Motorized Freehang") {
       setWidthxDepthRowIndex(
         motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
       );
+      return motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth);
     } else if (blindType === "Three Bars") {
       setWidthxDepthRowIndex(
         threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
@@ -407,9 +410,7 @@ const QuotationForm = ({ blindNumber }) => {
         return ;
       }
     
-    if(calculationRecall === 2){
-      setCalculationRecall(0);
-    }  
+    
     await fetch(
       "https://script.googleusercontent.com/macros/echo?user_content_key=1hrZNGclS_h1HLAbhNxg0fZTWOtfjTgA2Qz1ttNw561gMJ6dG_ZGTd3ii_MPtjMq-NBYznnIb865N04sMocX99HSDl6BUtkzOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa-ThZIH8CGShpnEURYAZTLqzB5GqKund-AF5Xjvv8fF4DpKKE10sxN1e3_6uwxHHQ94qDw0P2YtuZdA9hqRHDLJ7WgsB0X29pwXIuFltvcj9tVcuvx4Me2XwuuAgclIqbg&lib=MFutGGpLdYi_IxT2czSizu8UfCpfIk1XD"
     )
@@ -441,14 +442,36 @@ const QuotationForm = ({ blindNumber }) => {
       })
       .then(() => {
         setIsCalculating(false);
+        console.log(bandType);
         if(widthxDepthRowIndex){
           console.log("lasdkf"+widthxDepthRowIndex);
           console.log(
-            "withoutMotorisation" + excelData[widthxDepthRowIndex][bandType]
+            "withoutMotorisation" + excelData[widthxDepthRowNumber(
+              currentBlindType,
+              currentFabricType,
+              currentBlindWidth,
+              currentBlindDepth,
+              currentFabricTypes
+            )][blindBandChooser( currentBlindType,
+              currentFabricType,
+              currentBlindWidth,
+              currentBlindDepth,
+              currentFabricTypes)]
           );
           setWithoutMotorisationTotal(
-            parseFloat(excelData[widthxDepthRowIndex][bandType]).toFixed(2)
+            parseFloat(excelData[widthxDepthRowNumber(
+              currentBlindType,
+              currentFabricType,
+              currentBlindWidth,
+              currentBlindDepth,
+              currentFabricTypes
+            )][blindBandChooser( currentBlindType,
+              currentFabricType,
+              currentBlindWidth,
+              currentBlindDepth,
+              currentFabricTypes)]).toFixed(2)
           );
+          
         }
       })
       .then(() => {
@@ -544,7 +567,6 @@ const QuotationForm = ({ blindNumber }) => {
           ).toFixed(2)
         );
       })
-
       .catch((err) => {
         console.log(err);
         setIsCalculating(false);
@@ -559,8 +581,7 @@ const QuotationForm = ({ blindNumber }) => {
         );
         return; 
       });
-      setCalculationRecall(calculationRecall+1);
-      calculate();
+      
   }
 
   return (
@@ -733,7 +754,12 @@ const QuotationForm = ({ blindNumber }) => {
       )}
 
       <button
-        onClick={calculate}
+      onClick={()=>{
+        alert("running");
+        
+        calculate();
+        calculate();
+      }}
         className="w-full my-2 text-xl py-2  bg-indigo-900 text-white rounded-lg  font-normal"
       >
         <div className="flex justify-center items-center  gap-4">
