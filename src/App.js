@@ -6,7 +6,6 @@ import { Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import QuotationTool from './components/QuotationTool';
 import { Tool } from './components/quotation-tool/Tool';
-import QuotationFormNew from './components/quotation-tool/QuotationFormNew'; 
 
 function App() {
   return (
