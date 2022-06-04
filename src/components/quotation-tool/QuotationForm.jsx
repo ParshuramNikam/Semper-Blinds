@@ -416,7 +416,8 @@ const QuotationForm = ({ blindNumber }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        // setExcelData(data.items);
+        setExcelData(data.items);
+        alert("Fetch succesfully!")
         console.log(data.items);
       })
       .then(async () => {

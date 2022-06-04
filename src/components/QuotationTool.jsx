@@ -22,6 +22,7 @@ import { conservatoryRoofsWidth } from "../constants/Widths/conservatoryRoofs";
 import { perfectFitVenetian } from "../constants/Widths/perfectFitVenetianWidth";
 import { perfectFitWidth } from "../constants/Widths/perfectFitWidth";
 import QuotationForm from "./quotation-tool/QuotationForm";
+import QuotationFormNew from "./quotation-tool/QuotationFormNew";
 
 function QuotationTool() {
 
@@ -78,11 +79,17 @@ function QuotationTool() {
                 </div>
               </div>
 
-              {blindNumber === 1 && <QuotationForm blindNumber={blindNumber} />}
+              {/* {blindNumber === 1 && <QuotationForm blindNumber={blindNumber} />}
               {blindNumber === 2 && <QuotationForm blindNumber={blindNumber} />}
               {blindNumber === 3 && <QuotationForm blindNumber={blindNumber} />}
               {blindNumber === 4 && <QuotationForm blindNumber={blindNumber} />}
-              {blindNumber === 5 && <QuotationForm blindNumber={blindNumber} />}
+              {blindNumber === 5 && <QuotationForm blindNumber={blindNumber} />} */}
+            
+              {blindNumber === 1 && <QuotationFormNew blindNumber={blindNumber} />}
+              {blindNumber === 2 && <QuotationFormNew blindNumber={blindNumber} />}
+              {blindNumber === 3 && <QuotationFormNew blindNumber={blindNumber} />}
+              {blindNumber === 4 && <QuotationFormNew blindNumber={blindNumber} />}
+              {blindNumber === 5 && <QuotationFormNew blindNumber={blindNumber} />}
 
             </div>
           </div>
