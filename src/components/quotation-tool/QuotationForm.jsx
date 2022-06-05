@@ -716,7 +716,7 @@ const QuotationForm = ({ blindNumber }) => {
                     &nbsp;&nbsp; <p className="text-lime-700">Refresh</p>
                 </button>
                 <select
-                    className="h-12 placeholder-gray-700 mt-2 w-full rounded-md p-1 pl-4 "
+                    className="h-12 placeholder-gray-700 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white"
                     onChange={handleBlindChangeInput}
                     value={currentBlindType}
                 >
@@ -730,7 +730,7 @@ const QuotationForm = ({ blindNumber }) => {
                 </select>
 
                 <select
-                    className="h-12 mt-2 w-full rounded-md p-1 pl-4  placeholder-gray-700"
+                    className="h-12 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white  placeholder-gray-700"
                     onChange={handleFabricChangeInput}
                     value={currentFabricType}
                 >
@@ -751,7 +751,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handleWidthChangeInput}
                             value={currentBlindWidth}
-                            className=" w-full h-10 rounded-b-md  placeholder-lime-700 p-1 pl-4  font-medium"
+                            className=" w-full h-10 rounded-b-md  placeholder-lime-700 p-1 pl-2 border-r-8 border-white font-medium"
                         >
                             <option className="" value={""}>
                                 --Select Width--
@@ -772,7 +772,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handleDepthChangeInput}
                             value={currentBlindDepth}
-                            className=" w-full h-10 rounded-b-md  placeholder-lime-700 p-1 pl-4  font-medium"
+                            className=" w-full h-10 rounded-b-md  placeholder-lime-700 p-1 pl-2 border-r-8 border-white font-medium"
                         >
                             <option className="text-lime-700" value={""}>
                                 --Select Depth--
@@ -807,7 +807,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handleMotorTypeChangeInput}
                             value={currentMotorType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-4  placeholder-gray-700"
+                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
                         >
                             <option value={""}> ---Select Motor Type---</option>
                             {motorTypes.map((motor, index) => (
@@ -820,7 +820,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handlePowerTypeChangeInput}
                             value={currentPowerType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-4  placeholder-gray-700"
+                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
                         >
                             <option value={""}> ---Select Power Type---</option>
                             {powerOptions.map((power, index) => (
@@ -833,7 +833,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handleReceiverTypeChangeInput}
                             value={currentReceiverType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-4  placeholder-gray-700"
+                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
                         >
                             <option value={""}> ---Select Receiver Type---</option>
                             {receiverOptions.map((receiver, index) => (
@@ -846,7 +846,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handleRemoteTypeChangeInput}
                             value={currentRemoteType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-4  placeholder-gray-700"
+                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
                         >
                             <option value={""}> ---Select Remote Type---</option>
                             {remoteOptions.map((remote, index) => (
@@ -859,7 +859,7 @@ const QuotationForm = ({ blindNumber }) => {
                         <select
                             onChange={handleOtherTypeChangeInput}
                             value={currentOtherType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-4  placeholder-gray-700"
+                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
                         >
                             <option value={""}> ---Select Other Type---</option>
                             {otherOptions.map((option, index) => (
@@ -873,13 +873,13 @@ const QuotationForm = ({ blindNumber }) => {
 
                 <button
                     onClick={() => { calculate(); }}
-                    className="w-full my-2 text-xl py-2  bg-indigo-900 text-white rounded-lg  font-normal"
+                    className="w-full my-2 text-xl py-2  bg-sky-900 text-white rounded-lg  font-normal"
                 >
                     <div className="flex justify-center items-center  gap-4">
                         {isCalculating && (
                             <svg
                                 role="status"
-                                className="w-6 h-6  text-gray-200 animate-spin dark:text-white fill-indigo-900"
+                                className="w-6 h-6  text-gray-200 animate-spin dark:text-white fill-sky-900"
                                 viewBox="0 0 100 101"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -897,72 +897,72 @@ const QuotationForm = ({ blindNumber }) => {
                         {isCalculating ? "C A L C U L A T I N G" : "C A L C U L A T E"}
                     </div>
                 </button>
-                <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-1 text-center bg-indigo-100">
-                    <h1 className="p-2 font-semibold text-xl text-indigo-900 border-b-2  border-indigo-900">
+                <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-1 text-center bg-sky-100">
+                    <h1 className="p-2 font-semibold text-xl text-sky-900 border-b-2  border-sky-900">
                         BLINDS
                     </h1>
                     <div className="flex px-2 justify-between text-center">
-                        <h1 className="p-2 font-semibold text-base sm:text-lg text-indigo-900">
+                        <h1 className="p-2 font-semibold text-base sm:text-lg text-sky-900">
                             TOTAL
                         </h1>
-                        <h1 className="p-2 font-semibold text-base sm:text-lg text-indigo-900">
+                        <h1 className="p-2 font-semibold text-base sm:text-lg text-sky-900">
                             £ {withoutMotorisationTotal ? parseFloat(withoutMotorisationTotal).toFixed(2) : "0.00"}
                         </h1>
                     </div>
                 </div>
                 {
                     motorisationToggle &&
-                    <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-2.5 text-center bg-indigo-100">
-                        <h1 className="p-2 font-semibold text-xl text-indigo-900 border-b-2  border-indigo-900">
+                    <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-2.5 text-center bg-sky-100">
+                        <h1 className="p-2 font-semibold text-xl text-sky-900 border-b-2  border-sky-900">
                             MOTORISATION
                         </h1>
 
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Motor
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedMotorTypeExcelValue).toFixed(2)}
                             </h1>
                         </div>
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Power
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedPowerTypeExcelValue).toFixed(2)}
                             </h1>
                         </div>
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Receiver
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedReceiverTypeExcelValue).toFixed(2)}
                             </h1>
                         </div>
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Remote
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedRemoteTypeExcelValue).toFixed(2)}
                             </h1>
                         </div>
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Other
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedOtherTypeExcelValue).toFixed(2)}
                             </h1>
                         </div>
 
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-bold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-bold text-base sm:text-md text-sky-900">
                                 TOTAL
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-indigo-900">
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {
                                     parseFloat(
                                         selectedMotorTypeExcelValue +
@@ -976,7 +976,7 @@ const QuotationForm = ({ blindNumber }) => {
                         </div>
                     </div>
                 }
-                <div className="flex flex-col justify-center shadow-sm rounded mt-2.5 text-center bg-lime-100">
+                <div className="flex flex-col justify-center shadow-sm rounded mt-2.5 text-center bg-lime-200">
                     <div className="flex px-2 justify-between text-center">
                         <h1 className="p-2 font-semibold text-base sm:text-lg text-lime-700">
                             GRAND TOTAL
@@ -1002,7 +1002,7 @@ const QuotationForm = ({ blindNumber }) => {
             : <div className="m-5 flex flex-col justify-center items-center">
                 <svg
                     role="status"
-                    className="w-10 md:w-12 md:h-12  text-gray-200 animate-spin dark:text-white fill-indigo-900"
+                    className="w-10 md:w-12 md:h-12  text-gray-200 animate-spin dark:text-white fill-sky-900"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
