@@ -535,7 +535,7 @@ function Gallery() {
                     backgroundImage: "url('/images/gallery-images/splits.png')",
                   }}
                 />
-                <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
+                <div className="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
                 Splits
                 </div>
               </div>
@@ -551,13 +551,13 @@ function Gallery() {
                     Semper Shapes
                   </div>
                 </div>
-                <div class="md:hidden gallery-sm-image mb-1 relative">
+                <div className="md:hidden gallery-sm-image mb-1 relative">
                   <img
-                    class="rounded shadow-md gallery-sm-image w-full"
+                    className="rounded shadow-md gallery-sm-image w-full"
                     src="images/gallery-images/splits.png"
                     alt=""
                   />
-                  <div class="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
+                  <div className="backdrop-blur-sm h-full w-full opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-black font-semibold">
                   Splits
                   </div>
                 </div>
