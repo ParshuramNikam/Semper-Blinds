@@ -59,7 +59,24 @@ export default function Navbar() {
                 <div className="hidden md:block sm:ml-5 text-black">
                   <div className="flex items-center space-x-2 lg:space-x-4 origin-top  duration-300 ">
                     {navigation.map((item) => (
-                      <Link to={item.href}
+                     
+                      isQuotationToolPage && item.name === "Home" ?  <Link to={item.href}
+                      key={item.name}
+                      className={classNames(
+                        currentMenu === item.name
+                          ? "navitem text-green-500 font-semibold  hover:text-green"
+                          : "navitem text-black hover:text-green-500 ",
+                        "pt-2 rounded-md text-base font-semibold"
+                      )}
+                      aria-current={item.current ? "page" : undefined}
+                      onClick={() => {
+                        console.log(item.name);
+                        setCurrentMenu(item.name);
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                        :  <a href={item.href}
                         key={item.name}
                         className={classNames(
                           currentMenu === item.name
@@ -74,7 +91,7 @@ export default function Navbar() {
                         }}
                       >
                         {item.name}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>
