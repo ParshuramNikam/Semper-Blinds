@@ -985,7 +985,7 @@ const QuotationForm = ({ blindNumber }) => {
                         </div>
                     </div>
                 }
-                <div className="flex flex-col justify-center shadow-sm rounded mt-2.5 text-center bg-lime-200">
+                <div className="flex flex-col justify-center shadow-sm rounded mt-2.5 text-center bg-lime-100">
                     <div className="flex px-2 justify-between text-center">
                         <h1 className="p-2 font-semibold text-base sm:text-lg text-lime-700">
                             GRAND TOTAL
