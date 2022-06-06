@@ -12,12 +12,20 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [navigation, setNavigation] = useState(NavigationMenu);
+  
 
   const [currentMenu, setCurrentMenu] = useState("Home");
 
   const [navBg, setNavBg] = useState("bg-gradient");
+  const [isQuotationToolPage, setIsQuotationToolPage] = useState(false);
 
   useEffect(() => {
+    if(window.location.href.split("/")[3] && window.location.href.split("/")[3]=== 'QuotationTool' ){
+      setIsQuotationToolPage(true);
+
+    }
+
+
     window.addEventListener("scroll", () => {
       // console.log(window.scrollY);
       if (window.scrollY > 60) {
@@ -51,9 +59,8 @@ export default function Navbar() {
                 <div className="hidden md:block sm:ml-5 text-black">
                   <div className="flex items-center space-x-2 lg:space-x-4 origin-top  duration-300 ">
                     {navigation.map((item) => (
-                      <a
+                      <Link to={item.href}
                         key={item.name}
-                        href={item.href}
                         className={classNames(
                           currentMenu === item.name
                             ? "navitem text-green-500 font-semibold  hover:text-green"
@@ -67,23 +74,27 @@ export default function Navbar() {
                         }}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="absolute right-10 md:right-3 flex items-center sm:ml-6 sm:pr-0">
-                <Link to={"/QuotationTool"}>
-                  <button
-                    type="button"
-                    className="button-box-shadow flex text-white bg-green-400 hover:bg-green-500  focus:ring-4 focus:ring-blue-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "
-                  >
-                    <CalculatorIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
-                    Get Quotation
-                  </button>
-                </Link>
-              </div>
+              {
+                !isQuotationToolPage && 
+                <div className="absolute right-10 md:right-3 flex items-center sm:ml-6 sm:pr-0">
+                  <Link to={"/QuotationTool"}>
+                    <button
+                      type="button"
+                      className="button-box-shadow flex text-white bg-green-400 hover:bg-green-500  focus:ring-4 focus:ring-blue-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "
+                    >
+                      <CalculatorIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
+                      Get Quotation
+                    </button>
+                  </Link>
+                </div>
+
+              }
 
               <div className="absolute inset-y-0 right-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}

@@ -21,6 +21,7 @@ import { commonWidths } from "../constants/Widths/commonWidths";
 import { conservatoryRoofsWidth } from "../constants/Widths/conservatoryRoofs";
 import { perfectFitVenetian } from "../constants/Widths/perfectFitVenetianWidth";
 import { perfectFitWidth } from "../constants/Widths/perfectFitWidth";
+import Navbar from "./Navbar";
 import QuotationForm from "./quotation-tool/QuotationForm";
 
 function QuotationTool() {
@@ -29,7 +30,7 @@ function QuotationTool() {
 
   return (
     <div className=" h-screen w-full bg-gray-100">
-      <nav className="flex flex-wrap items-center justify-start gap-5 w-full py-4  md:py-0 px-4 text-lg bg-gray-100">
+      {/* <nav className="flex flex-wrap items-center justify-start gap-5 w-full py-4  md:py-0 px-4 text-lg bg-gray-100">
         <div className="flex-shrink-0 flex items-center my-2">
           <img
             className="  h-12 w-12 rounded-full"
@@ -41,9 +42,11 @@ function QuotationTool() {
           <p className="text-xl font-bold text-sky-900">SEMPER</p>
           <p className="text-2xl font-bold text-lime-600">BLINDS</p>
         </div>
-      </nav>
+      </nav> */}
 
-      <div className="bg-gray-100 min-h-screen">
+      <Navbar />
+
+      <div className="bg-gray-100 min-h-screen mt-4">
         <div className="flex justify-center mb-5 ">
           <div className="w-full mx-auto sm:max-w-xl">
             <div className=" max-w-xl mx-auto px-2 mb-4 sm:mx-2">

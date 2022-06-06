@@ -273,8 +273,17 @@ const QuotationForm = ({ blindNumber }) => {
     }, [currentBlindType]);
 
     async function handleBlindChangeInput(e) {
+        setcurrentFabricType("");
+        sessionStorage.removeItem("fabric-type-"+blindNumber);
+
+        setcurrentBlindWidth("");
+        sessionStorage.removeItem("width-"+blindNumber);
+
+        setcurrentBlindDepth("");
+        sessionStorage.removeItem("depth-"+blindNumber);
+        
         setCurrentBlindType(e.target.value);
-        console.log(e.target.value)
+        console.log(e.target.value);
         sessionStorage.setItem("blind-type-" + blindNumber, e.target.value);
 
         // set width and depth to unselected;
@@ -710,7 +719,7 @@ const QuotationForm = ({ blindNumber }) => {
 
                         refreshBtnListner();
                     }}
-                    className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-200 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
+                    className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-100 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
                 >
                     <RefreshIcon className=" text-lime-700 h-6 w-6" />
                     &nbsp;&nbsp; <p className="text-lime-700">Refresh</p>
@@ -788,7 +797,7 @@ const QuotationForm = ({ blindNumber }) => {
                 </div>
 
                 <button
-                    className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-200 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
+                    className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-100 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
                     onClick={motorisationAddRemoveHandler}
                 >
                     {!motorisationToggle ? (
@@ -875,7 +884,7 @@ const QuotationForm = ({ blindNumber }) => {
                     onClick={() => { calculate(); }}
                     className="w-full my-2 text-xl py-2  bg-sky-900 text-white rounded-lg  font-normal"
                 >
-                    <div className="flex justify-center items-center  gap-4">
+                    <div className="flex justify-center items-center text-lg  gap-4">
                         {isCalculating && (
                             <svg
                                 role="status"
@@ -898,11 +907,11 @@ const QuotationForm = ({ blindNumber }) => {
                     </div>
                 </button>
                 <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-1 text-center bg-sky-100">
-                    <h1 className="p-2 font-semibold text-xl text-sky-900 border-b-2  border-sky-900">
+                    <h1 className="p-2 font-semibold text-lg text-sky-900 border-b-2  border-sky-900">
                         BLINDS
                     </h1>
                     <div className="flex px-2 justify-between text-center">
-                        <h1 className="p-2 font-semibold text-base sm:text-lg text-sky-900">
+                        <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                             TOTAL
                         </h1>
                         <h1 className="p-2 font-semibold text-base sm:text-lg text-sky-900">
@@ -913,7 +922,7 @@ const QuotationForm = ({ blindNumber }) => {
                 {
                     motorisationToggle &&
                     <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-2.5 text-center bg-sky-100">
-                        <h1 className="p-2 font-semibold text-xl text-sky-900 border-b-2  border-sky-900">
+                        <h1 className="p-2 font-semibold text-lg text-sky-900 border-b-2  border-sky-900">
                             MOTORISATION
                         </h1>
 
@@ -968,7 +977,7 @@ const QuotationForm = ({ blindNumber }) => {
                                         selectedMotorTypeExcelValue +
                                         selectedPowerTypeExcelValue +
                                         selectedReceiverTypeExcelValue +
-                                        selectedReceiverTypeExcelValue +
+                                        selectedRemoteTypeExcelValue +
                                         selectedOtherTypeExcelValue
                                     ).toFixed(2)
                                 }
@@ -990,7 +999,7 @@ const QuotationForm = ({ blindNumber }) => {
                                         selectedMotorTypeExcelValue +
                                         selectedPowerTypeExcelValue +
                                         selectedReceiverTypeExcelValue +
-                                        selectedReceiverTypeExcelValue +
+                                        selectedRemoteTypeExcelValue +
                                         selectedOtherTypeExcelValue
                                     ).toFixed(2)
                                     : parseFloat(withoutMotorisationTotal).toFixed(2)

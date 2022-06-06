@@ -7,7 +7,7 @@ export const Testimonials = () => {
     <div>
       <section id="testimonials" className="scroll-mt-20 mt-5">
         <SectionHeading className="" heading={"What They've Said"} />
-        <section className="text-green-500 body-font py-4 bg-emerald-400">
+        <section className=" body-font py-4 bg-emerald-400">
           <div className="max-w-7xl px-2 mx-auto">
             <div className="flex flex-wrap m-0">
               <div className="p-2 md:w-1/2 w-full">
