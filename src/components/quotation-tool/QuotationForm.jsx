@@ -882,9 +882,9 @@ const QuotationForm = ({ blindNumber }) => {
 
                 <button
                     onClick={() => { calculate(); }}
-                    className="w-full my-2 text-xl py-2  bg-sky-900 text-white rounded-lg  font-normal"
+                    className="w-full my-2  py-2  bg-sky-900 text-white rounded-lg  font-normal"
                 >
-                    <div className="flex justify-center items-center text-lg  gap-4">
+                    <div className="flex justify-center items-center text-sm sm:text-base  gap-4">
                         {isCalculating && (
                             <svg
                                 role="status"
@@ -907,14 +907,14 @@ const QuotationForm = ({ blindNumber }) => {
                     </div>
                 </button>
                 <div className="px-2 flex flex-col justify-center rounded shadow-sm mt-1 text-center bg-sky-100">
-                    <h1 className="p-2 font-semibold text-lg text-sky-900 border-b-2  border-sky-900">
+                    <h1 className="p-2 font-semibold text-xs sm:text-sm text-sky-900 border-b-2  border-sky-900">
                         BLINDS
                     </h1>
                     <div className="flex px-2 justify-between text-center">
-                        <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                        <h1 className="p-2 font-semibold text-xs sm:text-sm text-sky-900">
                             TOTAL
                         </h1>
-                        <h1 className="p-2 font-semibold text-base sm:text-lg text-sky-900">
+                        <h1 className="p-2 font-semibold text-xs sm:text-sm text-sky-900">
                             £ {withoutMotorisationTotal ? parseFloat(withoutMotorisationTotal).toFixed(2) : "0.00"}
                         </h1>
                     </div>
@@ -968,10 +968,10 @@ const QuotationForm = ({ blindNumber }) => {
                         </div>
 
                         <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-bold text-base sm:text-md text-sky-900">
+                            <h1 className="p-2 font-bold text-xs sm:text-sm text-sky-900">
                                 TOTAL
                             </h1>
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                            <h1 className="p-2 font-semibold text-xs sm:text-sm text-sky-900">
                                 £ {
                                     parseFloat(
                                         selectedMotorTypeExcelValue +
@@ -987,10 +987,10 @@ const QuotationForm = ({ blindNumber }) => {
                 }
                 <div className="flex flex-col justify-center shadow-sm rounded mt-2.5 text-center bg-lime-100">
                     <div className="flex px-2 justify-between text-center">
-                        <h1 className="p-2 font-semibold text-base sm:text-lg text-lime-700">
+                        <h1 className="p-2 font-semibold text-xs sm:text-sm text-lime-700">
                             GRAND TOTAL
                         </h1>
-                        <h1 className="p-2 font-semibold text-base sm:text-lg text-lime-700">
+                        <h1 className="p-2 font-semibold text-xs sm:text-sm text-lime-700">
                             (Excluding VAT) £{" "}
                             {
                                 motorisationToggle
