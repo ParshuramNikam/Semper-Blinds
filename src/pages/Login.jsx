@@ -5,10 +5,11 @@ import { Link, useHistory } from "react-router-dom";
 
 export const Login = ({userName,setUserName}) => {
   const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState("")
 
   const history = useHistory();
 
-  const loginUser = (e) => {
+  const loginUser = async(e) => {
     e.preventDefault();
 
     setLoading(true);
@@ -16,7 +17,18 @@ export const Login = ({userName,setUserName}) => {
     if (!userName) {
       alert("username required!");
     } else {
-        history.push("/QuotationTool")
+     await fetch("https://script.googleusercontent.com/macros/echo?user_content_key=Nq6BCKzKtQKIFKVAY8aB7LprIRO7dOm4WYsZKr8WR-pE0XRmMeoItCgnUlKg_D62205kpONVch9es_Vl2azv7dhjTJbJYCVROJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa3bNJjJVsKVqAurCNaNO2E13X-7mv8AkYAuBpVfHQCVJfcFxxUVNy6rjx5KdRhv-cIGS7rvKPPzTBfhnkwbHGoK7fxK4jyWO0UALmaJ23tE4dEdpKu3IUwRgg3Q-NRH3vw&lib=MJ0q8R1jjdg2-XldqIhGkltzMPemL6ntX")
+        .then(res=>res.json())
+        .then(result=>{
+          result.items.map(user=>{
+            if(user.AllowedUsersForQuotationTool===userName){
+
+              // setIsValidUser(true);
+              history.push("/QuotationTool")
+            }
+          })
+        })
+        .catch(err=>console.log(err))
     }
 
     setTimeout(() => {
