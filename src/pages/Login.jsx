@@ -16,7 +16,7 @@ export const Login = ({ userName, setUserName }) => {
     setLoading(true);
 
     if (!userName) {
-      alert("username required!");
+      alert("Username required!");
     } else {
       await fetch("https://script.googleusercontent.com/macros/echo?user_content_key=Nq6BCKzKtQKIFKVAY8aB7LprIRO7dOm4WYsZKr8WR-pE0XRmMeoItCgnUlKg_D62205kpONVch9es_Vl2azv7dhjTJbJYCVROJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa3bNJjJVsKVqAurCNaNO2E13X-7mv8AkYAuBpVfHQCVJfcFxxUVNy6rjx5KdRhv-cIGS7rvKPPzTBfhnkwbHGoK7fxK4jyWO0UALmaJ23tE4dEdpKu3IUwRgg3Q-NRH3vw&lib=MJ0q8R1jjdg2-XldqIhGkltzMPemL6ntX")
         .then(res => res.json())
@@ -34,8 +34,8 @@ export const Login = ({ userName, setUserName }) => {
         })
         .then(() => {
           if (!isValidUser) {
-            setShowError("UserName is not valid");
-            console.log("UserName is not valid");
+            setShowError("Username is not valid");
+            console.log("Username is not valid");
           }
         })
         .catch(err => console.log(err))
@@ -80,7 +80,7 @@ export const Login = ({ userName, setUserName }) => {
               type="text"
               name=""
               id=""
-              placeholder="username"
+              placeholder="Username"
               value={userName}
               onChange={(e) => {
                 setShowError(""); setIsValidUser(false);

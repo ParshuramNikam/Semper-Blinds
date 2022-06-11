@@ -44,8 +44,8 @@ function QuotationTool({userName}) {
 
    <div className="bg-gray-100 min-h-screen mt-4">
      <div className="flex justify-center mb-5 ">
-       <div className="w-full mx-auto sm:max-w-xl">
-         <div className=" max-w-xl mx-auto px-2 mb-4 sm:mx-2">
+       <div className="w-full mx-auto sm:max-w-3xl">
+         <div className=" max-w-3xl mx-auto px-2 mb-4 sm:mx-2">
            <div className="flex items-center  bg-white">
              <Link to={"/"} className="w-max py-2">
                <button className="px-6 w-max flex mx-auto  text-gray-500 rounded-lg text-base  font-semibold  text-center">
