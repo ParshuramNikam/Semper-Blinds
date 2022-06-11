@@ -210,7 +210,7 @@ header h1 {
 .navitem:after {
   content: "";
   position: absolute;
-  background-color: #22c55e;
+  background-color: #65a30d;
   height: 2px;
   width: 0%;
   left: 50%;

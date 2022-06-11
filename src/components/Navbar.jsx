@@ -64,8 +64,8 @@ export default function Navbar() {
                       key={item.name}
                       className={classNames(
                         currentMenu === item.name
-                          ? "navitem text-green-500 font-semibold  hover:text-green"
-                          : "navitem text-black hover:text-green-500 ",
+                          ? "navitem text-lime-600  font-semibold  hover:text-green"
+                          : "navitem text-black hover:text-lime-600  ",
                         "pt-2 rounded-md text-base font-semibold"
                       )}
                       aria-current={item.current ? "page" : undefined}
@@ -80,8 +80,8 @@ export default function Navbar() {
                         key={item.name}
                         className={classNames(
                           currentMenu === item.name
-                            ? "navitem text-green-500 font-semibold  hover:text-green"
-                            : "navitem text-black hover:text-green-500 ",
+                            ? "navitem text-lime-600  font-semibold  hover:text-green"
+                            : "navitem text-black hover:text-lime-600  ",
                           "pt-2 rounded-md text-base font-semibold"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -103,7 +103,7 @@ export default function Navbar() {
                   <Link to={"/login"}>
                     <button
                       type="button"
-                      className="button-box-shadow flex text-white bg-green-400 hover:bg-green-500  focus:ring-4 focus:ring-blue-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "
+                      className="button-box-shadow flex text-white bg-lime-600  hover:bg-lime-500  focus:ring-4 focus:ring-lime-300 rounded-lg text-base px-3 py-2 font-semibold  text-center mr-3 md:mr-0 "
                     >
                       <CalculatorIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
                       Get Quotation
@@ -115,11 +115,11 @@ export default function Navbar() {
 
               <div className="absolute inset-y-0 right-0 flex items-center md:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-green-500 bg-emerald-50 hover:text-green-500 hover:bg-emerald-50 focus:outline-none ">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-lime-600  bg-emerald-50 hover:text-lime-600  hover:bg-emerald-50 focus:outline-none ">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon
-                      className="block h-6 w-6 text-green-500"
+                      className="block h-6 w-6 text-lime-600 "
                       aria-hidden="true"
                     />
                   ) : (
