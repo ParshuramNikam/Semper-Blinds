@@ -1,3 +1,4 @@
+
 import {
     HomeIcon,
     MinusIcon,
@@ -37,6 +38,7 @@ import { motorizedThreeBarsBandChooser } from "../../utils/QuotationToolHelper/m
 import { perfectFitBandChooser } from "../../utils/QuotationToolHelper/perfectFitBandChooser";
 import { perfectFitVenetianBandChooser } from "../../utils/QuotationToolHelper/perfectFitVenetianBandChooser";
 import { threeBarsBandChooser } from "../../utils/QuotationToolHelper/threeBarsBandChooser";
+import WidthAndDepthInputWrapper from "../common/WidthAndDepthInputWrapper";
 
 const QuotationForm = ({ blindNumber }) => {
     const [blindTypes, setBlindTypes] = useState([
@@ -83,10 +85,76 @@ const QuotationForm = ({ blindNumber }) => {
     const [currentFabricTypes, setCurrentFabricTypes] = useState([]);
 
     const [blindTypeWidths, setBlindTypeWidths] = useState([]); // for WIDTH array
-    const [currentBlindWidth, setcurrentBlindWidth] = useState(useStateReturnValueFromSessionStrorage("width-")); // for selet WIDTH onchange value
-
     const [blindTypeDepths, setBlindTypeDepths] = useState([]); // for DEPTH array
+
+    const [currentBlindWidth, setcurrentBlindWidth] = useState(useStateReturnValueFromSessionStrorage("width-")); // for selet WIDTH onchange value
     const [currentBlindDepth, setcurrentBlindDepth] = useState(useStateReturnValueFromSessionStrorage("depth-")); // for selet DEPTH onchange value
+
+    // usestate repeat from 2nd blind width and depth : 
+    const [currentBlindWidth2, setcurrentBlindWidth2] = useState(useStateReturnValueFromSessionStrorage("width-2-")); // for selet WIDTH onchange value
+    const [currentBlindDepth2, setcurrentBlindDepth2] = useState(useStateReturnValueFromSessionStrorage("depth-2-")); // for selet DEPTH onchange value
+
+    const [currentBlindWidth3, setcurrentBlindWidth3] = useState(useStateReturnValueFromSessionStrorage("width-3-")); // for selet WIDTH onchange value
+    const [currentBlindDepth3, setcurrentBlindDepth3] = useState(useStateReturnValueFromSessionStrorage("depth-3-")); // for selet DEPTH onchange value
+
+    const [currentBlindWidth4, setcurrentBlindWidth4] = useState(useStateReturnValueFromSessionStrorage("width-4-")); // for selet WIDTH onchange value
+    const [currentBlindDepth4, setcurrentBlindDepth4] = useState(useStateReturnValueFromSessionStrorage("depth-4-")); // for selet DEPTH onchange value
+
+    const [currentBlindWidth5, setcurrentBlindWidth5] = useState(useStateReturnValueFromSessionStrorage("width-5-"));
+    const [currentBlindDepth5, setcurrentBlindDepth5] = useState(useStateReturnValueFromSessionStrorage("depth-5-"));
+
+    const [currentBlindWidth6, setcurrentBlindWidth6] = useState(useStateReturnValueFromSessionStrorage("width-6-"));
+    const [currentBlindDepth6, setcurrentBlindDepth6] = useState(useStateReturnValueFromSessionStrorage("depth-6-"));
+    const [currentBlindWidth7, setcurrentBlindWidth7] = useState(useStateReturnValueFromSessionStrorage("width-7-"));
+    const [currentBlindDepth7, setcurrentBlindDepth7] = useState(useStateReturnValueFromSessionStrorage("depth-7-"));
+    const [currentBlindWidth8, setcurrentBlindWidth8] = useState(useStateReturnValueFromSessionStrorage("width-8-"));
+    const [currentBlindDepth8, setcurrentBlindDepth8] = useState(useStateReturnValueFromSessionStrorage("depth-8-"));
+    const [currentBlindWidth9, setcurrentBlindWidth9] = useState(useStateReturnValueFromSessionStrorage("width-9-"));
+    const [currentBlindDepth9, setcurrentBlindDepth9] = useState(useStateReturnValueFromSessionStrorage("depth-9-"));
+    const [currentBlindWidth10, setcurrentBlindWidth10] = useState(useStateReturnValueFromSessionStrorage("width-10-"));
+    const [currentBlindDepth10, setcurrentBlindDepth10] = useState(useStateReturnValueFromSessionStrorage("depth-10-"));
+    const [currentBlindWidth11, setcurrentBlindWidth11] = useState(useStateReturnValueFromSessionStrorage("width-11-"));
+    const [currentBlindDepth11, setcurrentBlindDepth11] = useState(useStateReturnValueFromSessionStrorage("depth-11-"));
+    const [currentBlindWidth12, setcurrentBlindWidth12] = useState(useStateReturnValueFromSessionStrorage("width-12-"));
+    const [currentBlindDepth12, setcurrentBlindDepth12] = useState(useStateReturnValueFromSessionStrorage("depth-12-"));
+    const [currentBlindWidth13, setcurrentBlindWidth13] = useState(useStateReturnValueFromSessionStrorage("width-13-"));
+    const [currentBlindDepth13, setcurrentBlindDepth13] = useState(useStateReturnValueFromSessionStrorage("depth-13-"));
+    const [currentBlindWidth14, setcurrentBlindWidth14] = useState(useStateReturnValueFromSessionStrorage("width-14-"));
+    const [currentBlindDepth14, setcurrentBlindDepth14] = useState(useStateReturnValueFromSessionStrorage("depth-14-"));
+    const [currentBlindWidth15, setcurrentBlindWidth15] = useState(useStateReturnValueFromSessionStrorage("width-15-"));
+    const [currentBlindDepth15, setcurrentBlindDepth15] = useState(useStateReturnValueFromSessionStrorage("depth-15-"));
+    const [currentBlindWidth16, setcurrentBlindWidth16] = useState(useStateReturnValueFromSessionStrorage("width-16-"));
+    const [currentBlindDepth16, setcurrentBlindDepth16] = useState(useStateReturnValueFromSessionStrorage("depth-16-"));
+    const [currentBlindWidth17, setcurrentBlindWidth17] = useState(useStateReturnValueFromSessionStrorage("width-17-"));
+    const [currentBlindDepth17, setcurrentBlindDepth17] = useState(useStateReturnValueFromSessionStrorage("depth-17-"));
+    const [currentBlindWidth18, setcurrentBlindWidth18] = useState(useStateReturnValueFromSessionStrorage("width-18-"));
+    const [currentBlindDepth18, setcurrentBlindDepth18] = useState(useStateReturnValueFromSessionStrorage("depth-18-"));
+    const [currentBlindWidth19, setcurrentBlindWidth19] = useState(useStateReturnValueFromSessionStrorage("width-19-"));
+    const [currentBlindDepth19, setcurrentBlindDepth19] = useState(useStateReturnValueFromSessionStrorage("depth-19-"));
+    const [currentBlindWidth20, setcurrentBlindWidth20] = useState(useStateReturnValueFromSessionStrorage("width-20-"));
+    const [currentBlindDepth20, setcurrentBlindDepth20] = useState(useStateReturnValueFromSessionStrorage("depth-20-"));
+    const [currentBlindWidth21, setcurrentBlindWidth21] = useState(useStateReturnValueFromSessionStrorage("width-21-"));
+    const [currentBlindDepth21, setcurrentBlindDepth21] = useState(useStateReturnValueFromSessionStrorage("depth-21-"));
+    const [currentBlindWidth22, setcurrentBlindWidth22] = useState(useStateReturnValueFromSessionStrorage("width-22-"));
+    const [currentBlindDepth22, setcurrentBlindDepth22] = useState(useStateReturnValueFromSessionStrorage("depth-22-"));
+    const [currentBlindWidth23, setcurrentBlindWidth23] = useState(useStateReturnValueFromSessionStrorage("width-23-"));
+    const [currentBlindDepth23, setcurrentBlindDepth23] = useState(useStateReturnValueFromSessionStrorage("depth-23-"));
+    const [currentBlindWidth24, setcurrentBlindWidth24] = useState(useStateReturnValueFromSessionStrorage("width-24-"));
+    const [currentBlindDepth24, setcurrentBlindDepth24] = useState(useStateReturnValueFromSessionStrorage("depth-24-"));
+    const [currentBlindWidth25, setcurrentBlindWidth25] = useState(useStateReturnValueFromSessionStrorage("width-25-"));
+    const [currentBlindDepth25, setcurrentBlindDepth25] = useState(useStateReturnValueFromSessionStrorage("depth-25-"));
+    const [currentBlindWidth26, setcurrentBlindWidth26] = useState(useStateReturnValueFromSessionStrorage("width-26-"));
+    const [currentBlindDepth26, setcurrentBlindDepth26] = useState(useStateReturnValueFromSessionStrorage("depth-26-"));
+    const [currentBlindWidth27, setcurrentBlindWidth27] = useState(useStateReturnValueFromSessionStrorage("width-27-"));
+    const [currentBlindDepth27, setcurrentBlindDepth27] = useState(useStateReturnValueFromSessionStrorage("depth-27-"));
+    const [currentBlindWidth28, setcurrentBlindWidth28] = useState(useStateReturnValueFromSessionStrorage("width-28-"));
+    const [currentBlindDepth28, setcurrentBlindDepth28] = useState(useStateReturnValueFromSessionStrorage("depth-28-"));
+    const [currentBlindWidth29, setcurrentBlindWidth29] = useState(useStateReturnValueFromSessionStrorage("width-29-"));
+    const [currentBlindDepth29, setcurrentBlindDepth29] = useState(useStateReturnValueFromSessionStrorage("depth-29-"));
+    const [currentBlindWidth30, setcurrentBlindWidth30] = useState(useStateReturnValueFromSessionStrorage("width-30-"));
+    const [currentBlindDepth30, setcurrentBlindDepth30] = useState(useStateReturnValueFromSessionStrorage("depth-30-"));
+
+
 
     const [currentMotorType, setCurrentMotorType] = useState(useStateReturnValueFromSessionStrorage("motor-type-"));
     const [currentPowerType, setCurrentPowerType] = useState(useStateReturnValueFromSessionStrorage("power-type-"));
@@ -99,8 +167,45 @@ const QuotationForm = ({ blindNumber }) => {
     const [bandType, setBandType] = useState(null); //A,B,C,D.... bands
 
     const [widthxDepthRowIndex, setWidthxDepthRowIndex] = useState(null);
+    // widthxDepthRowIndex repeat from 2nd : 
+    const [widthxDepthRowIndex2, setWidthxDepthRowIndex2] = useState(null);
+    const [widthxDepthRowIndex3, setWidthxDepthRowIndex3] = useState(null);
+    const [widthxDepthRowIndex4, setWidthxDepthRowIndex4] = useState(null);
+    const [widthxDepthRowIndex5, setWidthxDepthRowIndex5] = useState(null);
+    const [widthxDepthRowIndex6, setWidthxDepthRowIndex6] = useState(null);
+    const [widthxDepthRowIndex7, setWidthxDepthRowIndex7] = useState(null);
+    const [widthxDepthRowIndex8, setWidthxDepthRowIndex8] = useState(null);
+    const [widthxDepthRowIndex9, setWidthxDepthRowIndex9] = useState(null);
+    const [widthxDepthRowIndex10, setWidthxDepthRowIndex10] = useState(null);
+    const [widthxDepthRowIndex11, setWidthxDepthRowIndex11] = useState(null);
+    const [widthxDepthRowIndex12, setWidthxDepthRowIndex12] = useState(null);
+    const [widthxDepthRowIndex13, setWidthxDepthRowIndex13] = useState(null);
+    const [widthxDepthRowIndex14, setWidthxDepthRowIndex14] = useState(null);
+    const [widthxDepthRowIndex15, setWidthxDepthRowIndex15] = useState(null);
+    const [widthxDepthRowIndex16, setWidthxDepthRowIndex16] = useState(null);
+    const [widthxDepthRowIndex17, setWidthxDepthRowIndex17] = useState(null);
+    const [widthxDepthRowIndex18, setWidthxDepthRowIndex18] = useState(null);
+    const [widthxDepthRowIndex19, setWidthxDepthRowIndex19] = useState(null);
+    const [widthxDepthRowIndex20, setWidthxDepthRowIndex20] = useState(null);
+    const [widthxDepthRowIndex21, setWidthxDepthRowIndex21] = useState(null);
+    const [widthxDepthRowIndex22, setWidthxDepthRowIndex22] = useState(null);
+    const [widthxDepthRowIndex23, setWidthxDepthRowIndex23] = useState(null);
+    const [widthxDepthRowIndex24, setWidthxDepthRowIndex24] = useState(null);
+    const [widthxDepthRowIndex25, setWidthxDepthRowIndex25] = useState(null);
+    const [widthxDepthRowIndex26, setWidthxDepthRowIndex26] = useState(null);
+    const [widthxDepthRowIndex27, setWidthxDepthRowIndex27] = useState(null);
+    const [widthxDepthRowIndex28, setWidthxDepthRowIndex28] = useState(null);
+    const [widthxDepthRowIndex29, setWidthxDepthRowIndex29] = useState(null);
+    const [widthxDepthRowIndex30, setWidthxDepthRowIndex30] = useState(null);
+
 
     const [withoutMotorisationTotal, setWithoutMotorisationTotal] = useState(0);
+    // withoutMotorisationTotal repeat from 2nd : 
+    const [withoutMotorisationTotal2, setWithoutMotorisationTotal2] = useState(0);
+    const [withoutMotorisationTotal3, setWithoutMotorisationTotal3] = useState(0);
+    const [withoutMotorisationTotal4, setWithoutMotorisationTotal4] = useState(0);
+
+
     const [withMoterisationTotal, setWithMoterisationTotal] = useState(0);
 
     const [isCalculating, setIsCalculating] = useState(false);
@@ -118,6 +223,8 @@ const QuotationForm = ({ blindNumber }) => {
 
     const [waitToGetdataFromExcelSheet, setWaitToGetdataFromExcelSheet] = useState(true);
 
+    const [widthDepthMappingInJsx, setWidthDepthMappingInJsx] = useState([]);
+
     const setInitialValuesToFormData = async () => {
         // set the values in session storage
         console.log("Applying initial values");
@@ -132,6 +239,17 @@ const QuotationForm = ({ blindNumber }) => {
 
         if (getItemFromSessionStorage("depth-"))
             setcurrentBlindDepth(getItemFromSessionStorage("depth-"));
+
+        // set initial values of depth & width repeat from 2nd : 
+        if (getItemFromSessionStorage("width-2-")) { setcurrentBlindWidth2(getItemFromSessionStorage("width-2-")); }
+        if (getItemFromSessionStorage("depth-2-")) { setcurrentBlindDepth2(getItemFromSessionStorage("depth-2-")); }
+
+        if (getItemFromSessionStorage("width-3-")) { setcurrentBlindWidth2(getItemFromSessionStorage("width-3-")); }
+        if (getItemFromSessionStorage("width-3-")) { setcurrentBlindWidth2(getItemFromSessionStorage("width-3-")); }
+
+        if (getItemFromSessionStorage("width-4-")) { setcurrentBlindWidth2(getItemFromSessionStorage("width-4-")); }
+        if (getItemFromSessionStorage("width-4-")) { setcurrentBlindWidth2(getItemFromSessionStorage("width-4-")); }
+
 
         if (getItemFromSessionStorage("motor-type-"))
             setCurrentMotorType(getItemFromSessionStorage("motor-type-"));
@@ -170,8 +288,15 @@ const QuotationForm = ({ blindNumber }) => {
         if (getItemFromSessionStorage('band-type-'))
             setBandType(getItemFromSessionStorage('band-type-'));
 
+
         if (getItemFromSessionStorage('widthxdepth-'))
             setWidthxDepthRowIndex(getItemFromSessionStorage('widthxdepth-'))
+
+        // set initial values of WidthxDepthRowIndex repeat from 2nd : 
+        if (getItemFromSessionStorage('widthxdepth-2-')) { setWidthxDepthRowIndex(getItemFromSessionStorage('widthxdepth-2-')) }
+        if (getItemFromSessionStorage('widthxdepth-3-')) { setWidthxDepthRowIndex(getItemFromSessionStorage('widthxdepth-3-')) }
+        if (getItemFromSessionStorage('widthxdepth-4-')) { setWidthxDepthRowIndex(getItemFromSessionStorage('widthxdepth-4-')) }
+
 
         // setWidthxDepthRowIndex(
         //     freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
@@ -184,6 +309,11 @@ const QuotationForm = ({ blindNumber }) => {
         if (getItemFromSessionStorage('total-')) {
             setWithoutMotorisationTotal(parseFloat(getItemFromSessionStorage('total-')));
         }
+        // set initial values of WithoutMotorisationTotal repeat from 2nd : 
+        if (getItemFromSessionStorage('total-2-')) { setWithoutMotorisationTotal2(parseFloat(getItemFromSessionStorage('total-2-'))); }
+        if (getItemFromSessionStorage('total-3-')) { setWithoutMotorisationTotal3(parseFloat(getItemFromSessionStorage('total-3-'))); }
+        if (getItemFromSessionStorage('total-4-')) { setWithoutMotorisationTotal4(parseFloat(getItemFromSessionStorage('total-4-'))); }
+
 
         if (sessionStorage.getItem("blind-type-" + blindNumber) === "" || sessionStorage.getItem("blind-type-" + blindNumber) === null) {
             setCurrentFabricTypes([]);
@@ -196,9 +326,11 @@ const QuotationForm = ({ blindNumber }) => {
             setCurrentFabricTypes(commonFabricTypes);
         }
 
-        if (getItemFromSessionStorage()) {
+
+        if (getItemFromSessionStorage('blind-type') || getItemFromSessionStorage('fabric-type') || currentFabricTypes) {
             blindBandChooser(getItemFromSessionStorage('blind-type'), getItemFromSessionStorage('fabric-type'), currentFabricTypes)
         }
+
 
         return true;
     };
@@ -221,13 +353,20 @@ const QuotationForm = ({ blindNumber }) => {
 
     useEffect(() => {
         fetchExcelSheetData();
-
         setInitialValuesToFormData();
+
+        setTimeout(() => {
+            setWidthDepthMappingInJsx([
+                { elementNo: 1, width: currentBlindWidth, depth: currentBlindDepth },
+                { elementNo: 2, width: currentBlindWidth2, depth: currentBlindDepth2 },
+                { elementNo: 3, width: currentBlindWidth3, depth: currentBlindDepth3 },
+                { elementNo: 4, width: currentBlindWidth4, depth: currentBlindDepth4 },
+            ])
+        }, 500);
+
     }, [])
 
     useEffect(() => {
-
-        console.log(">>>", typeof selectedReceiverTypeExcelValue);
 
         // To get the fabric array for selected blind
         if (sessionStorage.getItem("blind-type-" + blindNumber) === "" || sessionStorage.getItem("blind-type-" + blindNumber) === null) {
@@ -274,14 +413,23 @@ const QuotationForm = ({ blindNumber }) => {
 
     async function handleBlindChangeInput(e) {
         setcurrentFabricType("");
-        sessionStorage.removeItem("fabric-type-"+blindNumber);
+        sessionStorage.removeItem("fabric-type-" + blindNumber);
 
         setcurrentBlindWidth("");
-        sessionStorage.removeItem("width-"+blindNumber);
+        sessionStorage.removeItem("width-" + blindNumber);
+        // set width to unselected repeat from 2nd : 
+        setcurrentBlindWidth2(""); sessionStorage.removeItem("width-2-" + blindNumber);
+        setcurrentBlindWidth3(""); sessionStorage.removeItem("width-3-" + blindNumber);
+        setcurrentBlindWidth4(""); sessionStorage.removeItem("width-4-" + blindNumber);
 
         setcurrentBlindDepth("");
-        sessionStorage.removeItem("depth-"+blindNumber);
-        
+        sessionStorage.removeItem("depth-" + blindNumber);
+        // set width to unselected repeat from 2nd : 
+        setcurrentBlindDepth2(""); sessionStorage.removeItem("depth-2-" + blindNumber);
+        setcurrentBlindDepth3(""); sessionStorage.removeItem("depth-3-" + blindNumber);
+        setcurrentBlindDepth4(""); sessionStorage.removeItem("depth-4-" + blindNumber);
+
+
         setCurrentBlindType(e.target.value);
         console.log(e.target.value);
         sessionStorage.setItem("blind-type-" + blindNumber, e.target.value);
@@ -335,9 +483,17 @@ const QuotationForm = ({ blindNumber }) => {
 
         setcurrentBlindWidth("");
         sessionStorage.removeItem("width-" + blindNumber);
+        // set width to unselected repeat from 2nd : 
+        setcurrentBlindWidth2(""); sessionStorage.removeItem("width-2-" + blindNumber);
+        setcurrentBlindWidth3(""); sessionStorage.removeItem("width-3-" + blindNumber);
+        setcurrentBlindWidth4(""); sessionStorage.removeItem("width-4-" + blindNumber);
 
         setcurrentBlindDepth("");
         sessionStorage.removeItem("depth-" + blindNumber);
+        // set width to unselected repeat from 2nd : 
+        setcurrentBlindDepth2(""); sessionStorage.removeItem("depth-2-" + blindNumber);
+        setcurrentBlindDepth3(""); sessionStorage.removeItem("depth-3-" + blindNumber);
+        setcurrentBlindDepth4(""); sessionStorage.removeItem("depth-4-" + blindNumber);
 
         // Get blind band 
         if (e.target.value) {
@@ -358,50 +514,86 @@ const QuotationForm = ({ blindNumber }) => {
 
     }
 
-    async function handleWidthChangeInput(e) {
-        setcurrentBlindWidth(e.target.value);
-        sessionStorage.setItem("width-" + blindNumber, e.target.value);
+    async function handleWidthChangeInput(e, elementNo) {
 
-        if (currentBlindDepth || currentBlindDepth !== "") {
-            widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth)
-            setItemValueInSessionStorageKey('widthxdepth-', widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth))
-            // setTimeout(() => {
-            // setWithoutMotorisationTotal(excelData[widthxDepthRowIndex][bandType])
-            // }, 500);
+        if (elementNo === 1) {
+            setcurrentBlindWidth(e.target.value);
+            sessionStorage.setItem("width-" + blindNumber, e.target.value);
+
+            if (currentBlindDepth || currentBlindDepth !== "") {
+                widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth, 1)
+                setItemValueInSessionStorageKey('widthxdepth-', widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth, 1))
+            }
         }
+        // repeat condition from 2nd : 
+        else if (elementNo === 2) {
+            setcurrentBlindWidth2(e.target.value);
+            sessionStorage.setItem("width-2-" + blindNumber, e.target.value);
 
-        // if (currentBlindDepth || currentBlindDepth !== "") {
-        //     let myPromise = new Promise(function (myResolve, myReject) {
-        //         widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth)
+            if (currentBlindDepth2 || currentBlindDepth2 !== "") {
+                widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth2, 2)
+                setItemValueInSessionStorageKey('widthxdepth-2-', widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth2, 2))
+            }
+        }
+        else if (elementNo === 3) {
+            setcurrentBlindWidth3(e.target.value);
+            sessionStorage.setItem("width-3-" + blindNumber, e.target.value);
 
-        //         myResolve(); // when successful
-        //         myReject();  // when error
-        //     });
+            if (currentBlindDepth3 || currentBlindDepth3 !== "") {
+                widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth3, 3)
+                setItemValueInSessionStorageKey('widthxdepth-2-', widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth3, 3))
+            }
+        }
+        else if (elementNo === 4) {
+            setcurrentBlindWidth4(e.target.value);
+            sessionStorage.setItem("width-4-" + blindNumber, e.target.value);
 
-        //     // "Consuming Code" (Must wait for a fulfilled Promise)
-        //     myPromise.then(
-        //         function (value) {
-        //             setWithoutMotorisationTotal(excelData[widthxDepthRowIndex][bandType])
-        //         },
-        //         function (error) {
-        //             console.log("proise error : " + error)
-        //         }
-        //     );
-        // }
+            if (currentBlindDepth4 || currentBlindDepth4 !== "") {
+                widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth4, 4)
+                setItemValueInSessionStorageKey('widthxdepth-2-', widthxDepthRowNumber(currentBlindType, e.target.value, currentBlindDepth4, 4))
+            }
+        }
     }
 
-    async function handleDepthChangeInput(e) {
-        setcurrentBlindDepth(e.target.value);
-        sessionStorage.setItem("depth-" + blindNumber, e.target.value);
+    async function handleDepthChangeInput(e, elementNo) {
+        if (elementNo === 1) {
+            setcurrentBlindDepth(e.target.value);
+            sessionStorage.setItem("depth-" + blindNumber, e.target.value);
 
-        if (currentBlindWidth || currentBlindWidth !== "NA" || currentBlindWidth !== "") {
-            widthxDepthRowNumber(currentBlindType, currentBlindWidth, e.target.value)
-            setItemValueInSessionStorageKey('widthxdepth-', widthxDepthRowNumber(currentBlindType, currentBlindWidth, e.target.value))
-
-            // setTimeout(() => {
-            //     setWithoutMotorisationTotal(excelData[widthxDepthRowIndex][bandType])
-            // }, 500);
+            if (currentBlindWidth || currentBlindWidth !== "NA" || currentBlindWidth !== "") {
+                widthxDepthRowNumber(currentBlindType, currentBlindWidth, e.target.value, 1)
+                setItemValueInSessionStorageKey('widthxdepth-', widthxDepthRowNumber(currentBlindType, currentBlindWidth, e.target.value, 1))
+            }
         }
+        // repeat condition from 2nd : 
+        else if (elementNo === 2) {
+            setcurrentBlindDepth2(e.target.value);
+            sessionStorage.setItem("depth-2-" + blindNumber, e.target.value);
+
+            if (currentBlindWidth2 || currentBlindWidth2 !== "") {
+                widthxDepthRowNumber(currentBlindType, currentBlindWidth2, e.target.value, 2)
+                setItemValueInSessionStorageKey('widthxdepth-2-', widthxDepthRowNumber(currentBlindType, currentBlindWidth2, e.target.value, 2))
+            }
+        }
+        else if (elementNo === 3) {
+            setcurrentBlindDepth3(e.target.value);
+            sessionStorage.setItem("depth-3-" + blindNumber, e.target.value);
+
+            if (currentBlindWidth3 || currentBlindWidth3 !== "") {
+                widthxDepthRowNumber(currentBlindType, currentBlindWidth3, e.target.value, 3)
+                setItemValueInSessionStorageKey('widthxdepth-3-', widthxDepthRowNumber(currentBlindType, currentBlindWidth3, e.target.value, 3))
+            }
+        }
+        else if (elementNo === 4) {
+            setcurrentBlindDepth4(e.target.value);
+            sessionStorage.setItem("depth-4-" + blindNumber, e.target.value);
+
+            if (currentBlindWidth4 || currentBlindWidth4 !== "") {
+                widthxDepthRowNumber(currentBlindType, currentBlindWidth4, e.target.value, 4)
+                setItemValueInSessionStorageKey('widthxdepth-4-', widthxDepthRowNumber(currentBlindType, currentBlindWidth4, e.target.value, 4))
+            }
+        }
+
     }
 
     async function handleMotorTypeChangeInput(e) {
@@ -539,14 +731,51 @@ const QuotationForm = ({ blindNumber }) => {
         setcurrentFabricType("");
         sessionStorage.removeItem("fabric-type-" + blindNumber);
 
+
         setcurrentBlindWidth("");
         sessionStorage.removeItem("width-" + blindNumber);
-
         setcurrentBlindDepth("");
         sessionStorage.removeItem("depth-" + blindNumber);
 
+        // repeat for width and depths from 2nd
+        setcurrentBlindWidth2("");
+        sessionStorage.removeItem("width-2-" + blindNumber);
+        setcurrentBlindDepth2("");
+        sessionStorage.removeItem("depth-2-" + blindNumber);
+
+        setcurrentBlindWidth3("");
+        sessionStorage.removeItem("width-3-" + blindNumber);
+        setcurrentBlindDepth3("");
+        sessionStorage.removeItem("depth-3-" + blindNumber);
+
+        setcurrentBlindWidth4("");
+        sessionStorage.removeItem("width-4-" + blindNumber);
+        setcurrentBlindDepth4("");
+        sessionStorage.removeItem("depth-4-" + blindNumber);
+
+
         setWithoutMotorisationTotal(0)
         removeItemFromSessionStorage('total-')
+
+        // clear setWithoutMotorisationTotal repeat from 2nd
+        setWithoutMotorisationTotal2(0); removeItemFromSessionStorage('total-2-');
+        setWithoutMotorisationTotal3(0); removeItemFromSessionStorage('total-3-');
+        setWithoutMotorisationTotal4(0); removeItemFromSessionStorage('total-4-');
+
+
+        setWidthxDepthRowIndex(null);
+        // setWidthxDepthRowIndex=null repeat from 2nd
+        setWidthxDepthRowIndex2(null);
+        setWidthxDepthRowIndex3(null);
+        setWidthxDepthRowIndex4(null);
+
+
+        removeItemFromSessionStorage('widthxdepth-')
+        // widthxdepth remove from session storage repeat from 2nd
+        removeItemFromSessionStorage('widthxdepth-2-')
+        removeItemFromSessionStorage('widthxdepth-3-')
+        removeItemFromSessionStorage('widthxdepth-4-')
+
 
         setSelectedMotorTypeExcelValue(0)
         setSelectedPowerTypeExcelValue(0);
@@ -562,11 +791,9 @@ const QuotationForm = ({ blindNumber }) => {
 
         setBandType("");
         setMotorisationToggle(false);
-        setWidthxDepthRowIndex(null);
 
         removeItemFromSessionStorage('band-type-')
         removeItemFromSessionStorage('motorization-toggle-')
-        removeItemFromSessionStorage('widthxdepth-')
 
         clearMotorisationValues();
     }
@@ -626,50 +853,163 @@ const QuotationForm = ({ blindNumber }) => {
     function widthxDepthRowNumber(
         blindType,
         width,
-        depth
+        depth,
+        elementNo
     ) {
-        if (blindType === "Freehang") {
-            setWidthxDepthRowIndex(
-                freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-            return freeHangWidthxDepthColumnData.indexOf(width + "x" + depth);
-        } else if (blindType === "Motorized Freehang") {
-            setWidthxDepthRowIndex(
-                motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-            return motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth);
-        } else if (blindType === "Three Bars") {
-            setWidthxDepthRowIndex(
-                threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-        } else if (blindType === "Motorized Three Bars") {
-            setWidthxDepthRowIndex(
-                motorizedThreeBarsWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-        } else if (blindType === "Perfect Fit") {
-            setWidthxDepthRowIndex(
-                perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-        } else if (blindType === "Perfect Fit Venetian") {
-            setWidthxDepthRowIndex(
-                perfectFitVenetianWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-        } else if (blindType === "Lantern") {
-            setWidthxDepthRowIndex(
-                lanternWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
-        } else if (blindType === "Conservatory Roofs") {
-            setWidthxDepthRowIndex(
-                conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth)
-            );
+
+        // NOTE: implete this as per element no -> this function called in handleWidthChangeInput
+
+        if (elementNo === 1) {
+            if (blindType === "Freehang") {
+                setWidthxDepthRowIndex(
+                    freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+                return freeHangWidthxDepthColumnData.indexOf(width + "x" + depth);
+            } else if (blindType === "Motorized Freehang") {
+                setWidthxDepthRowIndex(
+                    motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+                return motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth);
+            } else if (blindType === "Three Bars") {
+                setWidthxDepthRowIndex(
+                    threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Three Bars") {
+                setWidthxDepthRowIndex(
+                    motorizedThreeBarsWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit") {
+                setWidthxDepthRowIndex(
+                    perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit Venetian") {
+                setWidthxDepthRowIndex(
+                    perfectFitVenetianWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Lantern") {
+                setWidthxDepthRowIndex(
+                    lanternWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Conservatory Roofs") {
+                setWidthxDepthRowIndex(
+                    conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            }
         }
+        // repeat for elementNo from 2nd
+        else if (elementNo === 2) {
+            if (blindType === "Freehang") {
+                setWidthxDepthRowIndex2(
+                    freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Freehang") {
+                setWidthxDepthRowIndex2(
+                    motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Three Bars") {
+                setWidthxDepthRowIndex2(
+                    threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Three Bars") {
+                setWidthxDepthRowIndex2(
+                    motorizedThreeBarsWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit") {
+                setWidthxDepthRowIndex2(
+                    perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit Venetian") {
+                setWidthxDepthRowIndex2(
+                    perfectFitVenetianWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Lantern") {
+                setWidthxDepthRowIndex2(
+                    lanternWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Conservatory Roofs") {
+                setWidthxDepthRowIndex2(
+                    conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            }
+        }
+        else if (elementNo === 3) {
+            if (blindType === "Freehang") {
+                setWidthxDepthRowIndex3(
+                    freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Freehang") {
+                setWidthxDepthRowIndex3(
+                    motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Three Bars") {
+                setWidthxDepthRowIndex3(
+                    threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Three Bars") {
+                setWidthxDepthRowIndex3(
+                    motorizedThreeBarsWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit") {
+                setWidthxDepthRowIndex3(
+                    perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit Venetian") {
+                setWidthxDepthRowIndex3(
+                    perfectFitVenetianWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Lantern") {
+                setWidthxDepthRowIndex3(
+                    lanternWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Conservatory Roofs") {
+                setWidthxDepthRowIndex3(
+                    conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            }
+        }
+        else if (elementNo === 4) {
+            if (blindType === "Freehang") {
+                setWidthxDepthRowIndex4(
+                    freeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Freehang") {
+                setWidthxDepthRowIndex4(
+                    motorizedFreeHangWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Three Bars") {
+                setWidthxDepthRowIndex4(
+                    threeBarWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Motorized Three Bars") {
+                setWidthxDepthRowIndex4(
+                    motorizedThreeBarsWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit") {
+                setWidthxDepthRowIndex4(
+                    perfectFitWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Perfect Fit Venetian") {
+                setWidthxDepthRowIndex4(
+                    perfectFitVenetianWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Lantern") {
+                setWidthxDepthRowIndex4(
+                    lanternWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            } else if (blindType === "Conservatory Roofs") {
+                setWidthxDepthRowIndex4(
+                    conservatoryWidthxDepthColumnData.indexOf(width + "x" + depth)
+                );
+            }
+        }
+
+
     }
 
     const calculate = async () => {
 
-
-        if (!currentBlindType || !currentFabricType || !currentBlindWidth || !currentBlindDepth) {
-            alert("* fields are required")
+        if (!currentBlindType || !currentFabricType) {
+            alert("BlindType and FabricType fields are required")
             return
         }
 
@@ -678,7 +1018,13 @@ const QuotationForm = ({ blindNumber }) => {
 
         // to calculate values above the calculate button
         let myPromise = new Promise(function (myResolve, myReject) {
-            widthxDepthRowNumber(currentBlindType, currentBlindWidth, currentBlindDepth)
+
+            if (currentBlindWidth && currentBlindDepth) { widthxDepthRowNumber(currentBlindType, currentBlindWidth, currentBlindDepth, 1) }
+            // repeat to calculate  widthxDepthRowNumber from 2nd
+            if (currentBlindWidth2 && currentBlindDepth2) { widthxDepthRowNumber(currentBlindType, currentBlindWidth2, currentBlindDepth2, 2) }
+            if (currentBlindWidth3 && currentBlindDepth3) { widthxDepthRowNumber(currentBlindType, currentBlindWidth3, currentBlindDepth3, 3) }
+            if (currentBlindWidth4 && currentBlindDepth4) { widthxDepthRowNumber(currentBlindType, currentBlindWidth4, currentBlindDepth4, 4) }
+
 
             myResolve(); // when successful
             myReject();  // when error
@@ -687,11 +1033,28 @@ const QuotationForm = ({ blindNumber }) => {
         // "Consuming Code" (Must wait for a fulfilled Promise)
         myPromise.then(
             function () {
-                console.log("full targeted object: " + widthxDepthRowIndex);
-                console.log("Without Motorisation Total : " + excelData[widthxDepthRowIndex][bandType]);
+                // console.log("full targeted object: " + widthxDepthRowIndex);
+                // console.log("Without Motorisation Total : " + excelData[widthxDepthRowIndex][bandType]);
 
-                setWithoutMotorisationTotal(excelData[widthxDepthRowIndex][bandType])
-                setItemValueInSessionStorageKey('total-', parseFloat(excelData[widthxDepthRowIndex][bandType]))
+                console.log(widthxDepthRowIndex, " ", widthxDepthRowIndex2, " ", widthxDepthRowIndex3, " ", widthxDepthRowIndex4);
+
+                if (widthxDepthRowIndex) {
+                    setWithoutMotorisationTotal(excelData[widthxDepthRowIndex][bandType])
+                    setItemValueInSessionStorageKey('total-', parseFloat(excelData[widthxDepthRowIndex][bandType]))
+                }
+                // repeat to calculate setWithoutMotorisationTotal from 2nd 
+                if (widthxDepthRowIndex2) {
+                    setWithoutMotorisationTotal2(excelData[widthxDepthRowIndex2][bandType])
+                    setItemValueInSessionStorageKey('total-2-', parseFloat(excelData[widthxDepthRowIndex2][bandType]))
+                }
+                if (widthxDepthRowIndex3) {
+                    setWithoutMotorisationTotal3(excelData[widthxDepthRowIndex3][bandType])
+                    setItemValueInSessionStorageKey('total-3-', parseFloat(excelData[widthxDepthRowIndex3][bandType]))
+                }
+                if (widthxDepthRowIndex4) {
+                    setWithoutMotorisationTotal4(excelData[widthxDepthRowIndex4][bandType])
+                    setItemValueInSessionStorageKey('total-4-', parseFloat(excelData[widthxDepthRowIndex4][bandType]))
+                }
 
                 setTimeout(() => {
                     setIsCalculating(false);
@@ -724,6 +1087,8 @@ const QuotationForm = ({ blindNumber }) => {
                     <RefreshIcon className=" text-lime-700 h-6 w-6" />
                     &nbsp;&nbsp; <p className="text-lime-700">Refresh</p>
                 </button>
+
+                {/* For blind type input */}
                 <select
                     className="h-12 placeholder-gray-700 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white"
                     onChange={handleBlindChangeInput}
@@ -732,12 +1097,13 @@ const QuotationForm = ({ blindNumber }) => {
                     <option value={""}> ---Select Blind Type---</option>
                     {blindTypes.map((blind, index) => (
                         <option value={blind} key={index}>
-                            {" "}
-                            {blind}{" "}
+
+                            {blind}
                         </option>
                     ))}
                 </select>
 
+                {/* For fabric type input */}
                 <select
                     className="h-12 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white  placeholder-gray-700"
                     onChange={handleFabricChangeInput}
@@ -746,55 +1112,53 @@ const QuotationForm = ({ blindNumber }) => {
                     <option value={""}> ---Select Fabric Type---</option>
                     {currentFabricTypes.map((fabric, index) => (
                         <option value={fabric} key={index}>
-                            {" "}
-                            {fabric}{" "}
+
+                            {fabric}
                         </option>
                     ))}
                 </select>
 
-                <div className="grid grid-cols-2 mt-2 gap-2 ">
-                    <div>
-                        <p className=" pt-1 bg-white text-lime-700 rounded-t-md text-center font-semibold text-base">
-                            WIDTH
-                        </p>
-                        <select
-                            onChange={handleWidthChangeInput}
-                            value={currentBlindWidth}
-                            className=" w-full h-10 rounded-b-md  placeholder-lime-700 p-1 pl-2 border-r-8 border-white font-medium"
-                        >
-                            <option className="" value={""}>
-                                --Select Width--
-                            </option>
-                            {blindTypeWidths.map((width, index) => (
-                                <option value={width} key={index}>
-                                    {" "}
-                                    {width}{" "}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                {/* For width and depth input -> div wrapper of both */}
 
-                    <div>
-                        <p className=" pt-1 bg-white text-lime-700 rounded-t-md text-center font-semibold text-base">
-                            DEPTH
-                        </p>
-                        <select
-                            onChange={handleDepthChangeInput}
-                            value={currentBlindDepth}
-                            className=" w-full h-10 rounded-b-md  placeholder-lime-700 p-1 pl-2 border-r-8 border-white font-medium"
-                        >
-                            <option className="text-lime-700" value={""}>
-                                --Select Depth--
-                            </option>
-                            {blindTypeDepths.map((depth, index) => (
-                                <option value={depth} key={index}>
-                                    {" "}
-                                    {depth}{" "}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
+                <WidthAndDepthInputWrapper
+                    elementNo={1}
+                    handleWidthChangeInput={handleWidthChangeInput}
+                    handleDepthChangeInput={handleDepthChangeInput}
+                    blindTypeWidths={blindTypeWidths}
+                    blindTypeDepths={blindTypeDepths}
+                    currentBlindWidth={currentBlindWidth}
+                    currentBlindDepth={currentBlindDepth}
+                />
+                {/* repeat replicate from 2nd */}
+                <WidthAndDepthInputWrapper
+                    elementNo={2}
+                    handleWidthChangeInput={handleWidthChangeInput}
+                    handleDepthChangeInput={handleDepthChangeInput}
+                    blindTypeWidths={blindTypeWidths}
+                    blindTypeDepths={blindTypeDepths}
+                    currentBlindWidth={currentBlindWidth2}
+                    currentBlindDepth={currentBlindDepth2}
+                />
+                <WidthAndDepthInputWrapper
+                    elementNo={3}
+                    handleWidthChangeInput={handleWidthChangeInput}
+                    handleDepthChangeInput={handleDepthChangeInput}
+                    blindTypeWidths={blindTypeWidths}
+                    blindTypeDepths={blindTypeDepths}
+                    currentBlindWidth={currentBlindWidth3}
+                    currentBlindDepth={currentBlindDepth3}
+                />
+                <WidthAndDepthInputWrapper
+                    elementNo={4}
+                    handleWidthChangeInput={handleWidthChangeInput}
+                    handleDepthChangeInput={handleDepthChangeInput}
+                    blindTypeWidths={blindTypeWidths}
+                    blindTypeDepths={blindTypeDepths}
+                    currentBlindWidth={currentBlindWidth4}
+                    currentBlindDepth={currentBlindDepth4}
+                />
+
+                {/* End of width and depth input -> div wrapper */}
 
                 <button
                     className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-100 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
@@ -805,7 +1169,7 @@ const QuotationForm = ({ blindNumber }) => {
                     ) : (
                         <MinusIcon className=" text-lime-700 h-6 w-6" />
                     )}
-                    &nbsp;&nbsp;{" "}
+                    &nbsp;&nbsp;
                     <p className="text-lime-700 ">
                         {motorisationToggle ? "Remove" : "Add"} Motorisation
                     </p>
@@ -991,7 +1355,7 @@ const QuotationForm = ({ blindNumber }) => {
                             GRAND TOTAL
                         </h1>
                         <h1 className="p-2 font-semibold text-xs sm:text-sm text-lime-700">
-                            (Excluding VAT) £{" "}
+                            (Excluding VAT) £
                             {
                                 motorisationToggle
                                     ? parseFloat(

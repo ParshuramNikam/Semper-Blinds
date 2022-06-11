@@ -22,20 +22,20 @@ export default function Navbar() {
   useEffect(() => {
     if(window.location.href.split("/")[3] && window.location.href.split("/")[3]=== 'QuotationTool' ){
       setIsQuotationToolPage(true);
-
     }
 
+    // const scrollEvent = () => {
+    //   // console.log(window.scrollY);
+    //   if (window.scrollY > 60) {
+    //     setNavBg(""); /* set no color to navbar id > 60 */
+    //   } else {
+    //     setNavBg(""); /* set grdient color to navbar id < 60 */
+    //   }
+    // }
 
-    window.addEventListener("scroll", () => {
-      // console.log(window.scrollY);
-      if (window.scrollY > 60) {
-        setNavBg(""); /* set no color to navbar id > 60 */
-      } else {
-        setNavBg(""); /* set grdient color to navbar id < 60 */
-      }
-    });
+    // window.addEventListener("scroll", scrollEvent);
 
-    return () => window.removeEventListener("scroll");
+    // return () => window.removeEventListener("scroll", scrollEvent);
   }, []);
 
   return (
