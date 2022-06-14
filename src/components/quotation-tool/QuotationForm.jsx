@@ -244,6 +244,13 @@ const QuotationForm = ({ blindNumber }) => {
     const [selectedRemoteTypeExcelValue, setSelectedRemoteTypeExcelValue] = useState(0);
     const [selectedOtherTypeExcelValue, setSelectedOtherTypeExcelValue] = useState(0);
 
+    const [selectedMotorTypeMultiplier, setSelectedMotorTypeMultiplier] = useState(1)
+    const [selectedPowerTypeMultiplier, setSelectedPowerTypeMultiplier] = useState(1)
+    const [selectedReceiverTypeMultiplier, setSelectedReceiverTypeMultiplier] = useState(1)
+    const [selectedRemoteTypeMultiplier, setSelectedRemoteTypeMultiplier] = useState(1)
+    const [selectedOtherTypeMultiplier, setSelectedOtherTypeMultiplier] = useState(1)
+
+
     const [skipInitialValues, setSkipInitialValues] = useState(true);
     const [skipFetchDataFromExcel, setSkipFetchDataFromExcel] = useState(false);
 
@@ -372,15 +379,32 @@ const QuotationForm = ({ blindNumber }) => {
         if (getItemFromSessionStorage("other-type-"))
             setCurrentOtherType(getItemFromSessionStorage("other-type-"));
 
+
         if (getItemFromSessionStorage("motorization-toggle-"))
             setMotorisationToggle(getItemFromSessionStorage("motorization-toggle-"))
+
+
+        if (getItemFromSessionStorage("motor-type-multiplier-"))
+            setSelectedMotorTypeMultiplier(getItemFromSessionStorage("motor-type-multiplier-"));
+
+        if (getItemFromSessionStorage("power-type-multiplier-"))
+            setSelectedPowerTypeMultiplier(getItemFromSessionStorage("power-type-multiplier-"));
+
+        if (getItemFromSessionStorage("receiver-type-multiplier-"))
+            setSelectedReceiverTypeMultiplier(getItemFromSessionStorage("receiver-type-multiplier-"));
+
+        if (getItemFromSessionStorage("remote-type-multiplier-"))
+            setSelectedRemoteTypeMultiplier(getItemFromSessionStorage("remote-type-multiplier-"));
+
+        if (getItemFromSessionStorage("other-type-multiplier-"))
+            setSelectedOtherTypeMultiplier(getItemFromSessionStorage("other-type-multiplier-"));
+
 
         if (getItemFromSessionStorage("motor-price-"))
             setSelectedMotorTypeExcelValue(parseFloat(getItemFromSessionStorage("motor-price-")))
 
-        if (getItemFromSessionStorage("power-price-")) {
+        if (getItemFromSessionStorage("power-price-"))
             setSelectedPowerTypeExcelValue(parseFloat(getItemFromSessionStorage("power-price-")))
-        }
 
         if (getItemFromSessionStorage("receiver-price-"))
             setSelectedReceiverTypeExcelValue(parseFloat(getItemFromSessionStorage("receiver-price-")))
@@ -1366,6 +1390,52 @@ const QuotationForm = ({ blindNumber }) => {
         }
     }
 
+    const checkNumberShouldApply = (inputNum) => {
+        let outputNum = 1;
+        if (isNaN(inputNum) || inputNum < 0) {
+            outputNum = 1;
+        } else {
+            outputNum = inputNum;
+        }
+        return parseInt(outputNum);
+    }
+
+    const selectedMotorTypeMultiplierHandler = (e) => {
+
+        setSelectedMotorTypeMultiplier(checkNumberShouldApply(e.target.value));
+        sessionStorage.setItem('motor-type-multiplier-' + blindNumber, checkNumberShouldApply(e.target.value));
+
+        // if (e.target.value) setSelectedMotorTypeExcelValue(selectedMotorTypeExcelValue * parseInt(e.target.value));
+    }
+
+    const selectedPowerTypeMultiplierHandler = (e) => {
+        setSelectedPowerTypeMultiplier(checkNumberShouldApply(e.target.value));
+        sessionStorage.setItem('power-type-multiplier-' + blindNumber, checkNumberShouldApply(e.target.value));
+
+        // if (e.target.value) setSelectedPowerTypeExcelValue(selectedPowerTypeExcelValue * parseInt(e.target.value));
+    }
+
+    const selectedReceiverTypeMultiplierHandler = (e) => {
+        setSelectedReceiverTypeMultiplier(checkNumberShouldApply(e.target.value));
+        sessionStorage.setItem('receiver-type-multiplier-' + blindNumber, checkNumberShouldApply(e.target.value));
+
+        // if (e.target.value) setSelectedReceiverTypeExcelValue(selectedReceiverTypeExcelValue * parseInt(e.target.value));
+    }
+    const selectedRemoteTypeMultiplierHandler = (e) => {
+        setSelectedRemoteTypeMultiplier(checkNumberShouldApply(e.target.value));
+        sessionStorage.setItem('remote-type-multiplier-' + blindNumber, checkNumberShouldApply(e.target.value));
+
+        // if (e.target.value) setSelectedRemoteTypeExcelValue(selectedRemoteTypeExcelValue * parseInt(e.target.value));
+    }
+    const selectedOtherTypeMultiplierHandler = (e) => {
+        setSelectedOtherTypeMultiplier(checkNumberShouldApply(e.target.value));
+        sessionStorage.setItem('other-type-multiplier-' + blindNumber, checkNumberShouldApply(e.target.value));
+
+        // if (e.target.value) setSelectedOtherTypeExcelValue(selectedOtherTypeExcelValue * parseInt(e.target.value));
+    }
+
+
+
     function clearMotorisationValues() {
         setCurrentMotorType("");
         sessionStorage.removeItem("motor-type-" + blindNumber);
@@ -1602,6 +1672,12 @@ const QuotationForm = ({ blindNumber }) => {
         removeItemFromSessionStorage('receiver-price-');
         removeItemFromSessionStorage('remote-price-')
         removeItemFromSessionStorage('other-price-')
+
+        removeItemFromSessionStorage('motor-type-multiplier-');
+        removeItemFromSessionStorage('power-type-multiplier-');
+        removeItemFromSessionStorage('receiver-type-multiplier-');
+        removeItemFromSessionStorage('remote-type-multiplier-');
+        removeItemFromSessionStorage('other-type-multiplier-');
 
         setBandType("");
         setMotorisationToggle(false);
@@ -3246,7 +3322,8 @@ const QuotationForm = ({ blindNumber }) => {
                             currentBlindDepth={currentBlindDepth30}
                         />
                     </div>
-                    <button
+
+                    {/* <button
                         onClick={calculate}
                         className="hidden sm:block shadow-xl w-12 mt-3 my-3 text-lg font-semibold p-2.5 break-words bg-sky-900 hover:bg-sky-800 text-white rounded-lg "
                     >
@@ -3259,18 +3336,52 @@ const QuotationForm = ({ blindNumber }) => {
                         </>
                         )}
                         <br />
-                        C <br />  <br /> <br />
-                        A <br />  <br /> <br />
-                        L <br />  <br /> <br />
-                        C <br />  <br /> <br />
-                        U <br />  <br /> <br />
-                        L <br />  <br /> <br />
-                        A <br />  <br /> <br />
-                        T <br />  <br /> <br />
-                        E <br />  <br /> <br />
+                        C<br />A<br />L<br />C<br />U<br />L<br />A<br />T<br />E
+                        <br /><br />—<br /><br />
+
+                        C<br />A<br />L<br />C<br />U<br />L<br />A<br />T<br />E
+                        <br /><br />—<br /><br />
+
+                        {isCalculating && (<>
+                            <svg role="status" className="w-4 h-4  text-gray-200 animate-spin dark:text-white fill-sky-900" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                            </svg>
+                        </>
+                        )}
+
+                        C<br />A<br />L<br />C<br />U<br />L<br />A<br />T<br />E
+
+                        {isCalculating && (<>
+                            <svg role="status" className="w-4 h-4  text-gray-200 animate-spin dark:text-white fill-sky-900" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                            </svg>
+                        </>
+                        )}
+                        <br /><br />—<br /><br />
+
+                        C<br />A<br />L<br />C<br />U<br />L<br />A<br />T<br />E
+                        <br /><br />—<br /><br />
+
+                        C<br />A<br />L<br />C<br />U<br />L<br />A<br />T<br />E
+                        <br /><br />—<br /><br />
+
+                        C<br />A<br />L<br />C<br />U<br />L<br />A<br />T<br />E<br />
+                        {isCalculating && (<>
+                            <svg role="status" className="w-4 h-4  text-gray-200 animate-spin dark:text-white fill-sky-900" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                            </svg>
+                        </>
+                        )}
                         <br />
-                    </button>
-                    <div className="hidden sm:grid grid-cols-2 gap-2 mt-2 w-4/5">
+                    </button> */}
+
+                    {/* <div className="hidden sm:grid grid-cols-2 gap-2 mt-2 w-4/5">
                         <div className="">
                             <ShowTotalRightSideColumnBox elementNo={1} total={parseFloat(withoutMotorisationTotal).toFixed(2)} />
                             <ShowTotalRightSideColumnBox elementNo={2} total={parseFloat(withoutMotorisationTotal2).toFixed(2)} />
@@ -3304,44 +3415,256 @@ const QuotationForm = ({ blindNumber }) => {
                             <ShowTotalRightSideColumnBox elementNo={30} total={parseFloat(withoutMotorisationTotal30).toFixed(2)} />
                         </div>
                         <div>
-                            <ShowGrandTotalRightSideColumnBox elementNo={1} grandTotal={currentBlindWidth && currentBlindDepth ? parseFloat(withoutMotorisationTotal + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={2} grandTotal={currentBlindWidth2 && currentBlindDepth2 ? parseFloat(withoutMotorisationTotal2 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={3} grandTotal={currentBlindWidth3 && currentBlindDepth3 ? parseFloat(withoutMotorisationTotal3 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={4} grandTotal={currentBlindWidth4 && currentBlindDepth4 ? parseFloat(withoutMotorisationTotal4 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={5} grandTotal={currentBlindWidth5 && currentBlindDepth5 ? parseFloat(withoutMotorisationTotal5 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={6} grandTotal={currentBlindWidth6 && currentBlindDepth6 ? parseFloat(withoutMotorisationTotal6 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={7} grandTotal={currentBlindWidth7 && currentBlindDepth7 ? parseFloat(withoutMotorisationTotal7 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={8} grandTotal={currentBlindWidth8 && currentBlindDepth8 ? parseFloat(withoutMotorisationTotal8 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={9} grandTotal={currentBlindWidth9 && currentBlindDepth9 ? parseFloat(withoutMotorisationTotal9 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={10} grandTotal={currentBlindWidth10 && currentBlindDepth10 ? parseFloat(withoutMotorisationTotal10 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={11} grandTotal={currentBlindWidth11 && currentBlindDepth11 ? parseFloat(withoutMotorisationTotal11 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={12} grandTotal={currentBlindWidth12 && currentBlindDepth12 ? parseFloat(withoutMotorisationTotal12 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={13} grandTotal={currentBlindWidth13 && currentBlindDepth13 ? parseFloat(withoutMotorisationTotal13 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={14} grandTotal={currentBlindWidth14 && currentBlindDepth14 ? parseFloat(withoutMotorisationTotal14 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={15} grandTotal={currentBlindWidth15 && currentBlindDepth15 ? parseFloat(withoutMotorisationTotal15 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={16} grandTotal={currentBlindWidth16 && currentBlindDepth16 ? parseFloat(withoutMotorisationTotal16 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={17} grandTotal={currentBlindWidth17 && currentBlindDepth17 ? parseFloat(withoutMotorisationTotal17 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={18} grandTotal={currentBlindWidth18 && currentBlindDepth18 ? parseFloat(withoutMotorisationTotal18 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={19} grandTotal={currentBlindWidth19 && currentBlindDepth19 ? parseFloat(withoutMotorisationTotal19 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={20} grandTotal={currentBlindWidth20 && currentBlindDepth20 ? parseFloat(withoutMotorisationTotal20 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={21} grandTotal={currentBlindWidth21 && currentBlindDepth21 ? parseFloat(withoutMotorisationTotal21 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={22} grandTotal={currentBlindWidth22 && currentBlindDepth22 ? parseFloat(withoutMotorisationTotal22 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={23} grandTotal={currentBlindWidth23 && currentBlindDepth23 ? parseFloat(withoutMotorisationTotal23 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={24} grandTotal={currentBlindWidth24 && currentBlindDepth24 ? parseFloat(withoutMotorisationTotal24 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={25} grandTotal={currentBlindWidth25 && currentBlindDepth25 ? parseFloat(withoutMotorisationTotal25 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={26} grandTotal={currentBlindWidth26 && currentBlindDepth26 ? parseFloat(withoutMotorisationTotal26 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={27} grandTotal={currentBlindWidth27 && currentBlindDepth27 ? parseFloat(withoutMotorisationTotal27 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={28} grandTotal={currentBlindWidth28 && currentBlindDepth28 ? parseFloat(withoutMotorisationTotal28 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={29} grandTotal={currentBlindWidth29 && currentBlindDepth29 ? parseFloat(withoutMotorisationTotal29 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                            <ShowGrandTotalRightSideColumnBox elementNo={30} grandTotal={currentBlindWidth30 && currentBlindDepth30 ? parseFloat(withoutMotorisationTotal30 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={1} grandTotal={currentBlindWidth && currentBlindDepth ? parseFloat(
+                                withoutMotorisationTotal
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={2} grandTotal={currentBlindWidth2 && currentBlindDepth2 ? parseFloat(
+                                withoutMotorisationTotal2
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={3} grandTotal={currentBlindWidth3 && currentBlindDepth3 ? parseFloat(
+                                withoutMotorisationTotal3
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={4} grandTotal={currentBlindWidth4 && currentBlindDepth4 ? parseFloat(
+                                withoutMotorisationTotal4
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={5} grandTotal={currentBlindWidth5 && currentBlindDepth5 ? parseFloat(
+                                withoutMotorisationTotal5
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={6} grandTotal={currentBlindWidth6 && currentBlindDepth6 ? parseFloat(
+                                withoutMotorisationTotal6
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={7} grandTotal={currentBlindWidth7 && currentBlindDepth7 ? parseFloat(
+                                withoutMotorisationTotal7
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={8} grandTotal={currentBlindWidth8 && currentBlindDepth8 ? parseFloat(
+                                withoutMotorisationTotal8
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={9} grandTotal={currentBlindWidth9 && currentBlindDepth9 ? parseFloat(
+                                withoutMotorisationTotal9
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={10} grandTotal={currentBlindWidth10 && currentBlindDepth10 ? parseFloat(
+                                withoutMotorisationTotal10
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={11} grandTotal={currentBlindWidth11 && currentBlindDepth11 ? parseFloat(
+                                withoutMotorisationTotal11
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={12} grandTotal={currentBlindWidth12 && currentBlindDepth12 ? parseFloat(
+                                withoutMotorisationTotal12
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={13} grandTotal={currentBlindWidth13 && currentBlindDepth13 ? parseFloat(
+                                withoutMotorisationTotal13
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={14} grandTotal={currentBlindWidth14 && currentBlindDepth14 ? parseFloat(
+                                withoutMotorisationTotal14
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={15} grandTotal={currentBlindWidth15 && currentBlindDepth15 ? parseFloat(
+                                withoutMotorisationTotal15
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={16} grandTotal={currentBlindWidth16 && currentBlindDepth16 ? parseFloat(
+                                withoutMotorisationTotal16
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={17} grandTotal={currentBlindWidth17 && currentBlindDepth17 ? parseFloat(
+                                withoutMotorisationTotal17
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={18} grandTotal={currentBlindWidth18 && currentBlindDepth18 ? parseFloat(
+                                withoutMotorisationTotal18
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={19} grandTotal={currentBlindWidth19 && currentBlindDepth19 ? parseFloat(
+                                withoutMotorisationTotal19
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={20} grandTotal={currentBlindWidth20 && currentBlindDepth20 ? parseFloat(
+                                withoutMotorisationTotal20
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={21} grandTotal={currentBlindWidth21 && currentBlindDepth21 ? parseFloat(
+                                withoutMotorisationTotal21
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={22} grandTotal={currentBlindWidth22 && currentBlindDepth22 ? parseFloat(
+                                withoutMotorisationTotal22
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={23} grandTotal={currentBlindWidth23 && currentBlindDepth23 ? parseFloat(
+                                withoutMotorisationTotal23
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={24} grandTotal={currentBlindWidth24 && currentBlindDepth24 ? parseFloat(
+                                withoutMotorisationTotal24
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={25} grandTotal={currentBlindWidth25 && currentBlindDepth25 ? parseFloat(
+                                withoutMotorisationTotal25
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={26} grandTotal={currentBlindWidth26 && currentBlindDepth26 ? parseFloat(
+                                withoutMotorisationTotal26
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={27} grandTotal={currentBlindWidth27 && currentBlindDepth27 ? parseFloat(
+                                withoutMotorisationTotal27
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={28} grandTotal={currentBlindWidth28 && currentBlindDepth28 ? parseFloat(
+                                withoutMotorisationTotal28
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={29} grandTotal={currentBlindWidth29 && currentBlindDepth29 ? parseFloat(
+                                withoutMotorisationTotal29
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+                            <ShowGrandTotalRightSideColumnBox elementNo={30} grandTotal={currentBlindWidth30 && currentBlindDepth30 ? parseFloat(
+                                withoutMotorisationTotal30
+                                + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                            ).toFixed(2) : '0.00'} />
+
                         </div>
-                    </div>
+                    </div> */}
+
                 </div>
 
                 {/* End of width and depth input -> div wrapper */}
 
                 <button
-                    className="mt-2 w-full flex mx-auto  text-gray-500 bg-lime-100 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
+                    className="mt-3 w-full flex mx-auto  text-gray-500 bg-lime-100 px-3 py-2 rounded-lg text-base justify-center font-semibold text-center"
                     onClick={motorisationAddRemoveHandler}
                 >
                     {!motorisationToggle ? (
@@ -3356,77 +3679,184 @@ const QuotationForm = ({ blindNumber }) => {
                 </button>
 
                 {motorisationToggle && (
-                    <div className="w-fit max-w-3xl">
-                        <select
-                            onChange={handleMotorTypeChangeInput}
-                            value={currentMotorType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
-                        >
-                            <option value={""}> ---Select Motor Type---</option>
-                            {motorTypes.map((motor, index) => (
-                                <option value={motor} key={index}>
-                                    {motor}
-                                </option>
-                            ))}
-                        </select>
+                    <div className="max-w-3xl">
+                        <div className="mt-2 flex items-center gap-3 w-full">
+                            <select
+                                onChange={handleMotorTypeChangeInput}
+                                value={currentMotorType}
+                                className="grow h-10 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
+                            >
+                                <option value={""}> ---Select Motor Type---</option>
+                                {motorTypes.map((motor, index) => (
+                                    <option value={motor} key={index}>
+                                        {motor}
+                                    </option>
+                                ))}
+                            </select>
 
-                        <select
-                            onChange={handlePowerTypeChangeInput}
-                            value={currentPowerType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
-                        >
-                            <option value={""}> ---Select Power Type---</option>
-                            {powerOptions.map((power, index) => (
-                                <option value={power} key={index}>
-                                    {power}
-                                </option>
-                            ))}
-                        </select>
+                            {
+                                currentMotorType &&
+                                <div className="flex items-center mt-">
+                                    <div class="flex my-1 ">
+                                        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 ">
+                                            {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg> */}
+                                            Qty
+                                        </span>
+                                        <input type="number" id="power_multiple"
+                                            class="w-16 sm:w-20 rounded-none rounded-r bg-gray-50 border text-gray-900 focus:outline-none block flex-1 min-w-0 text-sm border-gray-300 p-2.5 "
+                                            placeholder="1" min="1"
+                                            value={selectedMotorTypeMultiplier}
+                                            onChange={selectedMotorTypeMultiplierHandler}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                        </div>
 
-                        <select
-                            onChange={handleReceiverTypeChangeInput}
-                            value={currentReceiverType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
-                        >
-                            <option value={""}> ---Select Receiver Type---</option>
-                            {receiverOptions.map((receiver, index) => (
-                                <option value={receiver} key={index}>
-                                    {receiver}
-                                </option>
-                            ))}
-                        </select>
+                        <div className="mt-2 flex items-center gap-3 w-full">
+                            <select
+                                onChange={handlePowerTypeChangeInput}
+                                value={currentPowerType}
+                                className="grow h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
+                            >
+                                <option value={""}> ---Select Power Type---</option>
+                                {powerOptions.map((power, index) => (
+                                    <option value={power} key={index}>
+                                        {power}
+                                    </option>
+                                ))}
+                            </select>
+                            {
+                                currentPowerType &&
+                                <div className="flex items-center mt-2">
+                                    <div class="flex my-1 ">
+                                        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 ">
+                                            {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg> */}
+                                            Qty
+                                        </span>
+                                        <input type="number" id="power_multiple"
+                                            class="w-16 sm:w-20 rounded-none rounded-r bg-gray-50 border text-gray-900 focus:outline-none block flex-1 min-w-0 text-sm border-gray-300 p-2.5 "
+                                            placeholder="1" min="1"
+                                            value={selectedPowerTypeMultiplier}
+                                            onChange={selectedPowerTypeMultiplierHandler}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                        </div>
 
-                        <select
-                            onChange={handleRemoteTypeChangeInput}
-                            value={currentRemoteType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
-                        >
-                            <option value={""}> ---Select Remote Type---</option>
-                            {remoteOptions.map((remote, index) => (
-                                <option value={remote} key={index}>
-                                    {remote}
-                                </option>
-                            ))}
-                        </select>
+                        <div className="mt-2 flex items-center gap-3 w-full">
+                            <select
+                                onChange={handleReceiverTypeChangeInput}
+                                value={currentReceiverType}
+                                className="grow h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
+                            >
+                                <option value={""}> ---Select Receiver Type---</option>
+                                {receiverOptions.map((receiver, index) => (
+                                    <option value={receiver} key={index}>
+                                        {receiver}
+                                    </option>
+                                ))}
+                            </select>
+                            {
+                                currentReceiverType &&
+                                <div className="flex items-center mt-2">
+                                    <div class="flex my-1 ">
+                                        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 ">
+                                            {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg> */}
+                                            Qty
+                                        </span>
+                                        <input type="number" id="receiver_multiple"
+                                            class="w-16 sm:w-20 rounded-none rounded-r bg-gray-50 border text-gray-900 focus:outline-none block flex-1 min-w-0 text-sm border-gray-300 p-2.5 "
+                                            placeholder="1" min="1"
+                                            value={selectedReceiverTypeMultiplier}
+                                            onChange={selectedReceiverTypeMultiplierHandler}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                        </div>
 
-                        <select
-                            onChange={handleOtherTypeChangeInput}
-                            value={currentOtherType}
-                            className="h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
-                        >
-                            <option value={""}> ---Select Other Type---</option>
-                            {otherOptions.map((option, index) => (
-                                <option value={option} key={index}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
+                        <div className="mt-2 flex items-center gap-3 w-full">
+                            <select
+                                onChange={handleRemoteTypeChangeInput}
+                                value={currentRemoteType}
+                                className="grow h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
+                            >
+                                <option value={""}> ---Select Remote Type---</option>
+                                {remoteOptions.map((remote, index) => (
+                                    <option value={remote} key={index}>
+                                        {remote}
+                                    </option>
+                                ))}
+                            </select>
+                            {
+                                currentRemoteType &&
+                                <div className="flex items-center mt-2">
+                                    <div class="flex my-1 ">
+                                        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 ">
+                                            {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg> */}
+                                            Qty
+                                        </span>
+                                        <input type="number" id="remote_multiple"
+                                            class="w-16 sm:w-20 rounded-none rounded-r bg-gray-50 border text-gray-900 focus:outline-none block flex-1 min-w-0 text-sm border-gray-300 p-2.5 "
+                                            placeholder="1" min="1"
+                                            value={selectedRemoteTypeMultiplier}
+                                            onChange={selectedRemoteTypeMultiplierHandler}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div className="mt-2 flex items-center gap-3 w-full">
+                            <select
+                                onChange={handleOtherTypeChangeInput}
+                                value={currentOtherType}
+                                className="grow h-10 mt-2 w-full rounded-md p-1 pl-2 border-r-8 border-white placeholder-gray-700"
+                            >
+                                <option value={""}> ---Select Other Type---</option>
+                                {otherOptions.map((option, index) => (
+                                    <option value={option} key={index}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                            {
+                                currentOtherType &&
+                                <div className="flex items-center mt-2">
+                                    <div class="flex my-1 ">
+                                        <span class="inline-flex items-center px-3 text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 ">
+                                            {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg> */}
+                                            Qty
+                                        </span>
+                                        <input type="number" id="other_multiple"
+                                            class="w-16 sm:w-20 rounded-none rounded-r bg-gray-50 border text-gray-900 focus:outline-none block flex-1 min-w-0 text-sm border-gray-300 p-2.5 "
+                                            placeholder="1" min="1"
+                                            value={selectedOtherTypeMultiplier}
+                                            onChange={selectedOtherTypeMultiplierHandler}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
                 )}
 
+                {/*  sm:hidden  */}
                 <button
                     onClick={() => { calculate(); }}
-                    className="block sm:hidden w-full my-2 py-2  bg-sky-900 text-white rounded-lg  font-normal"
+                    className="block w-full my-2 py-2  bg-sky-900 text-white rounded-lg  font-normal"
                 >
                     <div className="flex justify-center items-center text-sm sm:text-base  gap-4">
                         {isCalculating && (
@@ -3447,49 +3877,110 @@ const QuotationForm = ({ blindNumber }) => {
                             MOTORISATION
                         </h1>
 
-                        <div className="flex px-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+
+                        <div className="grid grid-cols-3 px-2 justify-between text-center">
+                            <h1 className="grow p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Motor
                             </h1>
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedMotorTypeExcelValue).toFixed(2)}
                             </h1>
-                        </div>
-                        <div className="flex px-2 justify-between text-center">
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                                {
+                                    selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ?
+                                        <>
+                                            £ {parseFloat(selectedMotorTypeExcelValue * selectedMotorTypeMultiplier).toFixed(2)}
+                                        </>
+                                        :
+                                        <>
+                                            £ {parseFloat(selectedMotorTypeExcelValue).toFixed(2)}
+                                        </>
+                                }
+                            </h1>
+                        </div>
+                        <div className="grid grid-cols-3 px-2 justify-between text-center">
+                            <h1 className="grow p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Power
                             </h1>
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedPowerTypeExcelValue).toFixed(2)}
                             </h1>
-                        </div>
-                        <div className="flex px-2 justify-between text-center">
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                                {
+                                    selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ?
+                                        <>
+                                            £ {parseFloat(selectedPowerTypeExcelValue * selectedPowerTypeMultiplier).toFixed(2)}
+                                        </>
+                                        :
+                                        <>
+                                            £ {parseFloat(selectedPowerTypeExcelValue).toFixed(2)}
+                                        </>
+                                }
+                            </h1>
+                        </div>
+                        <div className="grid grid-cols-3 px-2 justify-between text-center">
+                            <h1 className="grow p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Receiver
                             </h1>
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedReceiverTypeExcelValue).toFixed(2)}
                             </h1>
-                        </div>
-                        <div className="flex px-2 justify-between text-center">
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                                {
+                                    selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ?
+                                        <>
+                                            £ {parseFloat(selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier).toFixed(2)}
+                                        </>
+                                        :
+                                        <>
+                                            £ {parseFloat(selectedReceiverTypeExcelValue).toFixed(2)}
+                                        </>
+                                }
+                            </h1>
+                        </div>
+                        <div className="grid grid-cols-3 px-2 justify-between text-center">
+                            <h1 className="grow p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Remote
                             </h1>
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedRemoteTypeExcelValue).toFixed(2)}
                             </h1>
-                        </div>
-                        <div className="flex px-2 justify-between text-center">
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                                {
+                                    selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ?
+                                        <>
+                                            £ {parseFloat(selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier).toFixed(2)}
+                                        </>
+                                        :
+                                        <>
+                                            £ {parseFloat(selectedRemoteTypeExcelValue).toFixed(2)}
+                                        </>
+                                }
+                            </h1>
+                        </div>
+                        <div className="grid grid-cols-3 px-2 justify-between text-center">
+                            <h1 className="grow p-2 font-semibold text-base sm:text-md text-sky-900">
                                 Other
                             </h1>
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
                                 £ {parseFloat(selectedOtherTypeExcelValue).toFixed(2)}
                             </h1>
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                                {
+                                    selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ?
+                                        <>
+                                            £ {parseFloat(selectedOtherTypeExcelValue * selectedOtherTypeMultiplier).toFixed(2)}
+                                        </>
+                                        :
+                                        <>
+                                            £ {parseFloat(selectedOtherTypeExcelValue).toFixed(2)}
+                                        </>
+                                }
+                            </h1>
                         </div>
 
-                        <div className="flex px-2 mb-2 justify-between text-center">
-                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                        <div className="grid grid-cols-3 px-2 mb-2 justify-between text-center border-t-2  border-sky-900">
+                            <h1 className="grow break-words p-2 font-semibold text-xs sm:text-md text-sky-900">
                                 MOTORISATION TOTAL
                             </h1>
                             <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
@@ -3503,45 +3994,414 @@ const QuotationForm = ({ blindNumber }) => {
                                     ).toFixed(2)
                                 }
                             </h1>
+                            <h1 className="p-2 font-semibold text-base sm:text-md text-sky-900">
+                                £ {
+                                    parseFloat(
+                                        (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                        +
+                                        (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                        +
+                                        (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                        +
+                                        (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                        +
+                                        (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                                    ).toFixed(2)
+                                }
+                            </h1>
                         </div>
                     </div>
                 }
 
-                <div className="px-2 sm:hidden flex flex-col justify-center rounded shadow-sm mt-2.5 text-center bg-sky-100">
-                    <h1 className="p-2 font-semibold text-sky-900 border-b-2  border-sky-900">
+                <div className=" flex flex-col px-2  justify-center rounded shadow-sm mt-2.5 text-center bg-sky-100">
+                    <h1 className="p-2 pt-3 font-semibold text-sky-900 border-b-2  border-sky-900">
                         B L I N D S
                     </h1>
                     <div className="">
-                        <ShowBothTotalBelowButton elementNo={1} hideBottomBorder={false} total={withoutMotorisationTotal} grandTotal={currentBlindWidth && currentBlindDepth ? parseFloat(withoutMotorisationTotal + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                        <ShowBothTotalBelowButton elementNo={2} hideBottomBorder={false} total={withoutMotorisationTotal2} grandTotal={currentBlindWidth2 && currentBlindDepth2 ? parseFloat(withoutMotorisationTotal2 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : "0.00"} />
-                        <ShowBothTotalBelowButton elementNo={3} hideBottomBorder={false} total={withoutMotorisationTotal3} grandTotal={currentBlindWidth3 && currentBlindDepth3 ? parseFloat(withoutMotorisationTotal3 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={4} hideBottomBorder={false} total={withoutMotorisationTotal4} grandTotal={currentBlindWidth4 && currentBlindDepth4 ? parseFloat(withoutMotorisationTotal4 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={5} hideBottomBorder={false} total={withoutMotorisationTotal5} grandTotal={currentBlindWidth5 && currentBlindDepth5 ? parseFloat(withoutMotorisationTotal5 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={6} hideBottomBorder={false} total={withoutMotorisationTotal6} grandTotal={currentBlindWidth6 && currentBlindDepth6 ? parseFloat(withoutMotorisationTotal6 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={7} hideBottomBorder={false} total={withoutMotorisationTotal7} grandTotal={currentBlindWidth7 && currentBlindDepth7 ? parseFloat(withoutMotorisationTotal7 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={8} hideBottomBorder={false} total={withoutMotorisationTotal8} grandTotal={currentBlindWidth8 && currentBlindDepth8 ? parseFloat(withoutMotorisationTotal8 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={9} hideBottomBorder={false} total={withoutMotorisationTotal9} grandTotal={currentBlindWidth9 && currentBlindDepth9 ? parseFloat(withoutMotorisationTotal9 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={10} hideBottomBorder={false} total={withoutMotorisationTotal10} grandTotal={currentBlindWidth10 && currentBlindDepth10 ? parseFloat(withoutMotorisationTotal10 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={11} hideBottomBorder={false} total={withoutMotorisationTotal11} grandTotal={currentBlindWidth11 && currentBlindDepth11 ? parseFloat(withoutMotorisationTotal11 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={12} hideBottomBorder={false} total={withoutMotorisationTotal12} grandTotal={currentBlindWidth12 && currentBlindDepth12 ? parseFloat(withoutMotorisationTotal12 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={13} hideBottomBorder={false} total={withoutMotorisationTotal13} grandTotal={currentBlindWidth13 && currentBlindDepth13 ? parseFloat(withoutMotorisationTotal13 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={14} hideBottomBorder={false} total={withoutMotorisationTotal14} grandTotal={currentBlindWidth14 && currentBlindDepth14 ? parseFloat(withoutMotorisationTotal14 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={15} hideBottomBorder={false} total={withoutMotorisationTotal15} grandTotal={currentBlindWidth15 && currentBlindDepth15 ? parseFloat(withoutMotorisationTotal15 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={16} hideBottomBorder={false} total={withoutMotorisationTotal16} grandTotal={currentBlindWidth16 && currentBlindDepth16 ? parseFloat(withoutMotorisationTotal16 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={17} hideBottomBorder={false} total={withoutMotorisationTotal17} grandTotal={currentBlindWidth17 && currentBlindDepth17 ? parseFloat(withoutMotorisationTotal17 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={18} hideBottomBorder={false} total={withoutMotorisationTotal18} grandTotal={currentBlindWidth18 && currentBlindDepth18 ? parseFloat(withoutMotorisationTotal18 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={19} hideBottomBorder={false} total={withoutMotorisationTotal19} grandTotal={currentBlindWidth19 && currentBlindDepth19 ? parseFloat(withoutMotorisationTotal19 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={20} hideBottomBorder={false} total={withoutMotorisationTotal20} grandTotal={currentBlindWidth20 && currentBlindDepth20 ? parseFloat(withoutMotorisationTotal20 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={21} hideBottomBorder={false} total={withoutMotorisationTotal21} grandTotal={currentBlindWidth21 && currentBlindDepth21 ? parseFloat(withoutMotorisationTotal21 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={22} hideBottomBorder={false} total={withoutMotorisationTotal22} grandTotal={currentBlindWidth22 && currentBlindDepth22 ? parseFloat(withoutMotorisationTotal22 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={23} hideBottomBorder={false} total={withoutMotorisationTotal23} grandTotal={currentBlindWidth23 && currentBlindDepth23 ? parseFloat(withoutMotorisationTotal23 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={24} hideBottomBorder={false} total={withoutMotorisationTotal24} grandTotal={currentBlindWidth24 && currentBlindDepth24 ? parseFloat(withoutMotorisationTotal24 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={25} hideBottomBorder={false} total={withoutMotorisationTotal25} grandTotal={currentBlindWidth25 && currentBlindDepth25 ? parseFloat(withoutMotorisationTotal25 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={26} hideBottomBorder={false} total={withoutMotorisationTotal26} grandTotal={currentBlindWidth26 && currentBlindDepth26 ? parseFloat(withoutMotorisationTotal26 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={27} hideBottomBorder={false} total={withoutMotorisationTotal27} grandTotal={currentBlindWidth27 && currentBlindDepth27 ? parseFloat(withoutMotorisationTotal27 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={28} hideBottomBorder={false} total={withoutMotorisationTotal28} grandTotal={currentBlindWidth28 && currentBlindDepth28 ? parseFloat(withoutMotorisationTotal28 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={29} hideBottomBorder={false} total={withoutMotorisationTotal29} grandTotal={currentBlindWidth29 && currentBlindDepth29 ? parseFloat(withoutMotorisationTotal29 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
-                        <ShowBothTotalBelowButton elementNo={30} hideBottomBorder={true} total={withoutMotorisationTotal30} grandTotal={currentBlindWidth30 && currentBlindDepth30 ? parseFloat(withoutMotorisationTotal30 + selectedMotorTypeExcelValue + selectedPowerTypeExcelValue + selectedReceiverTypeExcelValue + selectedRemoteTypeExcelValue + selectedOtherTypeExcelValue).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={1} hideBottomBorder={false} total={withoutMotorisationTotal} grandTotal={currentBlindWidth && currentBlindDepth ? parseFloat(
+                            withoutMotorisationTotal
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={2} total={withoutMotorisationTotal2} grandTotal={currentBlindWidth2 && currentBlindDepth2 ? parseFloat(
+                            withoutMotorisationTotal2
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={3} total={withoutMotorisationTotal3} grandTotal={currentBlindWidth3 && currentBlindDepth3 ? parseFloat(
+                            withoutMotorisationTotal3
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={4} total={withoutMotorisationTotal4} grandTotal={currentBlindWidth4 && currentBlindDepth4 ? parseFloat(
+                            withoutMotorisationTotal4
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={5} total={withoutMotorisationTotal5} grandTotal={currentBlindWidth5 && currentBlindDepth5 ? parseFloat(
+                            withoutMotorisationTotal5
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={6} total={withoutMotorisationTotal6} grandTotal={currentBlindWidth6 && currentBlindDepth6 ? parseFloat(
+                            withoutMotorisationTotal6
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={7} total={withoutMotorisationTotal7} grandTotal={currentBlindWidth7 && currentBlindDepth7 ? parseFloat(
+                            withoutMotorisationTotal7
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={8} total={withoutMotorisationTotal8} grandTotal={currentBlindWidth8 && currentBlindDepth8 ? parseFloat(
+                            withoutMotorisationTotal8
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={9} total={withoutMotorisationTotal9} grandTotal={currentBlindWidth9 && currentBlindDepth9 ? parseFloat(
+                            withoutMotorisationTotal9
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={10} total={withoutMotorisationTotal10} grandTotal={currentBlindWidth10 && currentBlindDepth10 ? parseFloat(
+                            withoutMotorisationTotal10
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={11} total={withoutMotorisationTotal11} grandTotal={currentBlindWidth11 && currentBlindDepth11 ? parseFloat(
+                            withoutMotorisationTotal11
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={12} total={withoutMotorisationTotal12} grandTotal={currentBlindWidth12 && currentBlindDepth12 ? parseFloat(
+                            withoutMotorisationTotal12
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={13} total={withoutMotorisationTotal13} grandTotal={currentBlindWidth13 && currentBlindDepth13 ? parseFloat(
+                            withoutMotorisationTotal13
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={14} total={withoutMotorisationTotal14} grandTotal={currentBlindWidth14 && currentBlindDepth14 ? parseFloat(
+                            withoutMotorisationTotal14
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={15} total={withoutMotorisationTotal15} grandTotal={currentBlindWidth15 && currentBlindDepth15 ? parseFloat(
+                            withoutMotorisationTotal15
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={16} total={withoutMotorisationTotal16} grandTotal={currentBlindWidth16 && currentBlindDepth16 ? parseFloat(
+                            withoutMotorisationTotal16
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={17} total={withoutMotorisationTotal17} grandTotal={currentBlindWidth17 && currentBlindDepth17 ? parseFloat(
+                            withoutMotorisationTotal17
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={18} total={withoutMotorisationTotal18} grandTotal={currentBlindWidth18 && currentBlindDepth18 ? parseFloat(
+                            withoutMotorisationTotal18
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={19} total={withoutMotorisationTotal19} grandTotal={currentBlindWidth19 && currentBlindDepth19 ? parseFloat(
+                            withoutMotorisationTotal19
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={20} total={withoutMotorisationTotal20} grandTotal={currentBlindWidth20 && currentBlindDepth20 ? parseFloat(
+                            withoutMotorisationTotal20
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={21} total={withoutMotorisationTotal21} grandTotal={currentBlindWidth21 && currentBlindDepth21 ? parseFloat(
+                            withoutMotorisationTotal21
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={22} total={withoutMotorisationTotal22} grandTotal={currentBlindWidth22 && currentBlindDepth22 ? parseFloat(
+                            withoutMotorisationTotal22
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={23} total={withoutMotorisationTotal23} grandTotal={currentBlindWidth23 && currentBlindDepth23 ? parseFloat(
+                            withoutMotorisationTotal23
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={24} total={withoutMotorisationTotal24} grandTotal={currentBlindWidth24 && currentBlindDepth24 ? parseFloat(
+                            withoutMotorisationTotal24
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={25} total={withoutMotorisationTotal25} grandTotal={currentBlindWidth25 && currentBlindDepth25 ? parseFloat(
+                            withoutMotorisationTotal25
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={26} total={withoutMotorisationTotal26} grandTotal={currentBlindWidth26 && currentBlindDepth26 ? parseFloat(
+                            withoutMotorisationTotal26
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={27} total={withoutMotorisationTotal27} grandTotal={currentBlindWidth27 && currentBlindDepth27 ? parseFloat(
+                            withoutMotorisationTotal27
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={28} total={withoutMotorisationTotal28} grandTotal={currentBlindWidth28 && currentBlindDepth28 ? parseFloat(
+                            withoutMotorisationTotal28
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                        <ShowBothTotalBelowButton elementNo={29} total={withoutMotorisationTotal29} grandTotal={currentBlindWidth29 && currentBlindDepth29 ? parseFloat(
+                            withoutMotorisationTotal29
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+
+                        <ShowBothTotalBelowButton hideBottomBorder={true} elementNo={30} total={withoutMotorisationTotal30} grandTotal={currentBlindWidth30 && currentBlindDepth30 ? parseFloat(
+                            withoutMotorisationTotal30
+                            + (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                            + (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                            + (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                            + (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                            + (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                        ).toFixed(2) : '0.00'} />
+
+                    </div>
+                </div>
+
+                <div className=" px-2  justify-center rounded shadow-sm mt-2.5 text-center bg-sky-100">
+                    <h1 className="p-2 pt-3 font-semibold text-sky-900 ">
+                        F I N A L &nbsp; P R I C E
+                    </h1>
+                    <div className="">
+                        {/* <div className={`grid grid-cols-2 px-2 p-1 m-1 border-b-2 border-b-sky-900`}> */}
+                        <div className="flex items-center justify-between ">
+                            <h1 className="p-2 font- text-xs sm:text-sm text-sky-900">
+                                All Total
+                            </h1>
+                            <h1 className="p-2 font-medium text-xs sm:text-sm text-sky-900">
+                                £ {parseFloat(withoutMotorisationTotal + withoutMotorisationTotal2 + withoutMotorisationTotal3 + withoutMotorisationTotal4 + withoutMotorisationTotal5 + withoutMotorisationTotal6 + withoutMotorisationTotal7 + withoutMotorisationTotal8 + withoutMotorisationTotal9 + withoutMotorisationTotal10
+                                    + withoutMotorisationTotal11 + withoutMotorisationTotal12 + withoutMotorisationTotal13 + withoutMotorisationTotal14 + withoutMotorisationTotal15 + withoutMotorisationTotal16 + withoutMotorisationTotal17 + withoutMotorisationTotal18 + withoutMotorisationTotal19 + withoutMotorisationTotal20
+                                    + withoutMotorisationTotal21 + withoutMotorisationTotal22 + withoutMotorisationTotal23 + withoutMotorisationTotal24 + withoutMotorisationTotal25 + withoutMotorisationTotal26 + withoutMotorisationTotal27 + withoutMotorisationTotal28 + withoutMotorisationTotal29 + withoutMotorisationTotal30
+                                ).toFixed(2)
+                                }
+                            </h1>
+                        </div>
+                        <div className="flex items-center justify-between ">
+                            <h1 className="p-2 font-medium text-xs sm:text-sm text-sky-900">
+                                Motorization TOTAL
+                            </h1>
+                            <h1 className="p-2 font-medium text-xs sm:text-sm text-sky-900">
+                                {/* motorization total */}
+                                £ {
+                                    parseFloat(
+                                        (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                        +
+                                        (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                        +
+                                        (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                        +
+                                        (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                        +
+                                        (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                                    ).toFixed(2)
+                                }
+                            </h1>
+                        </div>
+                        {/* </div> */}
+                        {/* <div className={`grid grid-cols-2 px-2 p-1 m-1`}> */}
+                        <div className="flex items-center justify-between border-b-2 border-b-sky-900">
+                            <h1 className="p-2 font-medium text-xs sm:text-sm text-sky-900">
+                                Final Price
+                            </h1>
+                            <h1 className="p-2 font-medium text-xs sm:text-sm text-sky-900">
+                                £{
+                                    parseFloat(
+                                        (withoutMotorisationTotal + withoutMotorisationTotal2 + withoutMotorisationTotal3 + withoutMotorisationTotal4 + withoutMotorisationTotal5 + withoutMotorisationTotal6 + withoutMotorisationTotal7 + withoutMotorisationTotal8 + withoutMotorisationTotal9 + withoutMotorisationTotal10
+                                            + withoutMotorisationTotal11 + withoutMotorisationTotal12 + withoutMotorisationTotal13 + withoutMotorisationTotal14 + withoutMotorisationTotal15 + withoutMotorisationTotal16 + withoutMotorisationTotal17 + withoutMotorisationTotal18 + withoutMotorisationTotal19 + withoutMotorisationTotal20
+                                            + withoutMotorisationTotal21 + withoutMotorisationTotal22 + withoutMotorisationTotal23 + withoutMotorisationTotal24 + withoutMotorisationTotal25 + withoutMotorisationTotal26 + withoutMotorisationTotal27 + withoutMotorisationTotal28 + withoutMotorisationTotal29 + withoutMotorisationTotal30
+                                            +
+                                            (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                            +
+                                            (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                            +
+                                            (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                            +
+                                            (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                            +
+                                            (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                                        )
+                                    ).toFixed(2)
+                                }
+                            </h1>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <h1 className="p-2 font-extrabold text-xs sm:text-sm text-sky-900">
+                                Final Price with TAX
+                            </h1>
+                            <h1 className="p-2 font-extrabold text-xs sm:text-sm text-sky-900">
+                                £{
+                                    parseFloat(
+                                        (withoutMotorisationTotal + withoutMotorisationTotal2 + withoutMotorisationTotal3 + withoutMotorisationTotal4 + withoutMotorisationTotal5 + withoutMotorisationTotal6 + withoutMotorisationTotal7 + withoutMotorisationTotal8 + withoutMotorisationTotal9 + withoutMotorisationTotal10
+                                            + withoutMotorisationTotal11 + withoutMotorisationTotal12 + withoutMotorisationTotal13 + withoutMotorisationTotal14 + withoutMotorisationTotal15 + withoutMotorisationTotal16 + withoutMotorisationTotal17 + withoutMotorisationTotal18 + withoutMotorisationTotal19 + withoutMotorisationTotal20
+                                            + withoutMotorisationTotal21 + withoutMotorisationTotal22 + withoutMotorisationTotal23 + withoutMotorisationTotal24 + withoutMotorisationTotal25 + withoutMotorisationTotal26 + withoutMotorisationTotal27 + withoutMotorisationTotal28 + withoutMotorisationTotal29 + withoutMotorisationTotal30
+                                            +
+                                            (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                            +
+                                            (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                            +
+                                            (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                            +
+                                            (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                            +
+                                            (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                                        )
+                                        +
+                                        ((
+                                            (withoutMotorisationTotal + withoutMotorisationTotal2 + withoutMotorisationTotal3 + withoutMotorisationTotal4 + withoutMotorisationTotal5 + withoutMotorisationTotal6 + withoutMotorisationTotal7 + withoutMotorisationTotal8 + withoutMotorisationTotal9 + withoutMotorisationTotal10
+                                                + withoutMotorisationTotal11 + withoutMotorisationTotal12 + withoutMotorisationTotal13 + withoutMotorisationTotal14 + withoutMotorisationTotal15 + withoutMotorisationTotal16 + withoutMotorisationTotal17 + withoutMotorisationTotal18 + withoutMotorisationTotal19 + withoutMotorisationTotal20
+                                                + withoutMotorisationTotal21 + withoutMotorisationTotal22 + withoutMotorisationTotal23 + withoutMotorisationTotal24 + withoutMotorisationTotal25 + withoutMotorisationTotal26 + withoutMotorisationTotal27 + withoutMotorisationTotal28 + withoutMotorisationTotal29 + withoutMotorisationTotal30
+                                                +
+                                                (selectedMotorTypeMultiplier && selectedMotorTypeExcelValue >= 0 ? (selectedMotorTypeExcelValue * selectedMotorTypeMultiplier) : selectedMotorTypeExcelValue)
+                                                +
+                                                (selectedPowerTypeMultiplier && selectedPowerTypeExcelValue >= 0 ? (selectedPowerTypeExcelValue * selectedPowerTypeMultiplier) : selectedPowerTypeExcelValue)
+                                                +
+                                                (selectedReceiverTypeMultiplier && selectedReceiverTypeExcelValue >= 0 ? (selectedReceiverTypeExcelValue * selectedReceiverTypeMultiplier) : selectedReceiverTypeExcelValue)
+                                                +
+                                                (selectedRemoteTypeMultiplier && selectedRemoteTypeExcelValue >= 0 ? (selectedRemoteTypeExcelValue * selectedRemoteTypeMultiplier) : selectedRemoteTypeExcelValue)
+                                                +
+                                                (selectedOtherTypeMultiplier && selectedOtherTypeExcelValue >= 0 ? (selectedOtherTypeExcelValue * selectedOtherTypeMultiplier) : selectedOtherTypeExcelValue)
+                                            ) * 20
+                                        ) / 100)
+                                    ).toFixed(2)
+                                }
+                            </h1>
+                        </div>
+                        {/* </div> */}
                     </div>
                 </div>
 
