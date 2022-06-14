@@ -12,7 +12,6 @@ import {
 import ContactForm from "./ContactForm";
 
 function ContactUs() {
-
   return (
     <>
       <div id="contact" className=" max-w-screen-lg mx-auto scroll-mt-20">
@@ -22,7 +21,6 @@ function ContactUs() {
           </div>
           <section className=" max-w:sm lg:block bg-white  h-max px-5 py-5 m-2 border border-gray-200 rounded-lg  overflow-hidden shadow-lg">
             <div className="md:flex gap-5 items-center justify-evenly">
-
               <div className="mb-12 md:mb-0">
                 <div>
                   <a href="mailto:semperblinds@gmail.com">
@@ -32,7 +30,7 @@ function ContactUs() {
                     >
                       <span className="sr-only">mail</span>
                       <MailIcon
-                        className="relative top-1  w-5 h-5 hover:stroke-emerald-600"
+                        className="relative top-1  w-5 h-5 hover:stroke-lime-600"
                         aria-hidden="true"
                       />
                       semperblinds@gmail.com
@@ -45,7 +43,7 @@ function ContactUs() {
                     >
                       <span className="sr-only">phone</span>
                       <PhoneIcon
-                        className="relative top-1 w-5 h-5 hover:stroke-emerald-600"
+                        className="relative top-1 w-5 h-5 hover:stroke-lime-600"
                         aria-hidden="true"
                       />
                       07766600131
@@ -57,7 +55,7 @@ function ContactUs() {
                   >
                     <span className="sr-only">main contact </span>
                     <UserCircleIcon
-                      className="relative top-1 w-5 h-5 hover:stroke-emerald-600"
+                      className="relative top-1 w-5 h-5 hover:stroke-lime-600"
                       aria-hidden="true"
                     />
                     Stuart Wilson (Owner)
@@ -69,7 +67,7 @@ function ContactUs() {
                     >
                       <span className="sr-only">Location</span>
                       <LocationMarkerIcon
-                        className="relative  top-1 location_icon hover:stroke-emerald-600"
+                        className="relative  top-1 location_icon hover:stroke-lime-600"
                         aria-hidden="true"
                       />
                       Semper Blinds Unit 7, Harp Industrial Estate,Queensway, Rochdale, OL11 2QQ
@@ -90,7 +88,6 @@ function ContactUs() {
               <div className="">
                 <ContactForm />
               </div>
-
             </div>
           </section>
         </div>

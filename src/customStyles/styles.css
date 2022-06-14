@@ -4,7 +4,6 @@
 /* image gallery */
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
-
 :root {
   --primary: #436343;
   --light: #f7e9d8;
@@ -108,8 +107,6 @@ p {
   margin: 0;
   padding: 0;
 }
-
-
 
 .flex {
   /*  /Flexbox for containers/ */
@@ -227,8 +224,7 @@ header h1 {
   width: 100%;
 }
 
-
-.gallery-sm-image{
+.gallery-sm-image {
   height: 40rem;
 }
 
@@ -244,10 +240,9 @@ header h1 {
   }
 }
 
-
 /* effects for all buttons */
 .button-box-shadow:hover {
-  box-shadow: rgba(134, 239, 172) 0px 4px 8px 1px,
-  rgba(134, 239, 172) 0px -4px 8px 1px;
-  transition: .25s ease-in-out;
+  box-shadow: rgba(235, 241, 219) 0px 8px 8px 1px,
+    rgba(235, 241, 219) 0px -4px 8px 1px;
+  transition: 0.25s ease-in-out;
 }

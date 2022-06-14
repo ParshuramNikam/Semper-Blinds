@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="footer-2 bg-gray-800 pt-0 md:pt-4">
+    <div className="footer-2 bg-gray-800 pt-0 md:pt-1">
       {/* <div className="container px-4 mx-auto">
         <div className="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-6">
           <div className="footer-info lg:w-1/3 md:px-4">
@@ -111,7 +111,9 @@ function Footer() {
                   ></img>
                 </a>
               </div> */}
-              <div className="my-5 ">© Copyright 2022. All Rights Reserved.</div>
+              <div className="my-5 ">
+                © Copyright 2022. All Rights Reserved.
+              </div>
             </div>
           </div>
 

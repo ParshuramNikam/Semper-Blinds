@@ -7,11 +7,11 @@ export const Testimonials = () => {
     <div>
       <section id="testimonials" className="scroll-mt-20 mt-5">
         <SectionHeading className="" heading={"What They've Said"} />
-        <section className=" body-font py-4 bg-emerald-400">
+        <section className=" body-font py-4 bg-lime-50">
           <div className="max-w-7xl px-2 mx-auto">
             <div className="flex flex-wrap m-0">
               <div className="p-2 md:w-1/2 w-full">
-                <div className="h-full md:relative bg-gray-100 p-5 rounded">
+                <div className="h-full md:relative bg-white p-5 rounded border-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -48,7 +48,7 @@ export const Testimonials = () => {
                 </div>
               </div>
               <div className="p-2 md:w-1/2 w-full">
-                <div className="h-full bg-gray-100 p-5 rounded">
+                <div className="h-full bg-white p-5 rounded border-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -84,7 +84,7 @@ export const Testimonials = () => {
             </div>
             <div className="flex flex-wrap m-0">
               <div className="p-2 md:w-1/2 w-full">
-                <div className="h-full md:relative bg-gray-100 p-5 rounded">
+                <div className="h-full md:relative bg-white border-2 p-5 rounded">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -105,11 +105,11 @@ export const Testimonials = () => {
                     </div>
                     <div className="md:absolute bottom-4">
                       <a className="inline-flex items-center">
-                         <img
-                      alt="testimonial"
-                      src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                      className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
-                    />
+                        <img
+                          alt="testimonial"
+                          src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                          className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
+                        />
                         <span className="flex-grow flex flex-col pl-4">
                           <span className="title-font text-lg font-semibold text-gray-900">
                             Mr Keeton
@@ -122,7 +122,7 @@ export const Testimonials = () => {
                 </div>
               </div>
               <div className="p-2 md:w-1/2 w-full">
-                <div className="h-full bg-gray-100 p-5 rounded">
+                <div className="h-full bg-white border-2 p-5 rounded">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"

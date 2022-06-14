@@ -16,7 +16,7 @@ const Header = () => {
                 <div className="">
                   <div className=" text-2xl md:text-5xl my-4 text-center font-semibold text-white">
                     Why choose{" "}
-                    <span className="text-green-500">Semper Blinds?</span>
+                    <span className="text-lime-600">Semper Blinds?</span>
                   </div>
                   <p className=" text-xl text-center lg:w-2/3 mx-auto text-semibold m-0 p-0 text-white">
                     <div className="text-center  	">
@@ -31,7 +31,7 @@ const Header = () => {
                   <div className="mt-7 ">
                     <a
                       href="/#contact"
-                      className="w-max button-box-shadow flex mx-auto mb-3 text-white bg-green-500  hover:bg-green-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
+                      className="w-max button-box-shadow flex mx-auto mb-3 text-white bg-lime-600  hover:bg-lime-600 rounded-lg text-base px-4 py-2 font-semibold  text-center  "
                     >
                       <MailIcon className=" top-4 text-gray-600 h-6 w-6 mr-1 stroke-2 stroke-white k" />
                       Contact Us
@@ -91,7 +91,6 @@ const Header = () => {
       </div>
       <!--Content ends--> */}
       </div>
-
     </>
   );
 };
